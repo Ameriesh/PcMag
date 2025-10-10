@@ -1,0 +1,255 @@
+/*---------------------------------------------*/
+/* 1️⃣ Imports & variants                       */
+/*---------------------------------------------*/
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*---------------------------------------------*/
+/* 2️⃣ Thème : couleurs & variables            */
+/*---------------------------------------------*/
+@theme {
+  /* Primary (jaune) */
+  --color-primary-50: #FFF8E1;
+  --color-primary-100: #FFECB3;
+  --color-primary-200: #FFE082;
+  --color-primary-300: #FFD54F;
+  --color-primary-400: #FFC107;
+  --color-primary-500: #FFB300;
+  --color-primary-600: #FFA000;
+  --color-primary-700: #FF8F00;
+  --color-primary-800: #FF6F00;
+  --color-primary-900: #E65100;
+
+  /* Secondary (gris foncé) */
+  --color-secondary-50: #F5F5F5;
+  --color-secondary-100: #E0E0E0;
+  --color-secondary-200: #BDBDBD;
+  --color-secondary-300: #9E9E9E;
+  --color-secondary-400: #757575;
+  --color-secondary-500: #616161;
+  --color-secondary-600: #424242;
+  --color-secondary-700: #2E2E2E;
+  --color-secondary-800: #212121;
+  --color-secondary-900: #121212;
+
+  /* Blacks */
+  --color-black: #000000;
+  --color-black-100: #333333;
+  --color-black-200: #141413;
+  --color-black-300: #7D8087;
+
+  /* Whites */
+  --color-white: #FFFFFF;
+  --color-white-100: #F7F7F7;
+}
+
+/* Variables root */
+:root {
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+}
+
+/* Dark mode */
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+}
+
+
+
+@layer utilities {
+
+  /* Navbar */
+  .navbar {
+    @apply w-full bg-white shadow-sm px-5 py-2 flex justify-between items-center;
+  }
+  .navbar-logo {
+    @apply text-2xl font-bold text-primary-500 cursor-pointer transition-colors;
+  }
+  .navbar-logo:hover { @apply text-primary-700; }
+  .navbar-center { @apply flex-1 mx-5; }
+  .navbar-auth { @apply flex items-center gap-3; }
+
+  /* Searchbar */
+  .searchbar-container { @apply w-full max-w-sm; }
+  .searchbar-input-group { @apply relative w-full flex items-center border border-primary-300 bg-white px-3 py-2 rounded-none; }
+  .searchbar-input { @apply w-full text-sm outline-none pl-10; }
+  .searchbar-icon-left { @apply absolute left-3 top-1/2 -translate-y-1/2 text-gray-400; }
+  .searchbar-addon-right { @apply absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 text-xs; }
+
+  /* Buttons */
+  .btn-primary { @apply px-4 py-2 bg-primary-500 rounded-none text-white font-semibold text-sm border-none cursor-pointer transition; }
+  .btn-primary:hover { @apply bg-primary-600; }
+  .btn-secondary { @apply px-4 py-2 bg-secondary-200 border border-secondary-700 text-secondary-700 rounded-none font-semibold text-sm cursor-pointer transition; }
+  .btn-secondary:hover { @apply bg-secondary-400; }
+  .btn-logout { @apply px-4 py-2 border border-red-500 text-red-500 font-semibold text-sm cursor-pointer transition; }
+  .btn-logout:hover { @apply bg-red-100; }
+
+  /* Forms */
+  .sign-container { @apply min-h-screen flex items-center justify-center bg-secondary-50 p-3; }
+  .sign-box { @apply w-full max-w-md p-8 bg-white border border-secondary-200 shadow-md flex flex-col rounded-none; }
+  .sign-title { @apply text-2xl font-semibold mb-6 text-primary-700; }
+  .sign-form { @apply flex flex-col gap-4; }
+  .field { @apply relative w-full mb-3; }
+  .field-icon { @apply absolute left-3 top-1/2 -translate-y-1/2 text-secondary-400 pointer-events-none; }
+  .input-field { @apply w-full bg-white text-black text-sm px-3 py-3 pl-10 border-0 border-b-2 border-secondary-300 outline-none transition-all; }
+  .field:focus-within .input-field { @apply border-primary-400 shadow-sm; }
+  .field:focus-within .field-icon { @apply text-primary-400; }
+  .field-label { @apply absolute left-10 top-1/2 -translate-y-1/2 text-sm text-secondary-400 pointer-events-none select-none bg-white px-1 transition-all; }
+  .field:focus-within .field-label,
+  .field.filled .field-label { @apply text-xs text-primary-400 -translate-y-6 left-0 px-0; }
+  .field-password-icon { @apply absolute left-3 top-1/2 -translate-y-1/2 text-secondary-400 cursor-pointer; pointer-events: auto; }
+  .sign-btn { @apply w-full py-3 text-sm font-semibold text-white cursor-pointer bg-primary-500 hover:bg-primary-700 border-none rounded-none transition-transform; }
+  .sign-btn-left { @apply w-auto self-start; }
+  .sign-btn:hover { @apply brightness-95; transform: translateY(-1px); }
+  .sign-foot { @apply mt-4 text-sm text-secondary-500; }
+  .signin-link { @apply text-primary-600 underline; }
+  .error { @apply text-red-500 text-[10px]; }
+
+    /* Hero Section - Style Journal du Geek */
+.hero-section {
+  @apply bg-secondary-900 py-8 px-4 border-b border-secondary-700;
+}
+
+.hero-container {
+  @apply container mx-auto max-w-6xl flex flex-col lg:flex-row gap-8;
+}
+
+/* Colonne featured (gauche) */
+.hero-featured {
+  @apply flex-1 flex flex-col lg:flex-row gap-6;
+}
+
+.hero-image {
+  @apply flex-1;
+}
+
+.hero-img {
+  @apply w-full h-64 lg:h-80 object-cover shadow-lg;
+}
+
+.hero-content {
+  @apply flex-1 space-y-4 text-white;
+}
+
+.hero-badge {
+  @apply inline-block bg-primary-500 text-secondary-900 text-xs font-bold px-2 py-1 uppercase tracking-wide;
+}
+
+.hero-title {
+  @apply text-2xl lg:text-3xl font-bold leading-tight text-white;
+}
+
+.hero-excerpt {
+  @apply text-secondary-300 leading-relaxed text-sm lg:text-base;
+}
+
+.hero-meta {
+  @apply flex flex-wrap items-center gap-2 text-secondary-400 text-sm;
+}
+
+.hero-author {
+  @apply font-semibold text-secondary-200;
+}
+
+.hero-date, .hero-read-time {
+  @apply text-xs lg:text-sm;
+}
+
+/* Colonne récente (droite) */
+.hero-recent {
+  @apply lg:w-80 bg-secondary-800 p-4 flex flex-col;
+}
+
+.recent-title {
+  @apply text-white font-bold text-lg mb-4 pb-2 border-b border-secondary-600;
+}
+
+.recent-list {
+  @apply flex-1 space-y-3 mb-4 overflow-y-auto max-h-96;
+}
+
+.recent-item {
+  @apply p-3 bg-secondary-700 hover:bg-secondary-600 cursor-pointer transition-colors border-l-2 border-primary-500;
+}
+
+.recent-item-date {
+  @apply text-primary-400 text-xs font-medium block mb-1;
+}
+
+.recent-item-title {
+  @apply text-white text-sm font-semibold leading-tight mb-1;
+}
+
+.recent-item-time {
+  @apply text-secondary-400 text-xs;
+}
+
+.recent-button {
+  @apply w-full mt-auto;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .hero-featured {
+    @apply flex-col;
+  }
+  
+  .hero-image {
+    @apply order-1;
+  }
+  
+  .hero-content {
+    @apply order-2;
+  }
+  
+  .hero-recent {
+    @apply w-full;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    @apply text-xl;
+  }
+  
+  .hero-excerpt {
+    @apply text-sm;
+  }
+  
+  .recent-list {
+    @apply max-h-64;
+  }
+
+}
+
+}
+
+/*---------------------------------------------*/
+/* 5️⃣ Responsive                              */
+/*---------------------------------------------*/
+@media (max-width: 768px) {
+  .navbar-center { @apply hidden; }
+}
+
+@media (max-width: 480px) {
+  .sign-box { @apply p-6; }
+  .sign-title { @apply text-xl; }
+}
+
+@media (max-width: 1024px) {
+  .hero-container { @apply flex-col-reverse; }
+  .hero-content { @apply text-center; }
+  .hero-meta { @apply justify-center; }
+}
