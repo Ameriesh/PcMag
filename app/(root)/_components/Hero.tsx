@@ -1,61 +1,80 @@
-// components/Hero.jsx
+// components/GeekHero.jsx
 export default function Hero() {
-  const recentArticles = [
-    { id: 1, title: "Nouvelle sortie gaming attendue cette semaine", date: "14 déc 2023", readTime: "3 min" },
-    { id: 2, title: "Test du dernier smartphone flagship", date: "13 déc 2023", readTime: "4 min" },
-    { id: 3, title: "Les tendances tech à suivre en 2024", date: "12 déc 2023", readTime: "5 min" },
-    { id: 4, title: "Comparatif des consoles next-gen", date: "11 déc 2023", readTime: "6 min" },
-    { id: 5, title: "Revolution IA dans le monde du développement", date: "10 déc 2023", readTime: "4 min" },
+
+
+  const quickNews = [
+    { time: "21:07", text: "Post-credit dans Disneyland Loki bébé ?", tag: "Lokibaba 95, FOLLE théorie" },
+    { time: "22:24", text: "Vendre un blanc devient aujourd'hui illégal", tag: "Loi IA européenne" },
+    { time: "23:00", text: "Nouveau framework JS : plus rapide que jamais", tag: "Tech" },
+    { time: "23:45", text: "PlayStation 6 : les premières rumeurs", tag: "Gaming" }
+  ];
+
+  const categories = [
+    "IA", "Internet", "Jeux", 
+    "Programmation", 
+    "Réseaux sociaux", "Sécurité", "PC", 
   ];
 
   return (
-    <section className="hero-section">
-      <div className="hero-container">
-        {/* Colonne de gauche - Article principal */}
-        <div className="hero-featured">
-          <div className="hero-image">
+    <section className="geek-hero geek-entrance">
+      <div className="geek-hero-container">
+
+        {/* Grid principale */}
+        <div className="geek-hero-grid">
+          
+          {/* Colonne featured */}
+          <div className="geek-featured">
+            <span className="geek-featured-badge">À la une</span>
+            <h2 className="geek-featured-title">
+              Daredevil saison 2 en finit avec cette tendance frustrante du streaming !
+            </h2>
+            <div className="geek-featured-meta">
+              <span className="geek-featured-time">18:30</span>
+              <span className="geek-featured-author">Par Jean Tech</span>
+              <span>• 5 min de lecture</span>
+            </div>
+            <p className="geek-featured-excerpt">
+              La nouvelle saison de Daredevil sur Disney+ brise enfin le format épisodique 
+              traditionnel qui rendait le binge-watching si frustrant. Une révolution dans 
+              l'industrie du streaming...
+            </p>
             <img 
               src="/hero.jpg" 
-              alt="Article featured"
-              className="hero-img"
+              alt="Daredevil saison 2"
+              className="geek-featured-image"
             />
-          </div>
-          <div className="hero-content">
-            <span className="hero-badge">À la une</span>
-            <h1 className="hero-title">
-              Titre principal de l'article featured qui attire l'attention
-            </h1>
-            <p className="hero-excerpt">
-              Un résumé accrocheur de l'article qui donne envie de cliquer 
-              et de lire la suite. Environ 2-3 lignes pour capter l'intérêt.
-            </p>
-            <div className="hero-meta">
-              <span className="hero-author">Par John Doe</span>
-              <span className="hero-date">• 15 décembre 2023</span>
-              <span className="hero-read-time">• 5 min de lecture</span>
-            </div>
             <button className="btn-primary">
-              Lire l'article
+              Lire l'analyse complète
             </button>
           </div>
+
+          {/* Colonne actualités rapides */}
+          <div className="geek-news-column">
+            <h3 className="geek-news-title">En ce moment</h3>
+            <div className="geek-news-list">
+              {quickNews.map((news, index) => (
+                <div key={index} className="geek-news-item">
+                  <div className="geek-news-time">{news.time}</div>
+                  <div className="geek-news-text">{news.text}</div>
+                  <div className="geek-news-tag">{news.tag}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
         </div>
 
-        {/* Colonne de droite - Liste des articles récents */}
-        <div className="hero-recent">
-          <h2 className="recent-title">Dernières actualités</h2>
-          <div className="recent-list">
-            {recentArticles.map((article) => (
-              <div key={article.id} className="recent-item">
-                <span className="recent-item-date">{article.date}</span>
-                <h3 className="recent-item-title">{article.title}</h3>
-                <span className="recent-item-time">{article.readTime}</span>
+        {/* Barre des catégories */}
+        <div className="geek-categories">
+          <div className="geek-categories-grid">
+            {categories.map(category => (
+              <div key={category} className="geek-category">
+                {category}
               </div>
             ))}
           </div>
-          <button className="btn-secondary recent-button">
-            Voir les actualités
-          </button>
         </div>
+
       </div>
     </section>
   );

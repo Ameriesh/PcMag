@@ -1,53 +1,78 @@
-"use client";
 
-import React, { useEffect, useState } from "react";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
+// import React from "react";
+// import Link from "next/link";
 
-export const NavbarAuth = () => {
-  const [user, setUser] = useState<any>(null);
-  const [loading, setLoading] = useState(true);
+// import { Button } from "@/components/ui/button"; 
+// import { toast } from "sonner";
 
-  useEffect(() => {
-    const fetchSession = async () => {
-      try {
-        const res = await fetch("/api/session", { cache: "no-store" });
-        const data = await res.json();
-        setUser(data.user);
-      } catch (err) {
-        setUser(null);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchSession();
-  }, []);
+// import { authClient, signOut } from "@/lib/auth-client";
+// import { auth } from "@/lib/auth";
 
-  if (loading) return <span>Loading...</span>;
+// const session = authClient.useSession()
+  
 
-  return (
-    <div className="flex items-center gap-3">
-      {user ? (
-        <>
-          <span className="text-primary-500 font-semibold">{user.name}</span>
-          <Button
-            onClick={async () => {
-              await fetch("/api/signout");
-              setUser(null);
-            }}
-            className="btn-logout"
-          >
-            Logout
-          </Button>
-        </>
-      ) : (
-        <>
-          <Link href="/auth/signin">
-            <Button className="btn-secondary">Sign In</Button>
-          </Link>
+// export const NavbarAuth = () => {
+
+
+//   // const {
+//   //   data: session, 
+//   //   isPending: loading, 
+   
+//   // } = useSession();
+
+  
+//   // const handleLogout = async () => {
+   
+//   //   await signOut(); 
+    
+//   //   window.location.href = "/"; 
+//   // };
+
+  
+//   // if (loading) {
+//   //   return <span>Chargement...</span>;
+//   // }
+
+  
+//   // const isLoggedIn = !!session && !!session.user;
+
+//   return (
+//     // <div className="flex items-center gap-3">
+//     //   {session && session.data? (
+//     //     <>
           
-        </>
-      )}
-    </div>
-  );
-};
+//     //       <span className="text-primary-500 font-semibold">
+//     //         {session.data.user.name || session.data.user.email}
+//     //       </span>
+//     //       <form action={ async () =>{
+//     //           "use server"
+//     //           await authClient.signOut({
+//     //             fetchOptions: {
+//     //               onSuccess: () =>{
+//     //                 toast.success("sucess",{
+//     //                   description: "deconnecter avec success"
+//     //                 })
+//     //               }
+//     //             }
+//     //           })
+              
+
+//     //       }}>
+//     //         <Button>Deconnextion</Button>
+//     //       </form>
+          
+//     //     </>
+      
+        
+        
+//     //   ) : (
+        
+//     //     <>
+//     //       <Link href="/auth/signin">
+//     //         <Button className="btn-secondary">Connexion</Button>
+//     //       </Link>
+//     //     </>
+//     //   )}
+//     // </div>
+//   );
+// };

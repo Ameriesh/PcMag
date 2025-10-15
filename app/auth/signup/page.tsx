@@ -8,8 +8,10 @@ import { signUpAction } from './_actions/signUpAction'
 import { formSchema } from '@/lib/validate'
 import { ZodError } from 'zod'
 
+
 const SignUpPage = () => {
   const router = useRouter()
+
 
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [showPassword, setShowPassword] = useState(false)
@@ -26,15 +28,15 @@ const SignUpPage = () => {
 
   const handleFieldChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
-    // update filled flag for UI (labels flottants)
+   
     setFilledFields(prev => ({ ...prev, [name]: !!value }))
-    // clear field-specific error when user types
+
     setErrors(prev => ({ ...prev, [name]: '' }))
   }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    setErrors({}) // reset errors
+    setErrors({}) 
 
     const formData = new FormData(e.currentTarget)
     const values = {
@@ -44,12 +46,12 @@ const SignUpPage = () => {
       confirmPassword: formData.get('confirmPassword')?.toString() || '',
     }
 
-    // 1) Validation Zod (client) — si cela échoue, on affiche les erreurs et on stoppe
+   
     try {
       await formSchema.parseAsync(values)
     } catch (err) {
       if (err instanceof ZodError) {
-        // flatten().fieldErrors : Record<string, string[] | undefined>
+       
         const fieldErrors = err.flatten().fieldErrors as Record<string, string[] | undefined>
         const formatted: Record<string, string> = {}
         Object.keys(fieldErrors).forEach(key => {
@@ -57,23 +59,23 @@ const SignUpPage = () => {
           if (msgs && msgs.length > 0) formatted[key] = msgs[0]
         })
         setErrors(formatted)
-        return // stop submission
+        return 
       } else {
-        // unexpected validation failure
+        
         setErrors({ general: 'Validation failed. Vérifiez vos champs.' })
         return
       }
     }
 
-    // 2) Validation passée → appeler l'action serveur
+   
     setLoading(true)
     try {
       const data = await signUpAction(values)
-      // succès
+     
       toast.success(`Le compte ${data.user.name} a été créé`)
       router.push('/auth/signin')
     } catch (err: any) {
-      // serveur a renvoyé une erreur : affiche message général (ou mappez si vous avez structure)
+      
       setErrors({ general: err?.message || "Une erreur serveur est survenue. Réessayez." })
     } finally {
       setLoading(false)
@@ -86,7 +88,6 @@ const SignUpPage = () => {
         <h1 className="sign-title">Create an Account</h1>
 
         <form className="sign-form" onSubmit={handleSubmit} noValidate>
-          {/* Full Name */}
           <div className={`field ${filledFields.name ? 'filled' : ''}`}>
             <span className="field-icon"><User size={18} /></span>
             <input
@@ -139,7 +140,6 @@ const SignUpPage = () => {
           </div>
           {errors.password && <p className="error">{errors.password}</p>}
 
-          {/* Confirm Password */}
           <div className={`field ${filledFields.confirmPassword ? 'filled' : ''}`}>
             <input
               id="confirmPassword"

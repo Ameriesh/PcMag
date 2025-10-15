@@ -14,16 +14,24 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum UserRole {
+  USER
+  ADMIN
+}
+
 model User {
   id            String    @id
   name          String
   email         String
   emailVerified Boolean   @default(false)
   image         String?
+  role          UserRole  @default(USER)
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @default(now()) @updatedAt
   sessions      Session[]
   accounts      Account[]
+
+  articles Article[] @relation("AuthorArticles")
 
   @@unique([email])
   @@map("user")
@@ -72,4 +80,20 @@ model Verification {
   updatedAt  DateTime @default(now()) @updatedAt
 
   @@map("verification")
+}
+
+model Article {
+  id        Int      @id @default(autoincrement())
+  title     String
+  excerpt   String
+  image     String
+  category  String
+  badge     String
+  readTime  String?
+  featured  Boolean  @default(false)
+  type      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  authorId  String
+  author    User     @relation("AuthorArticles", fields: [authorId], references: [id])
 }

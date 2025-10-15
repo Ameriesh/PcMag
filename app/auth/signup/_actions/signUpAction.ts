@@ -1,40 +1,42 @@
-"use server"; 
-
-import { authClient } from "@/lib/auth-client";
+// lib/actions.ts (ou où se trouve votre action)
+"use server"
+import { prisma } from "@/lib/prisma";
+import { signUp } from "@/lib/auth-client";
 
 interface SignUpData {
   name: string;
   email: string;
   password: string;
+  
 }
 
-export async function signUpAction({ email, password, name}: SignUpData) {
+export async function signUpAction({ email, password, name }: SignUpData) {
+  const defaultRole = "USER"; 
+  
   try {
-    const { data, error } = await authClient.signUp.email(
+    
+    const { data, error } = await signUp.email(
       {
         email,
         password,
         name,
-        callbackURL: "/", 
+        callbackURL: "/",
       },
-      {
-        onRequest: () => {
-          console.log("Envoi du formulaire SignUp...");
-        },
-        onSuccess: (ctx) => {
-          console.log("Inscription réussie !", ctx.data);
-        },
-        onError: (ctx) => {
-          console.error("Erreur SignUp :", ctx.error.message);
-          throw new Error(ctx.error.message);
-        },
-      }
+      // ... callbacks
     );
 
     if (error) throw new Error(error.message);
 
+    // 2. Mettre à jour le rôle de l'utilisateur avec la valeur par défaut FORCEE.
+    // L'adresse e-mail est la clé unique trouvée par Better Auth.
+    await prisma.user.update({
+      where: { email },
+      data: { role: defaultRole }, // <-- Rôle forcé à USER
+    });
+
     return data;
   } catch (err: any) {
+    // ... gestion des erreurs
     throw new Error(err.message);
   }
 }

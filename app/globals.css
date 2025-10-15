@@ -54,6 +54,14 @@
   --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
+  --sidebar: hsl(0 0% 98%);
+  --sidebar-foreground: hsl(240 5.3% 26.1%);
+  --sidebar-primary: hsl(240 5.9% 10%);
+  --sidebar-primary-foreground: hsl(0 0% 98%);
+  --sidebar-accent: hsl(240 4.8% 95.9%);
+  --sidebar-accent-foreground: hsl(240 5.9% 10%);
+  --sidebar-border: hsl(220 13% 91%);
+  --sidebar-ring: hsl(217.2 91.2% 59.8%);
 }
 
 /* Dark mode */
@@ -64,9 +72,15 @@
   --primary-foreground: oklch(0.205 0 0);
   --secondary: oklch(0.269 0 0);
   --secondary-foreground: oklch(0.985 0 0);
+  --sidebar: hsl(240 5.9% 10%);
+  --sidebar-foreground: hsl(240 4.8% 95.9%);
+  --sidebar-primary: hsl(224.3 76.3% 48%);
+  --sidebar-primary-foreground: hsl(0 0% 100%);
+  --sidebar-accent: hsl(240 3.7% 15.9%);
+  --sidebar-accent-foreground: hsl(240 4.8% 95.9%);
+  --sidebar-border: hsl(240 3.7% 15.9%);
+  --sidebar-ring: hsl(217.2 91.2% 59.8%);
 }
-
-
 
 @layer utilities {
 
@@ -89,7 +103,7 @@
   .searchbar-addon-right { @apply absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 text-xs; }
 
   /* Buttons */
-  .btn-primary { @apply px-4 py-2 bg-primary-500 rounded-none text-white font-semibold text-sm border-none cursor-pointer transition; }
+  .btn-primary { @apply px-4 py-2 bg-primary-500 rounded-none text-black-200 font-semibold text-sm border-none cursor-pointer transition; }
   .btn-primary:hover { @apply bg-primary-600; }
   .btn-secondary { @apply px-4 py-2 bg-secondary-200 border border-secondary-700 text-secondary-700 rounded-none font-semibold text-sm cursor-pointer transition; }
   .btn-secondary:hover { @apply bg-secondary-400; }
@@ -117,123 +131,228 @@
   .signin-link { @apply text-primary-600 underline; }
   .error { @apply text-red-500 text-[10px]; }
 
-    /* Hero Section - Style Journal du Geek */
-.hero-section {
-  @apply bg-secondary-900 py-8 px-4 border-b border-secondary-700;
-}
-
-.hero-container {
-  @apply container mx-auto max-w-6xl flex flex-col lg:flex-row gap-8;
-}
-
-/* Colonne featured (gauche) */
-.hero-featured {
-  @apply flex-1 flex flex-col lg:flex-row gap-6;
-}
-
-.hero-image {
-  @apply flex-1;
-}
-
-.hero-img {
-  @apply w-full h-64 lg:h-80 object-cover shadow-lg;
-}
-
-.hero-content {
-  @apply flex-1 space-y-4 text-white;
-}
-
-.hero-badge {
-  @apply inline-block bg-primary-500 text-secondary-900 text-xs font-bold px-2 py-1 uppercase tracking-wide;
-}
-
-.hero-title {
-  @apply text-2xl lg:text-3xl font-bold leading-tight text-white;
-}
-
-.hero-excerpt {
-  @apply text-secondary-300 leading-relaxed text-sm lg:text-base;
-}
-
-.hero-meta {
-  @apply flex flex-wrap items-center gap-2 text-secondary-400 text-sm;
-}
-
-.hero-author {
-  @apply font-semibold text-secondary-200;
-}
-
-.hero-date, .hero-read-time {
-  @apply text-xs lg:text-sm;
-}
-
-/* Colonne récente (droite) */
-.hero-recent {
-  @apply lg:w-80 bg-secondary-800 p-4 flex flex-col;
-}
-
-.recent-title {
-  @apply text-white font-bold text-lg mb-4 pb-2 border-b border-secondary-600;
-}
-
-.recent-list {
-  @apply flex-1 space-y-3 mb-4 overflow-y-auto max-h-96;
-}
-
-.recent-item {
-  @apply p-3 bg-secondary-700 hover:bg-secondary-600 cursor-pointer transition-colors border-l-2 border-primary-500;
-}
-
-.recent-item-date {
-  @apply text-primary-400 text-xs font-medium block mb-1;
-}
-
-.recent-item-title {
-  @apply text-white text-sm font-semibold leading-tight mb-1;
-}
-
-.recent-item-time {
-  @apply text-secondary-400 text-xs;
-}
-
-.recent-button {
-  @apply w-full mt-auto;
-}
-
-/* Responsive */
-@media (max-width: 1024px) {
-  .hero-featured {
-    @apply flex-col;
-  }
-  
-  .hero-image {
-    @apply order-1;
-  }
-  
-  .hero-content {
-    @apply order-2;
-  }
-  
-  .hero-recent {
-    @apply w-full;
-  }
-}
-
-@media (max-width: 768px) {
-  .hero-title {
-    @apply text-xl;
-  }
-  
-  .hero-excerpt {
-    @apply text-sm;
-  }
-  
-  .recent-list {
-    @apply max-h-64;
+   /*---------------------------------------------*/
+/* HERO - Style Journal Geek                  */
+/*---------------------------------------------*/
+@layer utilities {
+  /* Section Hero principale */
+  .geek-hero {
+    @apply bg-gradient-to-br from-secondary-800 via-secondary-900 to-black py-8 px-4 border-b border-primary-600;
   }
 
+  .geek-hero-container {
+    @apply container mx-auto max-w-7xl;
+  }
+
+  /* Header du hero avec titre et navigation */
+  .geek-hero-header {
+    @apply flex flex-col lg:flex-row justify-between items-start lg:items-center mb-8 gap-4;
+  }
+
+  .geek-hero-title {
+    @apply text-4xl lg:text-5xl font-black text-primary-400 uppercase tracking-tight;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  }
+
+  .geek-hero-nav {
+    @apply flex flex-wrap gap-3 lg:gap-6;
+  }
+
+  .geek-nav-item {
+    @apply text-white hover:text-primary-300 text-sm font-medium transition-colors cursor-pointer border-b-2 border-transparent hover:border-primary-400 pb-1;
+  }
+
+  .geek-nav-item.active {
+    @apply text-primary-400 border-primary-400;
+  }
+
+  /* Grid principale du contenu */
+  .geek-hero-grid {
+    @apply grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8;
+  }
+
+  /* Colonne principale - Article featured */
+  .geek-featured {
+    @apply lg:col-span-2 bg-secondary-800/50 backdrop-blur-sm p-6 border border-secondary-600;
+  }
+
+  .geek-featured-badge {
+    @apply inline-block bg-primary-500 text-black text-xs font-black px-3 py-1 uppercase tracking-widest mb-4;
+  }
+
+  .geek-featured-title {
+    @apply text-2xl lg:text-3xl xl:text-4xl font-black text-white leading-tight mb-4 hover:text-primary-300 transition-colors cursor-pointer;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+  }
+
+  .geek-featured-meta {
+    @apply flex items-center gap-4 text-secondary-300 text-sm mb-4;
+  }
+
+  .geek-featured-time {
+    @apply text-primary-400 font-semibold;
+  }
+
+  .geek-featured-author {
+    @apply text-white font-medium;
+  }
+
+  .geek-featured-excerpt {
+    @apply text-secondary-200 leading-relaxed text-base lg:text-lg mb-6 line-clamp-3;
+  }
+
+  .geek-featured-image {
+    @apply w-full h-64 lg:h-80 object-cover mb-4 border-2 border-primary-500;
+  }
+
+  /* Colonne des actualités rapides */
+  .geek-news-column {
+    @apply bg-secondary-800/50 backdrop-blur-sm p-6 border border-secondary-600;
+  }
+
+  .geek-news-title {
+    @apply text-xl font-black text-primary-400 uppercase tracking-wide mb-6 pb-2 border-b border-primary-500;
+  }
+
+  .geek-news-list {
+    @apply space-y-4;
+  }
+
+  .geek-news-item {
+    @apply border-l-4 border-primary-500 pl-4 py-2 cursor-pointer hover:bg-secondary-700/50 transition-all;
+  }
+
+  .geek-news-time {
+    @apply text-primary-400 text-xs font-bold mb-1;
+  }
+
+  .geek-news-text {
+    @apply text-white text-sm font-semibold leading-tight hover:text-primary-300 transition-colors;
+  }
+
+  .geek-news-tag {
+    @apply text-secondary-400 text-xs italic;
+  }
+
+  /* Section des catégories */
+  .geek-categories {
+    @apply lg:col-span-3 bg-secondary-800/30 p-4 border border-secondary-700 mt-4;
+  }
+
+  .geek-categories-grid {
+    @apply grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-2;
+  }
+
+  .geek-category {
+    @apply bg-secondary-700 hover:bg-primary-500 text-white hover:text-black text-center py-2 px-3 text-xs font-semibold cursor-pointer transition-all border border-secondary-600;
+  }
+
+  /* Section streaming */
+  .geek-streaming {
+    @apply lg:col-span-3 bg-gradient-to-r from-primary-600 to-primary-800 p-6 mt-6 border-l-4 border-white;
+  }
+
+  .geek-streaming-title {
+    @apply text-2xl font-black text-white uppercase mb-2;
+  }
+
+  .geek-streaming-subtitle {
+    @apply text-secondary-100 text-lg font-semibold;
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .geek-hero-grid {
+      @apply gap-4;
+    }
+
+    .geek-categories-grid {
+      @apply grid-cols-3 gap-2;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .geek-hero-title {
+      @apply text-3xl;
+    }
+
+    .geek-featured-title {
+      @apply text-2xl;
+    }
+
+    .geek-categories-grid {
+      @apply grid-cols-2;
+    }
+
+    .geek-hero-nav {
+      @apply gap-2;
+    }
+
+    .geek-nav-item {
+      @apply text-xs;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .geek-hero {
+      @apply py-6 px-3;
+    }
+
+    .geek-featured,
+    .geek-news-column {
+      @apply p-4;
+    }
+
+    .geek-categories-grid {
+      @apply grid-cols-1;
+    }
+  }
+
 }
 
+/* Container grid pour le feed */
+.article-feed {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
+}
+
+/* Carte d'article */
+.article-card {
+  @apply flex flex-col md:flex-row gap-4 bg-white shadow-md rounded-md overflow-hidden hover:shadow-lg transition-shadow duration-300;
+}
+
+/* Image de l'article */
+.article-image img {
+  @apply w-full h-40 md:h-full object-cover;
+}
+
+/* Contenu de la carte */
+.article-content {
+  @apply flex-1 p-4 flex flex-col justify-between;
+}
+
+/* Catégorie */
+.article-content span {
+  @apply text-xs font-bold text-primary-500 uppercase;
+}
+
+/* Titre */
+.article-content h2 {
+  @apply text-lg md:text-xl font-semibold mt-1 text-gray-900;
+}
+
+/* Extrait */
+.article-content p {
+  @apply text-sm text-gray-600 mt-2;
+}
+
+/* Meta (auteur, date) */
+.article-content .flex {
+  @apply flex items-center justify-between mt-3 text-xs text-gray-500;
+}
+
+/* Hover sur l'image */
+.article-card:hover .article-image img {
+  @apply scale-105 transition-transform duration-300;
 }
 
 /*---------------------------------------------*/
@@ -253,3 +372,223 @@
   .hero-content { @apply text-center; }
   .hero-meta { @apply justify-center; }
 }
+
+/*---------------------------------------------*/
+/* CARDS - Style Journal Geek                 */
+/*---------------------------------------------*/
+@layer utilities {
+  /* Section des cartes */
+  .geek-cards-section {
+    @apply bg-gradient-to-b from-secondary-900 to-black py-12 px-4;
+  }
+
+  .geek-cards-container {
+    @apply container mx-auto max-w-7xl;
+  }
+
+  .geek-cards-header {
+    @apply flex justify-between items-center mb-8;
+  }
+
+  .geek-cards-title {
+    @apply text-3xl lg:text-4xl font-black text-primary-400 uppercase tracking-tight;
+  }
+
+  .geek-cards-filters {
+    @apply flex gap-4;
+  }
+
+  .geek-filter {
+    @apply bg-secondary-800 hover:bg-primary-500 text-white hover:text-black px-4 py-2 text-sm font-semibold cursor-pointer transition-all border border-secondary-600;
+  }
+
+  .geek-filter.active {
+    @apply bg-primary-500 text-black;
+  }
+
+  /* Grid des cartes */
+  .geek-cards-grid {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6;
+  }
+
+  /* Carte individuelle */
+  .geek-card {
+    @apply bg-secondary-800 border border-secondary-600 hover:border-primary-500 transition-all duration-300 hover:shadow-2xl hover:shadow-primary-500/10 cursor-pointer;
+  }
+
+  .geek-card-image {
+    @apply w-full h-48 object-cover relative overflow-hidden;
+  }
+
+  .geek-card-img {
+    @apply w-full h-full object-cover transition-transform duration-500 group-hover:scale-110;
+  }
+
+  .geek-card-badge {
+    @apply absolute top-3 left-3 bg-primary-500 text-black text-xs font-black px-2 py-1 uppercase tracking-wider;
+  }
+
+  .geek-card-category {
+    @apply absolute top-3 right-3 bg-black/80 text-white text-xs font-semibold px-2 py-1;
+  }
+
+  .geek-card-content {
+    @apply p-4;
+  }
+
+  .geek-card-title {
+    @apply text-lg font-black text-white leading-tight mb-3 group-hover:text-primary-300 transition-colors line-clamp-2;
+  }
+
+  .geek-card-excerpt {
+    @apply text-secondary-300 text-sm leading-relaxed mb-4 line-clamp-3;
+  }
+
+  .geek-card-meta {
+    @apply flex justify-between items-center text-xs text-secondary-400 border-t border-secondary-600 pt-3;
+  }
+
+  .geek-card-author {
+    @apply text-primary-400 font-semibold;
+  }
+
+  .geek-card-date {
+    @apply text-secondary-400;
+  }
+
+  .geek-card-time {
+    @apply bg-secondary-700 px-2 py-1 text-secondary-300;
+  }
+
+  /* Carte featured (plus grande) */
+  .geek-card.featured {
+    @apply md:col-span-2 lg:col-span-2;
+  }
+
+  .geek-card.featured .geek-card-image {
+    @apply h-64;
+  }
+
+  .geek-card.featured .geek-card-title {
+    @apply text-xl lg:text-2xl;
+  }
+
+  .geek-card.featured .geek-card-excerpt {
+    @apply text-base;
+  }
+
+  /* Carte vidéo */
+  .geek-card.video .geek-card-image::after {
+    content: "▶";
+    @apply absolute inset-0 flex items-center justify-center text-4xl text-white bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300;
+  }
+
+  /* Carte test */
+  .geek-card.test .geek-card-badge {
+    @apply bg-green-500 text-white;
+  }
+
+  /* Carte actu */
+  .geek-card.news .geek-card-badge {
+    @apply bg-red-500 text-white;
+  }
+
+  /* Section pagination/load more */
+  .geek-cards-footer {
+    @apply flex justify-center mt-12;
+  }
+
+  .geek-load-more {
+    @apply bg-primary-500 hover:bg-primary-600 text-black font-black px-8 py-3 uppercase tracking-wider border-none cursor-pointer transition-all hover:scale-105;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .geek-cards-header {
+      @apply flex-col gap-4 items-start;
+    }
+
+    .geek-cards-filters {
+      @apply flex-wrap;
+    }
+
+    .geek-cards-grid {
+      @apply gap-4;
+    }
+
+    .geek-card.featured {
+      @apply col-span-1;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .geek-cards-title {
+      @apply text-2xl;
+    }
+
+    .geek-filter {
+      @apply px-3 py-1 text-xs;
+    }
+  }
+
+  /* Animation */
+  .geek-card-entrance {
+    animation: cardSlideUp 0.6s ease-out;
+  }
+
+  @keyframes cardSlideUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+@keyframes heroSlideUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* Animation d'entrée */
+  .geek-entrance {
+    animation: geekSlideIn 0.8s ease-out;
+  }
+
+  @keyframes geekSlideIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /*---break---*/
+
+  @theme inline {
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+  /*---break---*/
+
+
