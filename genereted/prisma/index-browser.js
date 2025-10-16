@@ -172,14 +172,40 @@ exports.Prisma.ArticleScalarFieldEnum = {
   title: 'title',
   excerpt: 'excerpt',
   image: 'image',
-  category: 'category',
   badge: 'badge',
   readTime: 'readTime',
   featured: 'featured',
-  type: 'type',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
-  authorId: 'authorId'
+  content: 'content',
+  views: 'views',
+  videoUrl: 'videoUrl',
+  authorId: 'authorId',
+  typeId: 'typeId',
+  categoryId: 'categoryId'
+};
+
+exports.Prisma.CategoryScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  description: 'description',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.CommentaryScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  description: 'description',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.ContentTypeScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.SortOrder = {
@@ -206,7 +232,10 @@ exports.Prisma.ModelName = {
   Session: 'Session',
   Account: 'Account',
   Verification: 'Verification',
-  Article: 'Article'
+  Article: 'Article',
+  Category: 'Category',
+  Commentary: 'Commentary',
+  ContentType: 'ContentType'
 };
 
 /**

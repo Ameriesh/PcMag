@@ -85,84 +85,19 @@
 @layer utilities {
 
 /*---------------------------------------------*/
-/* Styles Corrigés et Finalisés (Dans @layer utilities) */
+/* ADMIN LAYOUT (Sidebar + Content)           */
 /*---------------------------------------------*/
+  .admin-layout-container {
+    @apply w-full mx-auto flex min-h-screen bg-secondary-50; 
+  }
 
-/* Navbar - Style Engadget */
+  .admin-content-area {
+    @apply flex-1 flex flex-col;
+  }
+  
 /*---------------------------------------------*/
-/* Styles Corrigés et Finalisés (Dans @layer utilities) */
+/* BUTTONS & AUTH OUTLINE                     */
 /*---------------------------------------------*/
-
-/* Navbar - Style Engadget */
-.navbar-v2 {
-    /* Fond blanc, pas d'ombre visible (juste un fin séparateur) */
-    @apply w-full bg-white px-4 md:px-6 lg:px-8 py-4 flex justify-between items-center sticky top-0 z-40 border-b border-secondary-200;
-}
-
-.navbar-logo-v2 {
-    /* Logo à gauche, en noir/gris foncé */
-    @apply text-xl lg:text-2xl font-black text-secondary-900 flex-shrink-0;
-}
-.navbar-logo-v2 img {
-    @apply h-6 md:h-8 w-auto;
-}
-
-/* Navigation Links Container (CORRECTION: CLASSE MANQUANTE) */
-.navbar-nav-links {
-    /* Masqué sur MD et moins, s'affiche en grand */
-    @apply hidden lg:flex items-center gap-6 xl:gap-8 mx-auto;
-}
-
-/* Liens Individuels */
-.nav-link-item {
-    /* Styles de base : texte discret, survol en couleur primaire */
-    @apply text-base font-medium text-secondary-600 hover:text-primary-600 transition-colors cursor-pointer flex items-center px-2 py-1 relative;
-}
-
-/* Style de l'onglet actif */
-.nav-link-item.active {
-    @apply text-primary-600;
-}
-
-/* Ligne soulignée subtile pour l'état actif et le hover (doit être dans @layer utilities) */
-.nav-link-item.active:after {
-    content: '';
-    @apply absolute bottom-0 left-0 w-full h-[2px] bg-primary-500 transition-all duration-300;
-}
-.nav-link-item:hover:after {
-    content: '';
-    @apply absolute bottom-0 left-0 w-full h-[2px] bg-primary-200 transition-all duration-300;
-}
-
-/* Section de droite (Recherche + Auth) */
-.navbar-auth-v2 {
-    /* Alignement à droite. Utilisation de flex-shrink-0 pour ne pas être compressé */
-    @apply flex items-center gap-4 flex-shrink-0 ml-auto;
-}
-
-/* Responsive pour le mobile */
-@media (max-width: 1024px) {
-    .navbar-v2 {
-        @apply px-4 py-3;
-    }
-}
-
-/* Searchbar */
-.searchbar-container { @apply w-full max-w-sm; }
-.searchbar-input-group { 
-  @apply w-full flex items-center bg-secondary-50 border border-secondary-200 rounded-lg p-1 transition-all focus-within:border-primary-400 focus-within:ring-1 focus-within:ring-primary-400;
-}
-.searchbar-input { 
-  @apply w-full text-sm bg-transparent outline-none py-1.5 placeholder:text-secondary-400 pl-3 pr-2; 
-}
-.searchbar-clear-btn {
-  @apply text-secondary-500 p-1 rounded-full hover:bg-secondary-200 transition-colors mr-1;
-}
-.searchbar-submit-btn {
-  @apply bg-primary-500 text-white p-2 rounded-md hover:bg-primary-600 transition-colors flex-shrink-0;
-}
-
-/* Buttons */
 .btn-primary {
   @apply px-4 py-2 bg-primary-500 rounded-md text-white font-semibold text-sm border-none cursor-pointer transition shadow-sm;
 }
@@ -193,40 +128,90 @@
 .btn-auth-outline:hover {
     @apply border-primary-500 text-primary-500 bg-secondary-50;
 }
+
 /*---------------------------------------------*/
-/* ADMIN LAYOUT (Sidebar + Content)           */
+/* NAVBAR (V2 - Engadget Style)               */
 /*---------------------------------------------*/
-
-
-  .admin-layout-container {
-    /* Utilisation de Flex pour mettre la Sidebar et le Main côte à côte */
-    @apply flex min-h-screen bg-secondary-50; 
-  }
-
-  .admin-content-area {
-    /* Le Main prend tout l'espace restant (100% de la largeur - largeur de la sidebar) */
-    @apply flex-1 flex flex-col;
-  }
-
-.sign-container-v2 { 
-  @apply min-h-screen grid grid-cols-1 lg:grid-cols-2 bg-white; 
+.navbar-v2 {
+    @apply w-full bg-white px-4 md:px-6 lg:px-8 py-4 flex justify-between items-center sticky top-0 z-40 border-b border-secondary-200;
 }
 
-/* Colonne de gauche (Dégradé/Image) - Utilisation du Cyan */
-.sign-left-v2 {
-  /* Dégradé du Cyan de votre palette (primary-600) vers une teinte plus profonde */
-  @apply hidden lg:flex flex-col items-center justify-center p-10 
-    bg-gradient-to-br from-secondary-600 to-secondary-800 text-white; 
+.navbar-logo-v2 {
+    @apply text-xl lg:text-2xl font-black text-secondary-900 flex-shrink-0;
+}
+.navbar-logo-v2 img {
+    @apply h-6 md:h-8 w-auto;
 }
 
-.sign-logo-v2 {
-  /* Le logo prend la couleur blanche */
-  @apply text-5xl font-extrabold mb-10 tracking-widest flex items-center gap-3 text-primary-500;
+.navbar-nav-links {
+    @apply hidden lg:flex items-center gap-6 xl:gap-8 mx-auto;
+}
+
+.nav-link-item {
+    @apply text-base font-medium text-secondary-600 hover:text-primary-600 transition-colors cursor-pointer flex items-center px-2 py-1 relative;
+}
+
+.nav-link-item.active {
+    @apply text-primary-600;
+}
+
+.nav-link-item.active:after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-full h-[2px] bg-primary-500 transition-all duration-300;
+}
+.nav-link-item:hover:after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-full h-[2px] bg-primary-200 transition-all duration-300;
+}
+
+.navbar-auth-v2 {
+    @apply flex items-center gap-4 flex-shrink-0 ml-auto;
 }
 .logo-v2 {
  
   @apply  font-extrabold pt-1 tracking-widest flex items-center gap-3 text-primary-500;
 }
+
+/* Responsive Navbar */
+@media (max-width: 1024px) {
+    .navbar-v2 {
+        @apply px-4 py-3;
+    }
+}
+
+/*---------------------------------------------*/
+/* SEARCH BAR                                 */
+/*---------------------------------------------*/
+.searchbar-container { @apply w-full max-w-sm; }
+.searchbar-input-group { 
+  @apply w-full flex items-center bg-secondary-50 border border-secondary-200 rounded-lg p-1 transition-all focus-within:border-primary-400 focus-within:ring-1 focus-within:ring-primary-400;
+}
+.searchbar-input { 
+  @apply w-full text-sm bg-transparent outline-none py-1.5 placeholder:text-secondary-400 pl-3 pr-2; 
+}
+.searchbar-clear-btn {
+  @apply text-secondary-500 p-1 rounded-full hover:bg-secondary-200 transition-colors mr-1;
+}
+.searchbar-submit-btn {
+  @apply bg-primary-500 text-white p-2 rounded-md hover:bg-primary-600 transition-colors flex-shrink-0;
+}
+
+/*---------------------------------------------*/
+/* FORMS (V2 - Engadget Style)                */
+/*---------------------------------------------*/
+.sign-container-v2 { 
+  @apply min-h-screen grid grid-cols-1 lg:grid-cols-2 bg-white; 
+}
+
+.sign-left-v2 {
+  @apply hidden lg:flex flex-col items-center justify-center p-10 
+    bg-gradient-to-br from-primary-600 to-primary-800 text-white; /* Cyan Gradient */
+}
+
+.sign-logo-v2 {
+  @apply text-5xl font-extrabold mb-10 tracking-widest flex items-center gap-3;
+}
+
 .sign-welcome-v2 {
   @apply text-4xl font-light mb-4;
 }
@@ -235,7 +220,6 @@
   @apply text-xl font-light;
 }
 
-/* Colonne de droite (Formulaire) */
 .sign-box-v2 { 
   @apply w-full max-w-lg mx-auto p-6 md:p-12 lg:p-16 flex flex-col justify-center; 
 }
@@ -248,49 +232,49 @@
   @apply flex flex-col gap-5; 
 }
 
-/* Champs de saisie (Field Container) */
 .field-v2 { 
   @apply relative w-full; 
 }
 
-/* Icône de gauche (nouvelle classe) */
 .field-icon-v2 { 
-    /* Positionnement de l'icône à l'intérieur du champ */
     @apply absolute left-3 top-1/2 -translate-y-1/2 text-secondary-500 transition-opacity pointer-events-none;
 }
-/* Classe pour faire disparaître l'icône */
 .field-icon-hidden {
     @apply opacity-0;
 }
 
-/* Input Field */
 .input-field-v2 { 
-  /* Augmenter le padding à gauche pour faire de la place à l'icône */
   @apply w-full bg-white text-secondary-900 text-base pl-10 pr-4 py-3 border border-secondary-300 
     rounded-md outline-none transition-all placeholder:text-secondary-400; 
 }
 
-/* Focus State (soulignement Cyan) */
 .input-field-v2:focus { 
   @apply border-primary-500 ring-1 ring-primary-500 shadow-sm; 
 }
 
-/* Icône Oeil/Oeil-barré (Password) - doit être à droite, gère le padding */
+.input-form-v2 {
+    /* Fond très clair pour le contraste, bordure simple */
+    @apply w-full bg-secondary-50 border border-secondary-300 text-secondary-800 
+           px-4 py-2.5 text-base outline-none transition-colors rounded-md;
+}
+
+.input-form-v2:focus {
+    /* État de focus Cyan */
+    @apply border-primary-500 ring-1 ring-primary-500 shadow-sm;
+}
+
 .field-password-icon-v2 { 
-  /* Positionnement à droite */
   @apply absolute right-3 top-1/2 -translate-y-1/2 text-secondary-400 cursor-pointer transition-colors; 
-  pointer-events: auto; /* Permet le clic */
+  pointer-events: auto;
 }
 .field-password-icon-v2:hover {
    @apply text-primary-500;
 }
 
-/* Ajustement du padding pour le champ de mot de passe à cause de l'icône droite */
 #password {
     @apply pr-10;
 }
 
-/* Bouton de Soumission */
 .sign-btn-v2 { 
   @apply w-full py-3 text-sm font-semibold text-white cursor-pointer 
     bg-primary-500 hover:bg-primary-600 border-none rounded-md transition-shadow transition-transform mt-2; 
@@ -299,7 +283,6 @@
   @apply shadow-md; 
 }
 
-/* Pied de page */
 .sign-foot-v2 { 
   @apply mt-6 text-sm text-secondary-500 text-center; 
 }
@@ -308,192 +291,10 @@
   @apply text-primary-600 font-medium hover:underline; 
 }
 
-/* Suppression des anciennes classes inutilisées (field-icon, field-label, etc.) */
-   /*---------------------------------------------*/
-/* HERO - Style Journal Geek                  */
 /*---------------------------------------------*/
-@layer utilities {
-  /* Section Hero principale */
-  .geek-hero {
-    @apply bg-gradient-to-br from-secondary-800 via-secondary-900 to-black py-8 px-4 border-b border-primary-600;
-  }
-
-  .geek-hero-container {
-    @apply container mx-auto max-w-7xl;
-  }
-
-  /* Header du hero avec titre et navigation */
-  .geek-hero-header {
-    @apply flex flex-col lg:flex-row justify-between items-start lg:items-center mb-8 gap-4;
-  }
-
-  .geek-hero-title {
-    @apply text-4xl lg:text-5xl font-black text-primary-400 uppercase tracking-tight;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-  }
-
-  .geek-hero-nav {
-    @apply flex flex-wrap gap-3 lg:gap-6;
-  }
-
-  .geek-nav-item {
-    @apply text-white hover:text-primary-300 text-sm font-medium transition-colors cursor-pointer border-b-2 border-transparent hover:border-primary-400 pb-1;
-  }
-
-  .geek-nav-item.active {
-    @apply text-primary-400 border-primary-400;
-  }
-
-  /* Grid principale du contenu */
-  .geek-hero-grid {
-    @apply grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8;
-  }
-
-  /* Colonne principale - Article featured */
-  .geek-featured {
-    @apply lg:col-span-2 bg-secondary-800/50 backdrop-blur-sm p-6 border border-secondary-600;
-  }
-
-  .geek-featured-badge {
-    @apply inline-block bg-primary-500 text-black text-xs font-black px-3 py-1 uppercase tracking-widest mb-4;
-  }
-
-  .geek-featured-title {
-    @apply text-2xl lg:text-3xl xl:text-4xl font-black text-white leading-tight mb-4 hover:text-primary-300 transition-colors cursor-pointer;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
-  }
-
-  .geek-featured-meta {
-    @apply flex items-center gap-4 text-secondary-300 text-sm mb-4;
-  }
-
-  .geek-featured-time {
-    @apply text-primary-400 font-semibold;
-  }
-
-  .geek-featured-author {
-    @apply text-white font-medium;
-  }
-
-  .geek-featured-excerpt {
-    @apply text-secondary-200 leading-relaxed text-base lg:text-lg mb-6 line-clamp-3;
-  }
-
-  .geek-featured-image {
-    @apply w-full h-64 lg:h-80 object-cover mb-4 border-2 border-primary-500;
-  }
-
-  /* Colonne des actualités rapides */
-  .geek-news-column {
-    @apply bg-secondary-800/50 backdrop-blur-sm p-6 border border-secondary-600;
-  }
-
-  .geek-news-title {
-    @apply text-xl font-black text-primary-400 uppercase tracking-wide mb-6 pb-2 border-b border-primary-500;
-  }
-
-  .geek-news-list {
-    @apply space-y-4;
-  }
-
-  .geek-news-item {
-    @apply border-l-4 border-primary-500 pl-4 py-2 cursor-pointer hover:bg-secondary-700/50 transition-all;
-  }
-
-  .geek-news-time {
-    @apply text-primary-400 text-xs font-bold mb-1;
-  }
-
-  .geek-news-text {
-    @apply text-white text-sm font-semibold leading-tight hover:text-primary-300 transition-colors;
-  }
-
-  .geek-news-tag {
-    @apply text-secondary-400 text-xs italic;
-  }
-
-  /* Section des catégories */
-  .geek-categories {
-    @apply lg:col-span-3 bg-secondary-800/30 p-4 border border-secondary-700 mt-4;
-  }
-
-  .geek-categories-grid {
-    @apply grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-2;
-  }
-
-  .geek-category {
-    @apply bg-secondary-700 hover:bg-primary-500 text-white hover:text-black text-center py-2 px-3 text-xs font-semibold cursor-pointer transition-all border border-secondary-600;
-  }
-
-  /* Section streaming */
-  .geek-streaming {
-    @apply lg:col-span-3 bg-gradient-to-r from-primary-600 to-primary-800 p-6 mt-6 border-l-4 border-white;
-  }
-
-  .geek-streaming-title {
-    @apply text-2xl font-black text-white uppercase mb-2;
-  }
-
-  .geek-streaming-subtitle {
-    @apply text-secondary-100 text-lg font-semibold;
-  }
-
-  /* Responsive */
-  @media (max-width: 1024px) {
-    .geek-hero-grid {
-      @apply gap-4;
-    }
-
-    .geek-categories-grid {
-      @apply grid-cols-3 gap-2;
-    }
-  }
-
-  @media (max-width: 768px) {
-    .geek-hero-title {
-      @apply text-3xl;
-    }
-
-    .geek-featured-title {
-      @apply text-2xl;
-    }
-
-    .geek-categories-grid {
-      @apply grid-cols-2;
-    }
-
-    .geek-hero-nav {
-      @apply gap-2;
-    }
-
-    .geek-nav-item {
-      @apply text-xs;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .geek-hero {
-      @apply py-6 px-3;
-    }
-
-    .geek-featured,
-    .geek-news-column {
-      @apply p-4;
-    }
-
-    .geek-categories-grid {
-      @apply grid-cols-1;
-    }
-  }
-
-}
+/* HERO (V2 - Modern & Clean)                 */
 /*---------------------------------------------*/
-/* HERO - Style Moderne & Clair (V2)          */
-/*---------------------------------------------*/
-@layer utilities {
-  /* Section Hero principale */
   .hero-v2 {
-    /* Fond très clair ou blanc */
     @apply bg-secondary-50 py-8 px-4 border-b border-secondary-200;
   }
 
@@ -501,20 +302,15 @@
     @apply container mx-auto max-w-7xl;
   }
 
-  /* Grid principale 3 colonnes (simule 1 grande + 2 petites colonnes) */
   .hero-v2-grid {
-    /* Large écran: 1 colonne (featured) + 1 colonne (aside) + 1 colonne (latest) */
     @apply grid grid-cols-1 md:grid-cols-3 lg:grid-cols-[2fr_1fr_1fr] gap-6; 
   }
 
-  /* Colonne Featured (La plus large - 2/3 sur l'image) */
   .hero-v2-featured {
-    /* Largeur sur grand écran: 2 colonnes / 4 ou 3 */
     @apply md:col-span-2 lg:col-span-2 bg-white border border-secondary-100;
   }
   
   .hero-v2-image {
-    /* Image en haut pour un look de "carte" */
     @apply w-full h-80 object-cover mb-0; 
   }
   
@@ -527,7 +323,6 @@
   }
   
   .hero-v2-badge {
-    /* Badge simple sans fond voyant, seulement texte coloré */
     @apply inline-block text-primary-500 font-semibold uppercase;
   }
   
@@ -536,27 +331,23 @@
   }
 
   .hero-v2-title {
-    /* Titre propre, noir, avec une taille réduite */
     @apply text-3xl lg:text-4xl font-bold text-secondary-900 leading-tight mb-2 hover:text-primary-600 transition-colors cursor-pointer;
-    text-shadow: none; /* Suppression de l'ombre */
+    text-shadow: none; 
   }
 
   .hero-v2-excerpt {
     @apply text-secondary-700 leading-relaxed text-base mb-4;
   }
 
-  /* Colonne Aside (Articles 2 et 3) */
   .hero-v2-aside {
     @apply md:col-span-1 lg:col-span-1 flex flex-col gap-6;
   }
   
   .hero-v2-aside-item {
-      /* Mise en page flex latérale pour simuler les deux articles superposés */
       @apply flex flex-col md:flex-row lg:flex-col gap-4 bg-white border border-secondary-100;
   }
   
   .hero-v2-aside-image {
-      /* L'image doit être petite et carrée/réduite */
       @apply w-full md:w-1/3 lg:w-full h-40 md:h-full lg:h-40 object-cover;
   }
   
@@ -572,14 +363,11 @@
       @apply flex flex-wrap gap-2 mt-2;
   }
 
-  /* Colonne Latest (Flux d'actualités - Colonne 3/3) */
   .hero-v2-latest {
-    /* Background légèrement plus clair pour le différencier */
     @apply bg-secondary-100/50 p-4 border border-secondary-200 md:col-span-3 lg:col-span-1; 
   }
 
   .hero-v2-latest-title {
-    /* Titre simple en couleur primaire */
     @apply text-2xl font-bold text-primary-600 mb-6 pb-2 border-b border-secondary-300;
   }
 
@@ -599,14 +387,13 @@
     @apply text-secondary-800 text-sm font-semibold leading-tight hover:text-primary-600 transition-colors;
   }
   
-  /* Responsive */
+  /* Responsive Hero */
   @media (max-width: 1024px) {
       .hero-v2-grid {
-          /* En MD (tablette), on passe en 2 colonnes pour une meilleure lecture */
           @apply grid-cols-2; 
       }
       .hero-v2-featured {
-          @apply col-span-2; /* Le featured prend toute la largeur du haut */
+          @apply col-span-2; 
       }
       .hero-v2-latest {
           @apply col-span-1;
@@ -618,21 +405,16 @@
           @apply grid grid-cols-1 gap-4; 
       }
       .hero-v2-aside-item {
-          @apply flex-row; /* Retour à l'alignement horizontal sur mobile pour la densité */
+          @apply flex-row; 
       }
       .hero-v2-aside-image {
           @apply w-1/3 h-auto;
       }
   }
 
-  /* Suppression des anciens styles geek- inutilisés */
-}
-
 /*---------------------------------------------*/
-/* CARDS - Style Moderne & Clair (V2)         */
+/* CARDS (V2 - Modern & Clean)                */
 /*---------------------------------------------*/
-@layer utilities {
-    /* Section des cartes */
     .cards-v2-section {
       @apply bg-white py-12 px-4;
     }
@@ -641,13 +423,11 @@
       @apply container mx-auto max-w-7xl;
     }
 
-    /* En-tête (Titre + Show All) */
     .cards-v2-header {
       @apply flex justify-between items-center mb-6 pb-2 border-b border-secondary-200;
     }
 
     .cards-v2-title {
-      /* Titre de section en majuscules (comme le modèle) */
       @apply text-xl font-bold text-secondary-900 uppercase tracking-widest;
     }
 
@@ -655,16 +435,11 @@
       @apply text-sm font-semibold text-secondary-600 hover:text-primary-600 transition-colors cursor-pointer;
     }
 
-    /* Grid des cartes (simule les 3 colonnes d'images + la colonne de liens) */
     .cards-v2-grid {
       @apply grid grid-cols-1 md:grid-cols-4 gap-6;
     }
 
-    /* -------------------------- */
-    /* Carte individuelle (Image) */
-    /* -------------------------- */
     .card-v2 {
-      /* Pour le flux principal, prend 1 colonne */
       @apply relative bg-white border border-secondary-200 hover:border-primary-500 transition-all duration-300 cursor-pointer overflow-hidden;
     }
     
@@ -676,7 +451,6 @@
       @apply w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105;
     }
 
-    /* Overlay (Titre et Méta en bas de l'image) */
     .card-v2-overlay {
         @apply absolute inset-x-0 bottom-0 bg-black/60 text-white p-4;
     }
@@ -690,7 +464,6 @@
     }
     
     .card-v2-badge {
-        /* Badge sur l'image (couleur primaire) */
         @apply text-primary-400 font-semibold uppercase;
     }
     
@@ -698,12 +471,7 @@
         @apply text-white font-medium;
     }
 
-
-    /* -------------------------- */
-    /* Carte Latest (Colonne de droite) */
-    /* -------------------------- */
     .cards-v2-grid .card-v2-latest {
-        /* Cette colonne prend la dernière colonne de la grille */
         @apply md:col-span-1 border-none bg-transparent hover:bg-secondary-50 p-2; 
     }
     
@@ -719,235 +487,12 @@
         @apply text-secondary-600 text-xs font-light;
     }
     
-    /* Responsive pour le modèle 4 colonnes */
     @media (max-width: 768px) {
         .cards-v2-grid {
-             @apply grid-cols-2; /* 2 colonnes sur mobile/tablette */
+             @apply grid-cols-2; 
         }
     }
 }
-
-/* Container grid pour le feed */
-.article-feed {
-  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
-}
-
-/* Carte d'article */
-.article-card {
-  @apply flex flex-col md:flex-row gap-4 bg-white shadow-md rounded-md overflow-hidden hover:shadow-lg transition-shadow duration-300;
-}
-
-/* Image de l'article */
-.article-image img {
-  @apply w-full h-40 md:h-full object-cover;
-}
-
-/* Contenu de la carte */
-.article-content {
-  @apply flex-1 p-4 flex flex-col justify-between;
-}
-
-/* Catégorie */
-.article-content span {
-  @apply text-xs font-bold text-primary-500 uppercase;
-}
-
-/* Titre */
-.article-content h2 {
-  @apply text-lg md:text-xl font-semibold mt-1 text-gray-900;
-}
-
-/* Extrait */
-.article-content p {
-  @apply text-sm text-gray-600 mt-2;
-}
-
-/* Meta (auteur, date) */
-.article-content .flex {
-  @apply flex items-center justify-between mt-3 text-xs text-gray-500;
-}
-
-/* Hover sur l'image */
-.article-card:hover .article-image img {
-  @apply scale-105 transition-transform duration-300;
-}
-
-/*---------------------------------------------*/
-/* 5️⃣ Responsive                              */
-/*---------------------------------------------*/
-@media (max-width: 768px) {
-  .navbar-center { @apply hidden; }
-}
-
-@media (max-width: 480px) {
-  .sign-box { @apply p-6; }
-  .sign-title { @apply text-xl; }
-}
-
-@media (max-width: 1024px) {
-  .hero-container { @apply flex-col-reverse; }
-  .hero-content { @apply text-center; }
-  .hero-meta { @apply justify-center; }
-}
-
-/*---------------------------------------------*/
-/* CARDS - Style Journal Geek                 */
-/*---------------------------------------------*/
-@layer utilities {
-  
-  /* Section des cartes */
-  .geek-cards-section {
-    @apply bg-gradient-to-b from-secondary-900 to-black py-12 px-4;
-  }
-
-  .geek-cards-container {
-    @apply container mx-auto max-w-7xl;
-  }
-
-  .geek-cards-header {
-    @apply flex justify-between items-center mb-8;
-  }
-
-  .geek-cards-title {
-    @apply text-3xl lg:text-4xl font-black text-primary-400 uppercase tracking-tight;
-  }
-
-  .geek-cards-filters {
-    @apply flex gap-4;
-  }
-
-  .geek-filter {
-    @apply bg-secondary-800 hover:bg-primary-500 text-white hover:text-black px-4 py-2 text-sm font-semibold cursor-pointer transition-all border border-secondary-600;
-  }
-
-  .geek-filter.active {
-    @apply bg-primary-500 text-black;
-  }
-
-  /* Grid des cartes */
-  .geek-cards-grid {
-    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6;
-  }
-
-  /* Carte individuelle */
-  .geek-card {
-    @apply bg-secondary-800 border border-secondary-600 hover:border-primary-500 transition-all duration-300 hover:shadow-2xl hover:shadow-primary-500/10 cursor-pointer;
-  }
-
-  .geek-card-image {
-    @apply w-full h-48 object-cover relative overflow-hidden;
-  }
-
-  .geek-card-img {
-    @apply w-full h-full object-cover transition-transform duration-500 group-hover:scale-110;
-  }
-
-  .geek-card-badge {
-    @apply absolute top-3 left-3 bg-primary-500 text-black text-xs font-black px-2 py-1 uppercase tracking-wider;
-  }
-
-  .geek-card-category {
-    @apply absolute top-3 right-3 bg-black/80 text-white text-xs font-semibold px-2 py-1;
-  }
-
-  .geek-card-content {
-    @apply p-4;
-  }
-
-  .geek-card-title {
-    @apply text-lg font-black text-white leading-tight mb-3 group-hover:text-primary-300 transition-colors line-clamp-2;
-  }
-
-  .geek-card-excerpt {
-    @apply text-secondary-300 text-sm leading-relaxed mb-4 line-clamp-3;
-  }
-
-  .geek-card-meta {
-    @apply flex justify-between items-center text-xs text-secondary-400 border-t border-secondary-600;
-  }
-
-  .geek-card-author {
-    @apply text-primary-400 font-semibold;
-  }
-
-  .geek-card-date {
-    @apply text-secondary-400;
-  }
-
-  .geek-card-time {
-    @apply bg-secondary-700 px-2 py-1 text-secondary-300;
-  }
-
-  /* Carte featured (plus grande) */
-  .geek-card.featured {
-    @apply md:col-span-2 lg:col-span-2;
-  }
-
-  .geek-card.featured .geek-card-image {
-    @apply h-64;
-  }
-
-  .geek-card.featured .geek-card-title {
-    @apply text-xl lg:text-2xl;
-  }
-
-  .geek-card.featured .geek-card-excerpt {
-    @apply text-base;
-  }
-
-  /* Carte vidéo */
-  .geek-card.video .geek-card-image::after {
-    content: "▶";
-    @apply absolute inset-0 flex items-center justify-center text-4xl text-white bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300;
-  }
-
-  /* Carte test */
-  .geek-card.test .geek-card-badge {
-    @apply bg-green-500 text-white;
-  }
-
-  /* Carte actu */
-  .geek-card.news .geek-card-badge {
-    @apply bg-red-500 text-white;
-  }
-
-  /* Section pagination/load more */
-  .geek-cards-footer {
-    @apply flex justify-center mt-12;
-  }
-
-  .geek-load-more {
-    @apply bg-primary-500 hover:bg-primary-600 text-black font-black px-8 py-3 uppercase tracking-wider border-none cursor-pointer transition-all hover:scale-105;
-  }
-
-  /* Responsive */
-  @media (max-width: 768px) {
-    .geek-cards-header {
-      @apply flex-col gap-4 items-start;
-    }
-
-    .geek-cards-filters {
-      @apply flex-wrap;
-    }
-
-    .geek-cards-grid {
-      @apply gap-4;
-    }
-
-    .geek-card.featured {
-      @apply col-span-1;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .geek-cards-title {
-      @apply text-2xl;
-    }
-
-    .geek-filter {
-      @apply px-3 py-1 text-xs;
-    }
-  }
 
   /* Animation */
   .geek-card-entrance {
@@ -964,7 +509,7 @@
       transform: translateY(0);
     }
   }
-}
+
 
 @keyframes heroSlideUp {
     from {
@@ -976,7 +521,7 @@
       transform: translateY(0);
     }
   }
-}
+
 
 /* Animation d'entrée */
   .geek-entrance {

@@ -38,6 +38,21 @@ export type Verification = $Result.DefaultSelection<Prisma.$VerificationPayload>
  * 
  */
 export type Article = $Result.DefaultSelection<Prisma.$ArticlePayload>
+/**
+ * Model Category
+ * 
+ */
+export type Category = $Result.DefaultSelection<Prisma.$CategoryPayload>
+/**
+ * Model Commentary
+ * 
+ */
+export type Commentary = $Result.DefaultSelection<Prisma.$CommentaryPayload>
+/**
+ * Model ContentType
+ * 
+ */
+export type ContentType = $Result.DefaultSelection<Prisma.$ContentTypePayload>
 
 /**
  * Enums
@@ -223,6 +238,36 @@ export class PrismaClient<
     * ```
     */
   get article(): Prisma.ArticleDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.category`: Exposes CRUD operations for the **Category** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Categories
+    * const categories = await prisma.category.findMany()
+    * ```
+    */
+  get category(): Prisma.CategoryDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.commentary`: Exposes CRUD operations for the **Commentary** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Commentaries
+    * const commentaries = await prisma.commentary.findMany()
+    * ```
+    */
+  get commentary(): Prisma.CommentaryDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.contentType`: Exposes CRUD operations for the **ContentType** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ContentTypes
+    * const contentTypes = await prisma.contentType.findMany()
+    * ```
+    */
+  get contentType(): Prisma.ContentTypeDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -667,7 +712,10 @@ export namespace Prisma {
     Session: 'Session',
     Account: 'Account',
     Verification: 'Verification',
-    Article: 'Article'
+    Article: 'Article',
+    Category: 'Category',
+    Commentary: 'Commentary',
+    ContentType: 'ContentType'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -686,7 +734,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "session" | "account" | "verification" | "article"
+      modelProps: "user" | "session" | "account" | "verification" | "article" | "category" | "commentary" | "contentType"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1060,6 +1108,228 @@ export namespace Prisma {
           }
         }
       }
+      Category: {
+        payload: Prisma.$CategoryPayload<ExtArgs>
+        fields: Prisma.CategoryFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CategoryFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CategoryFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryPayload>
+          }
+          findFirst: {
+            args: Prisma.CategoryFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CategoryFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryPayload>
+          }
+          findMany: {
+            args: Prisma.CategoryFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryPayload>[]
+          }
+          create: {
+            args: Prisma.CategoryCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryPayload>
+          }
+          createMany: {
+            args: Prisma.CategoryCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.CategoryCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryPayload>[]
+          }
+          delete: {
+            args: Prisma.CategoryDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryPayload>
+          }
+          update: {
+            args: Prisma.CategoryUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryPayload>
+          }
+          deleteMany: {
+            args: Prisma.CategoryDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CategoryUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.CategoryUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryPayload>[]
+          }
+          upsert: {
+            args: Prisma.CategoryUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryPayload>
+          }
+          aggregate: {
+            args: Prisma.CategoryAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCategory>
+          }
+          groupBy: {
+            args: Prisma.CategoryGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CategoryGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CategoryCountArgs<ExtArgs>
+            result: $Utils.Optional<CategoryCountAggregateOutputType> | number
+          }
+        }
+      }
+      Commentary: {
+        payload: Prisma.$CommentaryPayload<ExtArgs>
+        fields: Prisma.CommentaryFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CommentaryFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommentaryPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CommentaryFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommentaryPayload>
+          }
+          findFirst: {
+            args: Prisma.CommentaryFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommentaryPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CommentaryFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommentaryPayload>
+          }
+          findMany: {
+            args: Prisma.CommentaryFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommentaryPayload>[]
+          }
+          create: {
+            args: Prisma.CommentaryCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommentaryPayload>
+          }
+          createMany: {
+            args: Prisma.CommentaryCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.CommentaryCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommentaryPayload>[]
+          }
+          delete: {
+            args: Prisma.CommentaryDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommentaryPayload>
+          }
+          update: {
+            args: Prisma.CommentaryUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommentaryPayload>
+          }
+          deleteMany: {
+            args: Prisma.CommentaryDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CommentaryUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.CommentaryUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommentaryPayload>[]
+          }
+          upsert: {
+            args: Prisma.CommentaryUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommentaryPayload>
+          }
+          aggregate: {
+            args: Prisma.CommentaryAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCommentary>
+          }
+          groupBy: {
+            args: Prisma.CommentaryGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CommentaryGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CommentaryCountArgs<ExtArgs>
+            result: $Utils.Optional<CommentaryCountAggregateOutputType> | number
+          }
+        }
+      }
+      ContentType: {
+        payload: Prisma.$ContentTypePayload<ExtArgs>
+        fields: Prisma.ContentTypeFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ContentTypeFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContentTypePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ContentTypeFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContentTypePayload>
+          }
+          findFirst: {
+            args: Prisma.ContentTypeFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContentTypePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ContentTypeFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContentTypePayload>
+          }
+          findMany: {
+            args: Prisma.ContentTypeFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContentTypePayload>[]
+          }
+          create: {
+            args: Prisma.ContentTypeCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContentTypePayload>
+          }
+          createMany: {
+            args: Prisma.ContentTypeCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ContentTypeCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContentTypePayload>[]
+          }
+          delete: {
+            args: Prisma.ContentTypeDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContentTypePayload>
+          }
+          update: {
+            args: Prisma.ContentTypeUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContentTypePayload>
+          }
+          deleteMany: {
+            args: Prisma.ContentTypeDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ContentTypeUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ContentTypeUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContentTypePayload>[]
+          }
+          upsert: {
+            args: Prisma.ContentTypeUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContentTypePayload>
+          }
+          aggregate: {
+            args: Prisma.ContentTypeAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateContentType>
+          }
+          groupBy: {
+            args: Prisma.ContentTypeGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ContentTypeGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ContentTypeCountArgs<ExtArgs>
+            result: $Utils.Optional<ContentTypeCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1161,6 +1431,9 @@ export namespace Prisma {
     account?: AccountOmit
     verification?: VerificationOmit
     article?: ArticleOmit
+    category?: CategoryOmit
+    commentary?: CommentaryOmit
+    contentType?: ContentTypeOmit
   }
 
   /* Types for Logging */
@@ -1281,6 +1554,68 @@ export namespace Prisma {
    * UserCountOutputType without action
    */
   export type UserCountOutputTypeCountArticlesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ArticleWhereInput
+  }
+
+
+  /**
+   * Count Type CategoryCountOutputType
+   */
+
+  export type CategoryCountOutputType = {
+    articles: number
+  }
+
+  export type CategoryCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    articles?: boolean | CategoryCountOutputTypeCountArticlesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * CategoryCountOutputType without action
+   */
+  export type CategoryCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CategoryCountOutputType
+     */
+    select?: CategoryCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * CategoryCountOutputType without action
+   */
+  export type CategoryCountOutputTypeCountArticlesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ArticleWhereInput
+  }
+
+
+  /**
+   * Count Type ContentTypeCountOutputType
+   */
+
+  export type ContentTypeCountOutputType = {
+    articles: number
+  }
+
+  export type ContentTypeCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    articles?: boolean | ContentTypeCountOutputTypeCountArticlesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ContentTypeCountOutputType without action
+   */
+  export type ContentTypeCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContentTypeCountOutputType
+     */
+    select?: ContentTypeCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ContentTypeCountOutputType without action
+   */
+  export type ContentTypeCountOutputTypeCountArticlesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ArticleWhereInput
   }
 
@@ -5735,10 +6070,16 @@ export namespace Prisma {
 
   export type ArticleAvgAggregateOutputType = {
     id: number | null
+    views: number | null
+    typeId: number | null
+    categoryId: number | null
   }
 
   export type ArticleSumAggregateOutputType = {
     id: number | null
+    views: number | null
+    typeId: number | null
+    categoryId: number | null
   }
 
   export type ArticleMinAggregateOutputType = {
@@ -5746,14 +6087,17 @@ export namespace Prisma {
     title: string | null
     excerpt: string | null
     image: string | null
-    category: string | null
     badge: string | null
     readTime: string | null
     featured: boolean | null
-    type: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    content: string | null
+    views: number | null
+    videoUrl: string | null
     authorId: string | null
+    typeId: number | null
+    categoryId: number | null
   }
 
   export type ArticleMaxAggregateOutputType = {
@@ -5761,14 +6105,17 @@ export namespace Prisma {
     title: string | null
     excerpt: string | null
     image: string | null
-    category: string | null
     badge: string | null
     readTime: string | null
     featured: boolean | null
-    type: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    content: string | null
+    views: number | null
+    videoUrl: string | null
     authorId: string | null
+    typeId: number | null
+    categoryId: number | null
   }
 
   export type ArticleCountAggregateOutputType = {
@@ -5776,24 +6123,33 @@ export namespace Prisma {
     title: number
     excerpt: number
     image: number
-    category: number
     badge: number
     readTime: number
     featured: number
-    type: number
     createdAt: number
     updatedAt: number
+    content: number
+    views: number
+    videoUrl: number
     authorId: number
+    typeId: number
+    categoryId: number
     _all: number
   }
 
 
   export type ArticleAvgAggregateInputType = {
     id?: true
+    views?: true
+    typeId?: true
+    categoryId?: true
   }
 
   export type ArticleSumAggregateInputType = {
     id?: true
+    views?: true
+    typeId?: true
+    categoryId?: true
   }
 
   export type ArticleMinAggregateInputType = {
@@ -5801,14 +6157,17 @@ export namespace Prisma {
     title?: true
     excerpt?: true
     image?: true
-    category?: true
     badge?: true
     readTime?: true
     featured?: true
-    type?: true
     createdAt?: true
     updatedAt?: true
+    content?: true
+    views?: true
+    videoUrl?: true
     authorId?: true
+    typeId?: true
+    categoryId?: true
   }
 
   export type ArticleMaxAggregateInputType = {
@@ -5816,14 +6175,17 @@ export namespace Prisma {
     title?: true
     excerpt?: true
     image?: true
-    category?: true
     badge?: true
     readTime?: true
     featured?: true
-    type?: true
     createdAt?: true
     updatedAt?: true
+    content?: true
+    views?: true
+    videoUrl?: true
     authorId?: true
+    typeId?: true
+    categoryId?: true
   }
 
   export type ArticleCountAggregateInputType = {
@@ -5831,14 +6193,17 @@ export namespace Prisma {
     title?: true
     excerpt?: true
     image?: true
-    category?: true
     badge?: true
     readTime?: true
     featured?: true
-    type?: true
     createdAt?: true
     updatedAt?: true
+    content?: true
+    views?: true
+    videoUrl?: true
     authorId?: true
+    typeId?: true
+    categoryId?: true
     _all?: true
   }
 
@@ -5933,14 +6298,17 @@ export namespace Prisma {
     title: string
     excerpt: string
     image: string
-    category: string
     badge: string
     readTime: string | null
     featured: boolean
-    type: string
     createdAt: Date
     updatedAt: Date
+    content: string
+    views: number
+    videoUrl: string
     authorId: string
+    typeId: number
+    categoryId: number
     _count: ArticleCountAggregateOutputType | null
     _avg: ArticleAvgAggregateOutputType | null
     _sum: ArticleSumAggregateOutputType | null
@@ -5967,15 +6335,20 @@ export namespace Prisma {
     title?: boolean
     excerpt?: boolean
     image?: boolean
-    category?: boolean
     badge?: boolean
     readTime?: boolean
     featured?: boolean
-    type?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    content?: boolean
+    views?: boolean
+    videoUrl?: boolean
     authorId?: boolean
+    typeId?: boolean
+    categoryId?: boolean
     author?: boolean | UserDefaultArgs<ExtArgs>
+    typeRef?: boolean | ContentTypeDefaultArgs<ExtArgs>
+    CategoryRef?: boolean | CategoryDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["article"]>
 
   export type ArticleSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -5983,15 +6356,20 @@ export namespace Prisma {
     title?: boolean
     excerpt?: boolean
     image?: boolean
-    category?: boolean
     badge?: boolean
     readTime?: boolean
     featured?: boolean
-    type?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    content?: boolean
+    views?: boolean
+    videoUrl?: boolean
     authorId?: boolean
+    typeId?: boolean
+    categoryId?: boolean
     author?: boolean | UserDefaultArgs<ExtArgs>
+    typeRef?: boolean | ContentTypeDefaultArgs<ExtArgs>
+    CategoryRef?: boolean | CategoryDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["article"]>
 
   export type ArticleSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -5999,15 +6377,20 @@ export namespace Prisma {
     title?: boolean
     excerpt?: boolean
     image?: boolean
-    category?: boolean
     badge?: boolean
     readTime?: boolean
     featured?: boolean
-    type?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    content?: boolean
+    views?: boolean
+    videoUrl?: boolean
     authorId?: boolean
+    typeId?: boolean
+    categoryId?: boolean
     author?: boolean | UserDefaultArgs<ExtArgs>
+    typeRef?: boolean | ContentTypeDefaultArgs<ExtArgs>
+    CategoryRef?: boolean | CategoryDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["article"]>
 
   export type ArticleSelectScalar = {
@@ -6015,45 +6398,59 @@ export namespace Prisma {
     title?: boolean
     excerpt?: boolean
     image?: boolean
-    category?: boolean
     badge?: boolean
     readTime?: boolean
     featured?: boolean
-    type?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    content?: boolean
+    views?: boolean
+    videoUrl?: boolean
     authorId?: boolean
+    typeId?: boolean
+    categoryId?: boolean
   }
 
-  export type ArticleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "excerpt" | "image" | "category" | "badge" | "readTime" | "featured" | "type" | "createdAt" | "updatedAt" | "authorId", ExtArgs["result"]["article"]>
+  export type ArticleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "excerpt" | "image" | "badge" | "readTime" | "featured" | "createdAt" | "updatedAt" | "content" | "views" | "videoUrl" | "authorId" | "typeId" | "categoryId", ExtArgs["result"]["article"]>
   export type ArticleInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     author?: boolean | UserDefaultArgs<ExtArgs>
+    typeRef?: boolean | ContentTypeDefaultArgs<ExtArgs>
+    CategoryRef?: boolean | CategoryDefaultArgs<ExtArgs>
   }
   export type ArticleIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     author?: boolean | UserDefaultArgs<ExtArgs>
+    typeRef?: boolean | ContentTypeDefaultArgs<ExtArgs>
+    CategoryRef?: boolean | CategoryDefaultArgs<ExtArgs>
   }
   export type ArticleIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     author?: boolean | UserDefaultArgs<ExtArgs>
+    typeRef?: boolean | ContentTypeDefaultArgs<ExtArgs>
+    CategoryRef?: boolean | CategoryDefaultArgs<ExtArgs>
   }
 
   export type $ArticlePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Article"
     objects: {
       author: Prisma.$UserPayload<ExtArgs>
+      typeRef: Prisma.$ContentTypePayload<ExtArgs>
+      CategoryRef: Prisma.$CategoryPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       title: string
       excerpt: string
       image: string
-      category: string
       badge: string
       readTime: string | null
       featured: boolean
-      type: string
       createdAt: Date
       updatedAt: Date
+      content: string
+      views: number
+      videoUrl: string
       authorId: string
+      typeId: number
+      categoryId: number
     }, ExtArgs["result"]["article"]>
     composites: {}
   }
@@ -6449,6 +6846,8 @@ export namespace Prisma {
   export interface Prisma__ArticleClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     author<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    typeRef<T extends ContentTypeDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ContentTypeDefaultArgs<ExtArgs>>): Prisma__ContentTypeClient<$Result.GetResult<Prisma.$ContentTypePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    CategoryRef<T extends CategoryDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CategoryDefaultArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -6482,14 +6881,17 @@ export namespace Prisma {
     readonly title: FieldRef<"Article", 'String'>
     readonly excerpt: FieldRef<"Article", 'String'>
     readonly image: FieldRef<"Article", 'String'>
-    readonly category: FieldRef<"Article", 'String'>
     readonly badge: FieldRef<"Article", 'String'>
     readonly readTime: FieldRef<"Article", 'String'>
     readonly featured: FieldRef<"Article", 'Boolean'>
-    readonly type: FieldRef<"Article", 'String'>
     readonly createdAt: FieldRef<"Article", 'DateTime'>
     readonly updatedAt: FieldRef<"Article", 'DateTime'>
+    readonly content: FieldRef<"Article", 'String'>
+    readonly views: FieldRef<"Article", 'Int'>
+    readonly videoUrl: FieldRef<"Article", 'String'>
     readonly authorId: FieldRef<"Article", 'String'>
+    readonly typeId: FieldRef<"Article", 'Int'>
+    readonly categoryId: FieldRef<"Article", 'Int'>
   }
     
 
@@ -6905,6 +7307,3230 @@ export namespace Prisma {
 
 
   /**
+   * Model Category
+   */
+
+  export type AggregateCategory = {
+    _count: CategoryCountAggregateOutputType | null
+    _avg: CategoryAvgAggregateOutputType | null
+    _sum: CategorySumAggregateOutputType | null
+    _min: CategoryMinAggregateOutputType | null
+    _max: CategoryMaxAggregateOutputType | null
+  }
+
+  export type CategoryAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type CategorySumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type CategoryMinAggregateOutputType = {
+    id: number | null
+    title: string | null
+    description: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type CategoryMaxAggregateOutputType = {
+    id: number | null
+    title: string | null
+    description: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type CategoryCountAggregateOutputType = {
+    id: number
+    title: number
+    description: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type CategoryAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type CategorySumAggregateInputType = {
+    id?: true
+  }
+
+  export type CategoryMinAggregateInputType = {
+    id?: true
+    title?: true
+    description?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type CategoryMaxAggregateInputType = {
+    id?: true
+    title?: true
+    description?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type CategoryCountAggregateInputType = {
+    id?: true
+    title?: true
+    description?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type CategoryAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Category to aggregate.
+     */
+    where?: CategoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Categories to fetch.
+     */
+    orderBy?: CategoryOrderByWithRelationInput | CategoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CategoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Categories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Categories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Categories
+    **/
+    _count?: true | CategoryCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: CategoryAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: CategorySumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CategoryMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CategoryMaxAggregateInputType
+  }
+
+  export type GetCategoryAggregateType<T extends CategoryAggregateArgs> = {
+        [P in keyof T & keyof AggregateCategory]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCategory[P]>
+      : GetScalarType<T[P], AggregateCategory[P]>
+  }
+
+
+
+
+  export type CategoryGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CategoryWhereInput
+    orderBy?: CategoryOrderByWithAggregationInput | CategoryOrderByWithAggregationInput[]
+    by: CategoryScalarFieldEnum[] | CategoryScalarFieldEnum
+    having?: CategoryScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CategoryCountAggregateInputType | true
+    _avg?: CategoryAvgAggregateInputType
+    _sum?: CategorySumAggregateInputType
+    _min?: CategoryMinAggregateInputType
+    _max?: CategoryMaxAggregateInputType
+  }
+
+  export type CategoryGroupByOutputType = {
+    id: number
+    title: string
+    description: string
+    createdAt: Date
+    updatedAt: Date
+    _count: CategoryCountAggregateOutputType | null
+    _avg: CategoryAvgAggregateOutputType | null
+    _sum: CategorySumAggregateOutputType | null
+    _min: CategoryMinAggregateOutputType | null
+    _max: CategoryMaxAggregateOutputType | null
+  }
+
+  type GetCategoryGroupByPayload<T extends CategoryGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CategoryGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CategoryGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CategoryGroupByOutputType[P]>
+            : GetScalarType<T[P], CategoryGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CategorySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    description?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    articles?: boolean | Category$articlesArgs<ExtArgs>
+    _count?: boolean | CategoryCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["category"]>
+
+  export type CategorySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    description?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["category"]>
+
+  export type CategorySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    description?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["category"]>
+
+  export type CategorySelectScalar = {
+    id?: boolean
+    title?: boolean
+    description?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type CategoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "createdAt" | "updatedAt", ExtArgs["result"]["category"]>
+  export type CategoryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    articles?: boolean | Category$articlesArgs<ExtArgs>
+    _count?: boolean | CategoryCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type CategoryIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type CategoryIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $CategoryPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Category"
+    objects: {
+      articles: Prisma.$ArticlePayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      title: string
+      description: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["category"]>
+    composites: {}
+  }
+
+  type CategoryGetPayload<S extends boolean | null | undefined | CategoryDefaultArgs> = $Result.GetResult<Prisma.$CategoryPayload, S>
+
+  type CategoryCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CategoryFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CategoryCountAggregateInputType | true
+    }
+
+  export interface CategoryDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Category'], meta: { name: 'Category' } }
+    /**
+     * Find zero or one Category that matches the filter.
+     * @param {CategoryFindUniqueArgs} args - Arguments to find a Category
+     * @example
+     * // Get one Category
+     * const category = await prisma.category.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CategoryFindUniqueArgs>(args: SelectSubset<T, CategoryFindUniqueArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Category that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CategoryFindUniqueOrThrowArgs} args - Arguments to find a Category
+     * @example
+     * // Get one Category
+     * const category = await prisma.category.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CategoryFindUniqueOrThrowArgs>(args: SelectSubset<T, CategoryFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Category that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategoryFindFirstArgs} args - Arguments to find a Category
+     * @example
+     * // Get one Category
+     * const category = await prisma.category.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CategoryFindFirstArgs>(args?: SelectSubset<T, CategoryFindFirstArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Category that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategoryFindFirstOrThrowArgs} args - Arguments to find a Category
+     * @example
+     * // Get one Category
+     * const category = await prisma.category.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CategoryFindFirstOrThrowArgs>(args?: SelectSubset<T, CategoryFindFirstOrThrowArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Categories that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategoryFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Categories
+     * const categories = await prisma.category.findMany()
+     * 
+     * // Get first 10 Categories
+     * const categories = await prisma.category.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const categoryWithIdOnly = await prisma.category.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CategoryFindManyArgs>(args?: SelectSubset<T, CategoryFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Category.
+     * @param {CategoryCreateArgs} args - Arguments to create a Category.
+     * @example
+     * // Create one Category
+     * const Category = await prisma.category.create({
+     *   data: {
+     *     // ... data to create a Category
+     *   }
+     * })
+     * 
+     */
+    create<T extends CategoryCreateArgs>(args: SelectSubset<T, CategoryCreateArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Categories.
+     * @param {CategoryCreateManyArgs} args - Arguments to create many Categories.
+     * @example
+     * // Create many Categories
+     * const category = await prisma.category.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CategoryCreateManyArgs>(args?: SelectSubset<T, CategoryCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Categories and returns the data saved in the database.
+     * @param {CategoryCreateManyAndReturnArgs} args - Arguments to create many Categories.
+     * @example
+     * // Create many Categories
+     * const category = await prisma.category.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Categories and only return the `id`
+     * const categoryWithIdOnly = await prisma.category.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends CategoryCreateManyAndReturnArgs>(args?: SelectSubset<T, CategoryCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Category.
+     * @param {CategoryDeleteArgs} args - Arguments to delete one Category.
+     * @example
+     * // Delete one Category
+     * const Category = await prisma.category.delete({
+     *   where: {
+     *     // ... filter to delete one Category
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CategoryDeleteArgs>(args: SelectSubset<T, CategoryDeleteArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Category.
+     * @param {CategoryUpdateArgs} args - Arguments to update one Category.
+     * @example
+     * // Update one Category
+     * const category = await prisma.category.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CategoryUpdateArgs>(args: SelectSubset<T, CategoryUpdateArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Categories.
+     * @param {CategoryDeleteManyArgs} args - Arguments to filter Categories to delete.
+     * @example
+     * // Delete a few Categories
+     * const { count } = await prisma.category.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CategoryDeleteManyArgs>(args?: SelectSubset<T, CategoryDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Categories.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategoryUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Categories
+     * const category = await prisma.category.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CategoryUpdateManyArgs>(args: SelectSubset<T, CategoryUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Categories and returns the data updated in the database.
+     * @param {CategoryUpdateManyAndReturnArgs} args - Arguments to update many Categories.
+     * @example
+     * // Update many Categories
+     * const category = await prisma.category.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Categories and only return the `id`
+     * const categoryWithIdOnly = await prisma.category.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends CategoryUpdateManyAndReturnArgs>(args: SelectSubset<T, CategoryUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Category.
+     * @param {CategoryUpsertArgs} args - Arguments to update or create a Category.
+     * @example
+     * // Update or create a Category
+     * const category = await prisma.category.upsert({
+     *   create: {
+     *     // ... data to create a Category
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Category we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CategoryUpsertArgs>(args: SelectSubset<T, CategoryUpsertArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Categories.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategoryCountArgs} args - Arguments to filter Categories to count.
+     * @example
+     * // Count the number of Categories
+     * const count = await prisma.category.count({
+     *   where: {
+     *     // ... the filter for the Categories we want to count
+     *   }
+     * })
+    **/
+    count<T extends CategoryCountArgs>(
+      args?: Subset<T, CategoryCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CategoryCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Category.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategoryAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CategoryAggregateArgs>(args: Subset<T, CategoryAggregateArgs>): Prisma.PrismaPromise<GetCategoryAggregateType<T>>
+
+    /**
+     * Group by Category.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategoryGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CategoryGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CategoryGroupByArgs['orderBy'] }
+        : { orderBy?: CategoryGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CategoryGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCategoryGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Category model
+   */
+  readonly fields: CategoryFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Category.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CategoryClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    articles<T extends Category$articlesArgs<ExtArgs> = {}>(args?: Subset<T, Category$articlesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ArticlePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Category model
+   */
+  interface CategoryFieldRefs {
+    readonly id: FieldRef<"Category", 'Int'>
+    readonly title: FieldRef<"Category", 'String'>
+    readonly description: FieldRef<"Category", 'String'>
+    readonly createdAt: FieldRef<"Category", 'DateTime'>
+    readonly updatedAt: FieldRef<"Category", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Category findUnique
+   */
+  export type CategoryFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Category
+     */
+    omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which Category to fetch.
+     */
+    where: CategoryWhereUniqueInput
+  }
+
+  /**
+   * Category findUniqueOrThrow
+   */
+  export type CategoryFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Category
+     */
+    omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which Category to fetch.
+     */
+    where: CategoryWhereUniqueInput
+  }
+
+  /**
+   * Category findFirst
+   */
+  export type CategoryFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Category
+     */
+    omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which Category to fetch.
+     */
+    where?: CategoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Categories to fetch.
+     */
+    orderBy?: CategoryOrderByWithRelationInput | CategoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Categories.
+     */
+    cursor?: CategoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Categories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Categories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Categories.
+     */
+    distinct?: CategoryScalarFieldEnum | CategoryScalarFieldEnum[]
+  }
+
+  /**
+   * Category findFirstOrThrow
+   */
+  export type CategoryFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Category
+     */
+    omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which Category to fetch.
+     */
+    where?: CategoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Categories to fetch.
+     */
+    orderBy?: CategoryOrderByWithRelationInput | CategoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Categories.
+     */
+    cursor?: CategoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Categories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Categories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Categories.
+     */
+    distinct?: CategoryScalarFieldEnum | CategoryScalarFieldEnum[]
+  }
+
+  /**
+   * Category findMany
+   */
+  export type CategoryFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Category
+     */
+    omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which Categories to fetch.
+     */
+    where?: CategoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Categories to fetch.
+     */
+    orderBy?: CategoryOrderByWithRelationInput | CategoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Categories.
+     */
+    cursor?: CategoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Categories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Categories.
+     */
+    skip?: number
+    distinct?: CategoryScalarFieldEnum | CategoryScalarFieldEnum[]
+  }
+
+  /**
+   * Category create
+   */
+  export type CategoryCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Category
+     */
+    omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Category.
+     */
+    data: XOR<CategoryCreateInput, CategoryUncheckedCreateInput>
+  }
+
+  /**
+   * Category createMany
+   */
+  export type CategoryCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Categories.
+     */
+    data: CategoryCreateManyInput | CategoryCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Category createManyAndReturn
+   */
+  export type CategoryCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Category
+     */
+    omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * The data used to create many Categories.
+     */
+    data: CategoryCreateManyInput | CategoryCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Category update
+   */
+  export type CategoryUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Category
+     */
+    omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Category.
+     */
+    data: XOR<CategoryUpdateInput, CategoryUncheckedUpdateInput>
+    /**
+     * Choose, which Category to update.
+     */
+    where: CategoryWhereUniqueInput
+  }
+
+  /**
+   * Category updateMany
+   */
+  export type CategoryUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Categories.
+     */
+    data: XOR<CategoryUpdateManyMutationInput, CategoryUncheckedUpdateManyInput>
+    /**
+     * Filter which Categories to update
+     */
+    where?: CategoryWhereInput
+    /**
+     * Limit how many Categories to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Category updateManyAndReturn
+   */
+  export type CategoryUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Category
+     */
+    omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * The data used to update Categories.
+     */
+    data: XOR<CategoryUpdateManyMutationInput, CategoryUncheckedUpdateManyInput>
+    /**
+     * Filter which Categories to update
+     */
+    where?: CategoryWhereInput
+    /**
+     * Limit how many Categories to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Category upsert
+   */
+  export type CategoryUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Category
+     */
+    omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Category to update in case it exists.
+     */
+    where: CategoryWhereUniqueInput
+    /**
+     * In case the Category found by the `where` argument doesn't exist, create a new Category with this data.
+     */
+    create: XOR<CategoryCreateInput, CategoryUncheckedCreateInput>
+    /**
+     * In case the Category was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CategoryUpdateInput, CategoryUncheckedUpdateInput>
+  }
+
+  /**
+   * Category delete
+   */
+  export type CategoryDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Category
+     */
+    omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+    /**
+     * Filter which Category to delete.
+     */
+    where: CategoryWhereUniqueInput
+  }
+
+  /**
+   * Category deleteMany
+   */
+  export type CategoryDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Categories to delete
+     */
+    where?: CategoryWhereInput
+    /**
+     * Limit how many Categories to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Category.articles
+   */
+  export type Category$articlesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Article
+     */
+    select?: ArticleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Article
+     */
+    omit?: ArticleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ArticleInclude<ExtArgs> | null
+    where?: ArticleWhereInput
+    orderBy?: ArticleOrderByWithRelationInput | ArticleOrderByWithRelationInput[]
+    cursor?: ArticleWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ArticleScalarFieldEnum | ArticleScalarFieldEnum[]
+  }
+
+  /**
+   * Category without action
+   */
+  export type CategoryDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Category
+     */
+    omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Commentary
+   */
+
+  export type AggregateCommentary = {
+    _count: CommentaryCountAggregateOutputType | null
+    _avg: CommentaryAvgAggregateOutputType | null
+    _sum: CommentarySumAggregateOutputType | null
+    _min: CommentaryMinAggregateOutputType | null
+    _max: CommentaryMaxAggregateOutputType | null
+  }
+
+  export type CommentaryAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type CommentarySumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type CommentaryMinAggregateOutputType = {
+    id: number | null
+    title: string | null
+    description: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type CommentaryMaxAggregateOutputType = {
+    id: number | null
+    title: string | null
+    description: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type CommentaryCountAggregateOutputType = {
+    id: number
+    title: number
+    description: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type CommentaryAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type CommentarySumAggregateInputType = {
+    id?: true
+  }
+
+  export type CommentaryMinAggregateInputType = {
+    id?: true
+    title?: true
+    description?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type CommentaryMaxAggregateInputType = {
+    id?: true
+    title?: true
+    description?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type CommentaryCountAggregateInputType = {
+    id?: true
+    title?: true
+    description?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type CommentaryAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Commentary to aggregate.
+     */
+    where?: CommentaryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Commentaries to fetch.
+     */
+    orderBy?: CommentaryOrderByWithRelationInput | CommentaryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CommentaryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Commentaries from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Commentaries.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Commentaries
+    **/
+    _count?: true | CommentaryCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: CommentaryAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: CommentarySumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CommentaryMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CommentaryMaxAggregateInputType
+  }
+
+  export type GetCommentaryAggregateType<T extends CommentaryAggregateArgs> = {
+        [P in keyof T & keyof AggregateCommentary]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCommentary[P]>
+      : GetScalarType<T[P], AggregateCommentary[P]>
+  }
+
+
+
+
+  export type CommentaryGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CommentaryWhereInput
+    orderBy?: CommentaryOrderByWithAggregationInput | CommentaryOrderByWithAggregationInput[]
+    by: CommentaryScalarFieldEnum[] | CommentaryScalarFieldEnum
+    having?: CommentaryScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CommentaryCountAggregateInputType | true
+    _avg?: CommentaryAvgAggregateInputType
+    _sum?: CommentarySumAggregateInputType
+    _min?: CommentaryMinAggregateInputType
+    _max?: CommentaryMaxAggregateInputType
+  }
+
+  export type CommentaryGroupByOutputType = {
+    id: number
+    title: string
+    description: string
+    createdAt: Date
+    updatedAt: Date
+    _count: CommentaryCountAggregateOutputType | null
+    _avg: CommentaryAvgAggregateOutputType | null
+    _sum: CommentarySumAggregateOutputType | null
+    _min: CommentaryMinAggregateOutputType | null
+    _max: CommentaryMaxAggregateOutputType | null
+  }
+
+  type GetCommentaryGroupByPayload<T extends CommentaryGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CommentaryGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CommentaryGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CommentaryGroupByOutputType[P]>
+            : GetScalarType<T[P], CommentaryGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CommentarySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    description?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["commentary"]>
+
+  export type CommentarySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    description?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["commentary"]>
+
+  export type CommentarySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    description?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["commentary"]>
+
+  export type CommentarySelectScalar = {
+    id?: boolean
+    title?: boolean
+    description?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type CommentaryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "createdAt" | "updatedAt", ExtArgs["result"]["commentary"]>
+
+  export type $CommentaryPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Commentary"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      title: string
+      description: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["commentary"]>
+    composites: {}
+  }
+
+  type CommentaryGetPayload<S extends boolean | null | undefined | CommentaryDefaultArgs> = $Result.GetResult<Prisma.$CommentaryPayload, S>
+
+  type CommentaryCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CommentaryFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CommentaryCountAggregateInputType | true
+    }
+
+  export interface CommentaryDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Commentary'], meta: { name: 'Commentary' } }
+    /**
+     * Find zero or one Commentary that matches the filter.
+     * @param {CommentaryFindUniqueArgs} args - Arguments to find a Commentary
+     * @example
+     * // Get one Commentary
+     * const commentary = await prisma.commentary.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CommentaryFindUniqueArgs>(args: SelectSubset<T, CommentaryFindUniqueArgs<ExtArgs>>): Prisma__CommentaryClient<$Result.GetResult<Prisma.$CommentaryPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Commentary that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CommentaryFindUniqueOrThrowArgs} args - Arguments to find a Commentary
+     * @example
+     * // Get one Commentary
+     * const commentary = await prisma.commentary.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CommentaryFindUniqueOrThrowArgs>(args: SelectSubset<T, CommentaryFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CommentaryClient<$Result.GetResult<Prisma.$CommentaryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Commentary that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommentaryFindFirstArgs} args - Arguments to find a Commentary
+     * @example
+     * // Get one Commentary
+     * const commentary = await prisma.commentary.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CommentaryFindFirstArgs>(args?: SelectSubset<T, CommentaryFindFirstArgs<ExtArgs>>): Prisma__CommentaryClient<$Result.GetResult<Prisma.$CommentaryPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Commentary that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommentaryFindFirstOrThrowArgs} args - Arguments to find a Commentary
+     * @example
+     * // Get one Commentary
+     * const commentary = await prisma.commentary.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CommentaryFindFirstOrThrowArgs>(args?: SelectSubset<T, CommentaryFindFirstOrThrowArgs<ExtArgs>>): Prisma__CommentaryClient<$Result.GetResult<Prisma.$CommentaryPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Commentaries that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommentaryFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Commentaries
+     * const commentaries = await prisma.commentary.findMany()
+     * 
+     * // Get first 10 Commentaries
+     * const commentaries = await prisma.commentary.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const commentaryWithIdOnly = await prisma.commentary.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CommentaryFindManyArgs>(args?: SelectSubset<T, CommentaryFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommentaryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Commentary.
+     * @param {CommentaryCreateArgs} args - Arguments to create a Commentary.
+     * @example
+     * // Create one Commentary
+     * const Commentary = await prisma.commentary.create({
+     *   data: {
+     *     // ... data to create a Commentary
+     *   }
+     * })
+     * 
+     */
+    create<T extends CommentaryCreateArgs>(args: SelectSubset<T, CommentaryCreateArgs<ExtArgs>>): Prisma__CommentaryClient<$Result.GetResult<Prisma.$CommentaryPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Commentaries.
+     * @param {CommentaryCreateManyArgs} args - Arguments to create many Commentaries.
+     * @example
+     * // Create many Commentaries
+     * const commentary = await prisma.commentary.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CommentaryCreateManyArgs>(args?: SelectSubset<T, CommentaryCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Commentaries and returns the data saved in the database.
+     * @param {CommentaryCreateManyAndReturnArgs} args - Arguments to create many Commentaries.
+     * @example
+     * // Create many Commentaries
+     * const commentary = await prisma.commentary.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Commentaries and only return the `id`
+     * const commentaryWithIdOnly = await prisma.commentary.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends CommentaryCreateManyAndReturnArgs>(args?: SelectSubset<T, CommentaryCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommentaryPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Commentary.
+     * @param {CommentaryDeleteArgs} args - Arguments to delete one Commentary.
+     * @example
+     * // Delete one Commentary
+     * const Commentary = await prisma.commentary.delete({
+     *   where: {
+     *     // ... filter to delete one Commentary
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CommentaryDeleteArgs>(args: SelectSubset<T, CommentaryDeleteArgs<ExtArgs>>): Prisma__CommentaryClient<$Result.GetResult<Prisma.$CommentaryPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Commentary.
+     * @param {CommentaryUpdateArgs} args - Arguments to update one Commentary.
+     * @example
+     * // Update one Commentary
+     * const commentary = await prisma.commentary.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CommentaryUpdateArgs>(args: SelectSubset<T, CommentaryUpdateArgs<ExtArgs>>): Prisma__CommentaryClient<$Result.GetResult<Prisma.$CommentaryPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Commentaries.
+     * @param {CommentaryDeleteManyArgs} args - Arguments to filter Commentaries to delete.
+     * @example
+     * // Delete a few Commentaries
+     * const { count } = await prisma.commentary.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CommentaryDeleteManyArgs>(args?: SelectSubset<T, CommentaryDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Commentaries.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommentaryUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Commentaries
+     * const commentary = await prisma.commentary.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CommentaryUpdateManyArgs>(args: SelectSubset<T, CommentaryUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Commentaries and returns the data updated in the database.
+     * @param {CommentaryUpdateManyAndReturnArgs} args - Arguments to update many Commentaries.
+     * @example
+     * // Update many Commentaries
+     * const commentary = await prisma.commentary.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Commentaries and only return the `id`
+     * const commentaryWithIdOnly = await prisma.commentary.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends CommentaryUpdateManyAndReturnArgs>(args: SelectSubset<T, CommentaryUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommentaryPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Commentary.
+     * @param {CommentaryUpsertArgs} args - Arguments to update or create a Commentary.
+     * @example
+     * // Update or create a Commentary
+     * const commentary = await prisma.commentary.upsert({
+     *   create: {
+     *     // ... data to create a Commentary
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Commentary we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CommentaryUpsertArgs>(args: SelectSubset<T, CommentaryUpsertArgs<ExtArgs>>): Prisma__CommentaryClient<$Result.GetResult<Prisma.$CommentaryPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Commentaries.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommentaryCountArgs} args - Arguments to filter Commentaries to count.
+     * @example
+     * // Count the number of Commentaries
+     * const count = await prisma.commentary.count({
+     *   where: {
+     *     // ... the filter for the Commentaries we want to count
+     *   }
+     * })
+    **/
+    count<T extends CommentaryCountArgs>(
+      args?: Subset<T, CommentaryCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CommentaryCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Commentary.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommentaryAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CommentaryAggregateArgs>(args: Subset<T, CommentaryAggregateArgs>): Prisma.PrismaPromise<GetCommentaryAggregateType<T>>
+
+    /**
+     * Group by Commentary.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommentaryGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CommentaryGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CommentaryGroupByArgs['orderBy'] }
+        : { orderBy?: CommentaryGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CommentaryGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCommentaryGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Commentary model
+   */
+  readonly fields: CommentaryFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Commentary.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CommentaryClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Commentary model
+   */
+  interface CommentaryFieldRefs {
+    readonly id: FieldRef<"Commentary", 'Int'>
+    readonly title: FieldRef<"Commentary", 'String'>
+    readonly description: FieldRef<"Commentary", 'String'>
+    readonly createdAt: FieldRef<"Commentary", 'DateTime'>
+    readonly updatedAt: FieldRef<"Commentary", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Commentary findUnique
+   */
+  export type CommentaryFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Commentary
+     */
+    select?: CommentarySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Commentary
+     */
+    omit?: CommentaryOmit<ExtArgs> | null
+    /**
+     * Filter, which Commentary to fetch.
+     */
+    where: CommentaryWhereUniqueInput
+  }
+
+  /**
+   * Commentary findUniqueOrThrow
+   */
+  export type CommentaryFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Commentary
+     */
+    select?: CommentarySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Commentary
+     */
+    omit?: CommentaryOmit<ExtArgs> | null
+    /**
+     * Filter, which Commentary to fetch.
+     */
+    where: CommentaryWhereUniqueInput
+  }
+
+  /**
+   * Commentary findFirst
+   */
+  export type CommentaryFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Commentary
+     */
+    select?: CommentarySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Commentary
+     */
+    omit?: CommentaryOmit<ExtArgs> | null
+    /**
+     * Filter, which Commentary to fetch.
+     */
+    where?: CommentaryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Commentaries to fetch.
+     */
+    orderBy?: CommentaryOrderByWithRelationInput | CommentaryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Commentaries.
+     */
+    cursor?: CommentaryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Commentaries from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Commentaries.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Commentaries.
+     */
+    distinct?: CommentaryScalarFieldEnum | CommentaryScalarFieldEnum[]
+  }
+
+  /**
+   * Commentary findFirstOrThrow
+   */
+  export type CommentaryFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Commentary
+     */
+    select?: CommentarySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Commentary
+     */
+    omit?: CommentaryOmit<ExtArgs> | null
+    /**
+     * Filter, which Commentary to fetch.
+     */
+    where?: CommentaryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Commentaries to fetch.
+     */
+    orderBy?: CommentaryOrderByWithRelationInput | CommentaryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Commentaries.
+     */
+    cursor?: CommentaryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Commentaries from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Commentaries.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Commentaries.
+     */
+    distinct?: CommentaryScalarFieldEnum | CommentaryScalarFieldEnum[]
+  }
+
+  /**
+   * Commentary findMany
+   */
+  export type CommentaryFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Commentary
+     */
+    select?: CommentarySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Commentary
+     */
+    omit?: CommentaryOmit<ExtArgs> | null
+    /**
+     * Filter, which Commentaries to fetch.
+     */
+    where?: CommentaryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Commentaries to fetch.
+     */
+    orderBy?: CommentaryOrderByWithRelationInput | CommentaryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Commentaries.
+     */
+    cursor?: CommentaryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Commentaries from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Commentaries.
+     */
+    skip?: number
+    distinct?: CommentaryScalarFieldEnum | CommentaryScalarFieldEnum[]
+  }
+
+  /**
+   * Commentary create
+   */
+  export type CommentaryCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Commentary
+     */
+    select?: CommentarySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Commentary
+     */
+    omit?: CommentaryOmit<ExtArgs> | null
+    /**
+     * The data needed to create a Commentary.
+     */
+    data: XOR<CommentaryCreateInput, CommentaryUncheckedCreateInput>
+  }
+
+  /**
+   * Commentary createMany
+   */
+  export type CommentaryCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Commentaries.
+     */
+    data: CommentaryCreateManyInput | CommentaryCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Commentary createManyAndReturn
+   */
+  export type CommentaryCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Commentary
+     */
+    select?: CommentarySelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Commentary
+     */
+    omit?: CommentaryOmit<ExtArgs> | null
+    /**
+     * The data used to create many Commentaries.
+     */
+    data: CommentaryCreateManyInput | CommentaryCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Commentary update
+   */
+  export type CommentaryUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Commentary
+     */
+    select?: CommentarySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Commentary
+     */
+    omit?: CommentaryOmit<ExtArgs> | null
+    /**
+     * The data needed to update a Commentary.
+     */
+    data: XOR<CommentaryUpdateInput, CommentaryUncheckedUpdateInput>
+    /**
+     * Choose, which Commentary to update.
+     */
+    where: CommentaryWhereUniqueInput
+  }
+
+  /**
+   * Commentary updateMany
+   */
+  export type CommentaryUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Commentaries.
+     */
+    data: XOR<CommentaryUpdateManyMutationInput, CommentaryUncheckedUpdateManyInput>
+    /**
+     * Filter which Commentaries to update
+     */
+    where?: CommentaryWhereInput
+    /**
+     * Limit how many Commentaries to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Commentary updateManyAndReturn
+   */
+  export type CommentaryUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Commentary
+     */
+    select?: CommentarySelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Commentary
+     */
+    omit?: CommentaryOmit<ExtArgs> | null
+    /**
+     * The data used to update Commentaries.
+     */
+    data: XOR<CommentaryUpdateManyMutationInput, CommentaryUncheckedUpdateManyInput>
+    /**
+     * Filter which Commentaries to update
+     */
+    where?: CommentaryWhereInput
+    /**
+     * Limit how many Commentaries to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Commentary upsert
+   */
+  export type CommentaryUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Commentary
+     */
+    select?: CommentarySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Commentary
+     */
+    omit?: CommentaryOmit<ExtArgs> | null
+    /**
+     * The filter to search for the Commentary to update in case it exists.
+     */
+    where: CommentaryWhereUniqueInput
+    /**
+     * In case the Commentary found by the `where` argument doesn't exist, create a new Commentary with this data.
+     */
+    create: XOR<CommentaryCreateInput, CommentaryUncheckedCreateInput>
+    /**
+     * In case the Commentary was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CommentaryUpdateInput, CommentaryUncheckedUpdateInput>
+  }
+
+  /**
+   * Commentary delete
+   */
+  export type CommentaryDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Commentary
+     */
+    select?: CommentarySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Commentary
+     */
+    omit?: CommentaryOmit<ExtArgs> | null
+    /**
+     * Filter which Commentary to delete.
+     */
+    where: CommentaryWhereUniqueInput
+  }
+
+  /**
+   * Commentary deleteMany
+   */
+  export type CommentaryDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Commentaries to delete
+     */
+    where?: CommentaryWhereInput
+    /**
+     * Limit how many Commentaries to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Commentary without action
+   */
+  export type CommentaryDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Commentary
+     */
+    select?: CommentarySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Commentary
+     */
+    omit?: CommentaryOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model ContentType
+   */
+
+  export type AggregateContentType = {
+    _count: ContentTypeCountAggregateOutputType | null
+    _avg: ContentTypeAvgAggregateOutputType | null
+    _sum: ContentTypeSumAggregateOutputType | null
+    _min: ContentTypeMinAggregateOutputType | null
+    _max: ContentTypeMaxAggregateOutputType | null
+  }
+
+  export type ContentTypeAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type ContentTypeSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type ContentTypeMinAggregateOutputType = {
+    id: number | null
+    name: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ContentTypeMaxAggregateOutputType = {
+    id: number | null
+    name: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ContentTypeCountAggregateOutputType = {
+    id: number
+    name: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type ContentTypeAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type ContentTypeSumAggregateInputType = {
+    id?: true
+  }
+
+  export type ContentTypeMinAggregateInputType = {
+    id?: true
+    name?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ContentTypeMaxAggregateInputType = {
+    id?: true
+    name?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ContentTypeCountAggregateInputType = {
+    id?: true
+    name?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type ContentTypeAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ContentType to aggregate.
+     */
+    where?: ContentTypeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ContentTypes to fetch.
+     */
+    orderBy?: ContentTypeOrderByWithRelationInput | ContentTypeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ContentTypeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ContentTypes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ContentTypes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ContentTypes
+    **/
+    _count?: true | ContentTypeCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ContentTypeAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ContentTypeSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ContentTypeMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ContentTypeMaxAggregateInputType
+  }
+
+  export type GetContentTypeAggregateType<T extends ContentTypeAggregateArgs> = {
+        [P in keyof T & keyof AggregateContentType]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateContentType[P]>
+      : GetScalarType<T[P], AggregateContentType[P]>
+  }
+
+
+
+
+  export type ContentTypeGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ContentTypeWhereInput
+    orderBy?: ContentTypeOrderByWithAggregationInput | ContentTypeOrderByWithAggregationInput[]
+    by: ContentTypeScalarFieldEnum[] | ContentTypeScalarFieldEnum
+    having?: ContentTypeScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ContentTypeCountAggregateInputType | true
+    _avg?: ContentTypeAvgAggregateInputType
+    _sum?: ContentTypeSumAggregateInputType
+    _min?: ContentTypeMinAggregateInputType
+    _max?: ContentTypeMaxAggregateInputType
+  }
+
+  export type ContentTypeGroupByOutputType = {
+    id: number
+    name: string
+    createdAt: Date
+    updatedAt: Date
+    _count: ContentTypeCountAggregateOutputType | null
+    _avg: ContentTypeAvgAggregateOutputType | null
+    _sum: ContentTypeSumAggregateOutputType | null
+    _min: ContentTypeMinAggregateOutputType | null
+    _max: ContentTypeMaxAggregateOutputType | null
+  }
+
+  type GetContentTypeGroupByPayload<T extends ContentTypeGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ContentTypeGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ContentTypeGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ContentTypeGroupByOutputType[P]>
+            : GetScalarType<T[P], ContentTypeGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ContentTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    articles?: boolean | ContentType$articlesArgs<ExtArgs>
+    _count?: boolean | ContentTypeCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["contentType"]>
+
+  export type ContentTypeSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["contentType"]>
+
+  export type ContentTypeSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["contentType"]>
+
+  export type ContentTypeSelectScalar = {
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type ContentTypeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "createdAt" | "updatedAt", ExtArgs["result"]["contentType"]>
+  export type ContentTypeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    articles?: boolean | ContentType$articlesArgs<ExtArgs>
+    _count?: boolean | ContentTypeCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type ContentTypeIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type ContentTypeIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $ContentTypePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ContentType"
+    objects: {
+      articles: Prisma.$ArticlePayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      name: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["contentType"]>
+    composites: {}
+  }
+
+  type ContentTypeGetPayload<S extends boolean | null | undefined | ContentTypeDefaultArgs> = $Result.GetResult<Prisma.$ContentTypePayload, S>
+
+  type ContentTypeCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ContentTypeFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ContentTypeCountAggregateInputType | true
+    }
+
+  export interface ContentTypeDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ContentType'], meta: { name: 'ContentType' } }
+    /**
+     * Find zero or one ContentType that matches the filter.
+     * @param {ContentTypeFindUniqueArgs} args - Arguments to find a ContentType
+     * @example
+     * // Get one ContentType
+     * const contentType = await prisma.contentType.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ContentTypeFindUniqueArgs>(args: SelectSubset<T, ContentTypeFindUniqueArgs<ExtArgs>>): Prisma__ContentTypeClient<$Result.GetResult<Prisma.$ContentTypePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one ContentType that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ContentTypeFindUniqueOrThrowArgs} args - Arguments to find a ContentType
+     * @example
+     * // Get one ContentType
+     * const contentType = await prisma.contentType.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ContentTypeFindUniqueOrThrowArgs>(args: SelectSubset<T, ContentTypeFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ContentTypeClient<$Result.GetResult<Prisma.$ContentTypePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ContentType that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ContentTypeFindFirstArgs} args - Arguments to find a ContentType
+     * @example
+     * // Get one ContentType
+     * const contentType = await prisma.contentType.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ContentTypeFindFirstArgs>(args?: SelectSubset<T, ContentTypeFindFirstArgs<ExtArgs>>): Prisma__ContentTypeClient<$Result.GetResult<Prisma.$ContentTypePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ContentType that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ContentTypeFindFirstOrThrowArgs} args - Arguments to find a ContentType
+     * @example
+     * // Get one ContentType
+     * const contentType = await prisma.contentType.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ContentTypeFindFirstOrThrowArgs>(args?: SelectSubset<T, ContentTypeFindFirstOrThrowArgs<ExtArgs>>): Prisma__ContentTypeClient<$Result.GetResult<Prisma.$ContentTypePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more ContentTypes that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ContentTypeFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ContentTypes
+     * const contentTypes = await prisma.contentType.findMany()
+     * 
+     * // Get first 10 ContentTypes
+     * const contentTypes = await prisma.contentType.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const contentTypeWithIdOnly = await prisma.contentType.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ContentTypeFindManyArgs>(args?: SelectSubset<T, ContentTypeFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ContentTypePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a ContentType.
+     * @param {ContentTypeCreateArgs} args - Arguments to create a ContentType.
+     * @example
+     * // Create one ContentType
+     * const ContentType = await prisma.contentType.create({
+     *   data: {
+     *     // ... data to create a ContentType
+     *   }
+     * })
+     * 
+     */
+    create<T extends ContentTypeCreateArgs>(args: SelectSubset<T, ContentTypeCreateArgs<ExtArgs>>): Prisma__ContentTypeClient<$Result.GetResult<Prisma.$ContentTypePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many ContentTypes.
+     * @param {ContentTypeCreateManyArgs} args - Arguments to create many ContentTypes.
+     * @example
+     * // Create many ContentTypes
+     * const contentType = await prisma.contentType.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ContentTypeCreateManyArgs>(args?: SelectSubset<T, ContentTypeCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many ContentTypes and returns the data saved in the database.
+     * @param {ContentTypeCreateManyAndReturnArgs} args - Arguments to create many ContentTypes.
+     * @example
+     * // Create many ContentTypes
+     * const contentType = await prisma.contentType.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many ContentTypes and only return the `id`
+     * const contentTypeWithIdOnly = await prisma.contentType.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ContentTypeCreateManyAndReturnArgs>(args?: SelectSubset<T, ContentTypeCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ContentTypePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a ContentType.
+     * @param {ContentTypeDeleteArgs} args - Arguments to delete one ContentType.
+     * @example
+     * // Delete one ContentType
+     * const ContentType = await prisma.contentType.delete({
+     *   where: {
+     *     // ... filter to delete one ContentType
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ContentTypeDeleteArgs>(args: SelectSubset<T, ContentTypeDeleteArgs<ExtArgs>>): Prisma__ContentTypeClient<$Result.GetResult<Prisma.$ContentTypePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one ContentType.
+     * @param {ContentTypeUpdateArgs} args - Arguments to update one ContentType.
+     * @example
+     * // Update one ContentType
+     * const contentType = await prisma.contentType.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ContentTypeUpdateArgs>(args: SelectSubset<T, ContentTypeUpdateArgs<ExtArgs>>): Prisma__ContentTypeClient<$Result.GetResult<Prisma.$ContentTypePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more ContentTypes.
+     * @param {ContentTypeDeleteManyArgs} args - Arguments to filter ContentTypes to delete.
+     * @example
+     * // Delete a few ContentTypes
+     * const { count } = await prisma.contentType.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ContentTypeDeleteManyArgs>(args?: SelectSubset<T, ContentTypeDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ContentTypes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ContentTypeUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ContentTypes
+     * const contentType = await prisma.contentType.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ContentTypeUpdateManyArgs>(args: SelectSubset<T, ContentTypeUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ContentTypes and returns the data updated in the database.
+     * @param {ContentTypeUpdateManyAndReturnArgs} args - Arguments to update many ContentTypes.
+     * @example
+     * // Update many ContentTypes
+     * const contentType = await prisma.contentType.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more ContentTypes and only return the `id`
+     * const contentTypeWithIdOnly = await prisma.contentType.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ContentTypeUpdateManyAndReturnArgs>(args: SelectSubset<T, ContentTypeUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ContentTypePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one ContentType.
+     * @param {ContentTypeUpsertArgs} args - Arguments to update or create a ContentType.
+     * @example
+     * // Update or create a ContentType
+     * const contentType = await prisma.contentType.upsert({
+     *   create: {
+     *     // ... data to create a ContentType
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ContentType we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ContentTypeUpsertArgs>(args: SelectSubset<T, ContentTypeUpsertArgs<ExtArgs>>): Prisma__ContentTypeClient<$Result.GetResult<Prisma.$ContentTypePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of ContentTypes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ContentTypeCountArgs} args - Arguments to filter ContentTypes to count.
+     * @example
+     * // Count the number of ContentTypes
+     * const count = await prisma.contentType.count({
+     *   where: {
+     *     // ... the filter for the ContentTypes we want to count
+     *   }
+     * })
+    **/
+    count<T extends ContentTypeCountArgs>(
+      args?: Subset<T, ContentTypeCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ContentTypeCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ContentType.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ContentTypeAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ContentTypeAggregateArgs>(args: Subset<T, ContentTypeAggregateArgs>): Prisma.PrismaPromise<GetContentTypeAggregateType<T>>
+
+    /**
+     * Group by ContentType.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ContentTypeGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ContentTypeGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ContentTypeGroupByArgs['orderBy'] }
+        : { orderBy?: ContentTypeGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ContentTypeGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetContentTypeGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ContentType model
+   */
+  readonly fields: ContentTypeFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ContentType.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ContentTypeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    articles<T extends ContentType$articlesArgs<ExtArgs> = {}>(args?: Subset<T, ContentType$articlesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ArticlePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ContentType model
+   */
+  interface ContentTypeFieldRefs {
+    readonly id: FieldRef<"ContentType", 'Int'>
+    readonly name: FieldRef<"ContentType", 'String'>
+    readonly createdAt: FieldRef<"ContentType", 'DateTime'>
+    readonly updatedAt: FieldRef<"ContentType", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ContentType findUnique
+   */
+  export type ContentTypeFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContentType
+     */
+    select?: ContentTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ContentType
+     */
+    omit?: ContentTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContentTypeInclude<ExtArgs> | null
+    /**
+     * Filter, which ContentType to fetch.
+     */
+    where: ContentTypeWhereUniqueInput
+  }
+
+  /**
+   * ContentType findUniqueOrThrow
+   */
+  export type ContentTypeFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContentType
+     */
+    select?: ContentTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ContentType
+     */
+    omit?: ContentTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContentTypeInclude<ExtArgs> | null
+    /**
+     * Filter, which ContentType to fetch.
+     */
+    where: ContentTypeWhereUniqueInput
+  }
+
+  /**
+   * ContentType findFirst
+   */
+  export type ContentTypeFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContentType
+     */
+    select?: ContentTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ContentType
+     */
+    omit?: ContentTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContentTypeInclude<ExtArgs> | null
+    /**
+     * Filter, which ContentType to fetch.
+     */
+    where?: ContentTypeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ContentTypes to fetch.
+     */
+    orderBy?: ContentTypeOrderByWithRelationInput | ContentTypeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ContentTypes.
+     */
+    cursor?: ContentTypeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ContentTypes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ContentTypes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ContentTypes.
+     */
+    distinct?: ContentTypeScalarFieldEnum | ContentTypeScalarFieldEnum[]
+  }
+
+  /**
+   * ContentType findFirstOrThrow
+   */
+  export type ContentTypeFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContentType
+     */
+    select?: ContentTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ContentType
+     */
+    omit?: ContentTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContentTypeInclude<ExtArgs> | null
+    /**
+     * Filter, which ContentType to fetch.
+     */
+    where?: ContentTypeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ContentTypes to fetch.
+     */
+    orderBy?: ContentTypeOrderByWithRelationInput | ContentTypeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ContentTypes.
+     */
+    cursor?: ContentTypeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ContentTypes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ContentTypes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ContentTypes.
+     */
+    distinct?: ContentTypeScalarFieldEnum | ContentTypeScalarFieldEnum[]
+  }
+
+  /**
+   * ContentType findMany
+   */
+  export type ContentTypeFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContentType
+     */
+    select?: ContentTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ContentType
+     */
+    omit?: ContentTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContentTypeInclude<ExtArgs> | null
+    /**
+     * Filter, which ContentTypes to fetch.
+     */
+    where?: ContentTypeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ContentTypes to fetch.
+     */
+    orderBy?: ContentTypeOrderByWithRelationInput | ContentTypeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ContentTypes.
+     */
+    cursor?: ContentTypeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ContentTypes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ContentTypes.
+     */
+    skip?: number
+    distinct?: ContentTypeScalarFieldEnum | ContentTypeScalarFieldEnum[]
+  }
+
+  /**
+   * ContentType create
+   */
+  export type ContentTypeCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContentType
+     */
+    select?: ContentTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ContentType
+     */
+    omit?: ContentTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContentTypeInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ContentType.
+     */
+    data: XOR<ContentTypeCreateInput, ContentTypeUncheckedCreateInput>
+  }
+
+  /**
+   * ContentType createMany
+   */
+  export type ContentTypeCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ContentTypes.
+     */
+    data: ContentTypeCreateManyInput | ContentTypeCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ContentType createManyAndReturn
+   */
+  export type ContentTypeCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContentType
+     */
+    select?: ContentTypeSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ContentType
+     */
+    omit?: ContentTypeOmit<ExtArgs> | null
+    /**
+     * The data used to create many ContentTypes.
+     */
+    data: ContentTypeCreateManyInput | ContentTypeCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ContentType update
+   */
+  export type ContentTypeUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContentType
+     */
+    select?: ContentTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ContentType
+     */
+    omit?: ContentTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContentTypeInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ContentType.
+     */
+    data: XOR<ContentTypeUpdateInput, ContentTypeUncheckedUpdateInput>
+    /**
+     * Choose, which ContentType to update.
+     */
+    where: ContentTypeWhereUniqueInput
+  }
+
+  /**
+   * ContentType updateMany
+   */
+  export type ContentTypeUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ContentTypes.
+     */
+    data: XOR<ContentTypeUpdateManyMutationInput, ContentTypeUncheckedUpdateManyInput>
+    /**
+     * Filter which ContentTypes to update
+     */
+    where?: ContentTypeWhereInput
+    /**
+     * Limit how many ContentTypes to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ContentType updateManyAndReturn
+   */
+  export type ContentTypeUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContentType
+     */
+    select?: ContentTypeSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ContentType
+     */
+    omit?: ContentTypeOmit<ExtArgs> | null
+    /**
+     * The data used to update ContentTypes.
+     */
+    data: XOR<ContentTypeUpdateManyMutationInput, ContentTypeUncheckedUpdateManyInput>
+    /**
+     * Filter which ContentTypes to update
+     */
+    where?: ContentTypeWhereInput
+    /**
+     * Limit how many ContentTypes to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ContentType upsert
+   */
+  export type ContentTypeUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContentType
+     */
+    select?: ContentTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ContentType
+     */
+    omit?: ContentTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContentTypeInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ContentType to update in case it exists.
+     */
+    where: ContentTypeWhereUniqueInput
+    /**
+     * In case the ContentType found by the `where` argument doesn't exist, create a new ContentType with this data.
+     */
+    create: XOR<ContentTypeCreateInput, ContentTypeUncheckedCreateInput>
+    /**
+     * In case the ContentType was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ContentTypeUpdateInput, ContentTypeUncheckedUpdateInput>
+  }
+
+  /**
+   * ContentType delete
+   */
+  export type ContentTypeDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContentType
+     */
+    select?: ContentTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ContentType
+     */
+    omit?: ContentTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContentTypeInclude<ExtArgs> | null
+    /**
+     * Filter which ContentType to delete.
+     */
+    where: ContentTypeWhereUniqueInput
+  }
+
+  /**
+   * ContentType deleteMany
+   */
+  export type ContentTypeDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ContentTypes to delete
+     */
+    where?: ContentTypeWhereInput
+    /**
+     * Limit how many ContentTypes to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * ContentType.articles
+   */
+  export type ContentType$articlesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Article
+     */
+    select?: ArticleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Article
+     */
+    omit?: ArticleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ArticleInclude<ExtArgs> | null
+    where?: ArticleWhereInput
+    orderBy?: ArticleOrderByWithRelationInput | ArticleOrderByWithRelationInput[]
+    cursor?: ArticleWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ArticleScalarFieldEnum | ArticleScalarFieldEnum[]
+  }
+
+  /**
+   * ContentType without action
+   */
+  export type ContentTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContentType
+     */
+    select?: ContentTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ContentType
+     */
+    omit?: ContentTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContentTypeInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -6982,17 +10608,52 @@ export namespace Prisma {
     title: 'title',
     excerpt: 'excerpt',
     image: 'image',
-    category: 'category',
     badge: 'badge',
     readTime: 'readTime',
     featured: 'featured',
-    type: 'type',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
-    authorId: 'authorId'
+    content: 'content',
+    views: 'views',
+    videoUrl: 'videoUrl',
+    authorId: 'authorId',
+    typeId: 'typeId',
+    categoryId: 'categoryId'
   };
 
   export type ArticleScalarFieldEnum = (typeof ArticleScalarFieldEnum)[keyof typeof ArticleScalarFieldEnum]
+
+
+  export const CategoryScalarFieldEnum: {
+    id: 'id',
+    title: 'title',
+    description: 'description',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type CategoryScalarFieldEnum = (typeof CategoryScalarFieldEnum)[keyof typeof CategoryScalarFieldEnum]
+
+
+  export const CommentaryScalarFieldEnum: {
+    id: 'id',
+    title: 'title',
+    description: 'description',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type CommentaryScalarFieldEnum = (typeof CommentaryScalarFieldEnum)[keyof typeof CommentaryScalarFieldEnum]
+
+
+  export const ContentTypeScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type ContentTypeScalarFieldEnum = (typeof ContentTypeScalarFieldEnum)[keyof typeof ContentTypeScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -7410,15 +11071,20 @@ export namespace Prisma {
     title?: StringFilter<"Article"> | string
     excerpt?: StringFilter<"Article"> | string
     image?: StringFilter<"Article"> | string
-    category?: StringFilter<"Article"> | string
     badge?: StringFilter<"Article"> | string
     readTime?: StringNullableFilter<"Article"> | string | null
     featured?: BoolFilter<"Article"> | boolean
-    type?: StringFilter<"Article"> | string
     createdAt?: DateTimeFilter<"Article"> | Date | string
     updatedAt?: DateTimeFilter<"Article"> | Date | string
+    content?: StringFilter<"Article"> | string
+    views?: IntFilter<"Article"> | number
+    videoUrl?: StringFilter<"Article"> | string
     authorId?: StringFilter<"Article"> | string
+    typeId?: IntFilter<"Article"> | number
+    categoryId?: IntFilter<"Article"> | number
     author?: XOR<UserScalarRelationFilter, UserWhereInput>
+    typeRef?: XOR<ContentTypeScalarRelationFilter, ContentTypeWhereInput>
+    CategoryRef?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
   }
 
   export type ArticleOrderByWithRelationInput = {
@@ -7426,15 +11092,20 @@ export namespace Prisma {
     title?: SortOrder
     excerpt?: SortOrder
     image?: SortOrder
-    category?: SortOrder
     badge?: SortOrder
     readTime?: SortOrderInput | SortOrder
     featured?: SortOrder
-    type?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    content?: SortOrder
+    views?: SortOrder
+    videoUrl?: SortOrder
     authorId?: SortOrder
+    typeId?: SortOrder
+    categoryId?: SortOrder
     author?: UserOrderByWithRelationInput
+    typeRef?: ContentTypeOrderByWithRelationInput
+    CategoryRef?: CategoryOrderByWithRelationInput
   }
 
   export type ArticleWhereUniqueInput = Prisma.AtLeast<{
@@ -7445,15 +11116,20 @@ export namespace Prisma {
     title?: StringFilter<"Article"> | string
     excerpt?: StringFilter<"Article"> | string
     image?: StringFilter<"Article"> | string
-    category?: StringFilter<"Article"> | string
     badge?: StringFilter<"Article"> | string
     readTime?: StringNullableFilter<"Article"> | string | null
     featured?: BoolFilter<"Article"> | boolean
-    type?: StringFilter<"Article"> | string
     createdAt?: DateTimeFilter<"Article"> | Date | string
     updatedAt?: DateTimeFilter<"Article"> | Date | string
+    content?: StringFilter<"Article"> | string
+    views?: IntFilter<"Article"> | number
+    videoUrl?: StringFilter<"Article"> | string
     authorId?: StringFilter<"Article"> | string
+    typeId?: IntFilter<"Article"> | number
+    categoryId?: IntFilter<"Article"> | number
     author?: XOR<UserScalarRelationFilter, UserWhereInput>
+    typeRef?: XOR<ContentTypeScalarRelationFilter, ContentTypeWhereInput>
+    CategoryRef?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
   }, "id">
 
   export type ArticleOrderByWithAggregationInput = {
@@ -7461,14 +11137,17 @@ export namespace Prisma {
     title?: SortOrder
     excerpt?: SortOrder
     image?: SortOrder
-    category?: SortOrder
     badge?: SortOrder
     readTime?: SortOrderInput | SortOrder
     featured?: SortOrder
-    type?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    content?: SortOrder
+    views?: SortOrder
+    videoUrl?: SortOrder
     authorId?: SortOrder
+    typeId?: SortOrder
+    categoryId?: SortOrder
     _count?: ArticleCountOrderByAggregateInput
     _avg?: ArticleAvgOrderByAggregateInput
     _max?: ArticleMaxOrderByAggregateInput
@@ -7484,14 +11163,180 @@ export namespace Prisma {
     title?: StringWithAggregatesFilter<"Article"> | string
     excerpt?: StringWithAggregatesFilter<"Article"> | string
     image?: StringWithAggregatesFilter<"Article"> | string
-    category?: StringWithAggregatesFilter<"Article"> | string
     badge?: StringWithAggregatesFilter<"Article"> | string
     readTime?: StringNullableWithAggregatesFilter<"Article"> | string | null
     featured?: BoolWithAggregatesFilter<"Article"> | boolean
-    type?: StringWithAggregatesFilter<"Article"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Article"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Article"> | Date | string
+    content?: StringWithAggregatesFilter<"Article"> | string
+    views?: IntWithAggregatesFilter<"Article"> | number
+    videoUrl?: StringWithAggregatesFilter<"Article"> | string
     authorId?: StringWithAggregatesFilter<"Article"> | string
+    typeId?: IntWithAggregatesFilter<"Article"> | number
+    categoryId?: IntWithAggregatesFilter<"Article"> | number
+  }
+
+  export type CategoryWhereInput = {
+    AND?: CategoryWhereInput | CategoryWhereInput[]
+    OR?: CategoryWhereInput[]
+    NOT?: CategoryWhereInput | CategoryWhereInput[]
+    id?: IntFilter<"Category"> | number
+    title?: StringFilter<"Category"> | string
+    description?: StringFilter<"Category"> | string
+    createdAt?: DateTimeFilter<"Category"> | Date | string
+    updatedAt?: DateTimeFilter<"Category"> | Date | string
+    articles?: ArticleListRelationFilter
+  }
+
+  export type CategoryOrderByWithRelationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    articles?: ArticleOrderByRelationAggregateInput
+  }
+
+  export type CategoryWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    title?: string
+    AND?: CategoryWhereInput | CategoryWhereInput[]
+    OR?: CategoryWhereInput[]
+    NOT?: CategoryWhereInput | CategoryWhereInput[]
+    description?: StringFilter<"Category"> | string
+    createdAt?: DateTimeFilter<"Category"> | Date | string
+    updatedAt?: DateTimeFilter<"Category"> | Date | string
+    articles?: ArticleListRelationFilter
+  }, "id" | "title">
+
+  export type CategoryOrderByWithAggregationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: CategoryCountOrderByAggregateInput
+    _avg?: CategoryAvgOrderByAggregateInput
+    _max?: CategoryMaxOrderByAggregateInput
+    _min?: CategoryMinOrderByAggregateInput
+    _sum?: CategorySumOrderByAggregateInput
+  }
+
+  export type CategoryScalarWhereWithAggregatesInput = {
+    AND?: CategoryScalarWhereWithAggregatesInput | CategoryScalarWhereWithAggregatesInput[]
+    OR?: CategoryScalarWhereWithAggregatesInput[]
+    NOT?: CategoryScalarWhereWithAggregatesInput | CategoryScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Category"> | number
+    title?: StringWithAggregatesFilter<"Category"> | string
+    description?: StringWithAggregatesFilter<"Category"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Category"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Category"> | Date | string
+  }
+
+  export type CommentaryWhereInput = {
+    AND?: CommentaryWhereInput | CommentaryWhereInput[]
+    OR?: CommentaryWhereInput[]
+    NOT?: CommentaryWhereInput | CommentaryWhereInput[]
+    id?: IntFilter<"Commentary"> | number
+    title?: StringFilter<"Commentary"> | string
+    description?: StringFilter<"Commentary"> | string
+    createdAt?: DateTimeFilter<"Commentary"> | Date | string
+    updatedAt?: DateTimeFilter<"Commentary"> | Date | string
+  }
+
+  export type CommentaryOrderByWithRelationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type CommentaryWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    title?: string
+    AND?: CommentaryWhereInput | CommentaryWhereInput[]
+    OR?: CommentaryWhereInput[]
+    NOT?: CommentaryWhereInput | CommentaryWhereInput[]
+    description?: StringFilter<"Commentary"> | string
+    createdAt?: DateTimeFilter<"Commentary"> | Date | string
+    updatedAt?: DateTimeFilter<"Commentary"> | Date | string
+  }, "id" | "title">
+
+  export type CommentaryOrderByWithAggregationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: CommentaryCountOrderByAggregateInput
+    _avg?: CommentaryAvgOrderByAggregateInput
+    _max?: CommentaryMaxOrderByAggregateInput
+    _min?: CommentaryMinOrderByAggregateInput
+    _sum?: CommentarySumOrderByAggregateInput
+  }
+
+  export type CommentaryScalarWhereWithAggregatesInput = {
+    AND?: CommentaryScalarWhereWithAggregatesInput | CommentaryScalarWhereWithAggregatesInput[]
+    OR?: CommentaryScalarWhereWithAggregatesInput[]
+    NOT?: CommentaryScalarWhereWithAggregatesInput | CommentaryScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Commentary"> | number
+    title?: StringWithAggregatesFilter<"Commentary"> | string
+    description?: StringWithAggregatesFilter<"Commentary"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Commentary"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Commentary"> | Date | string
+  }
+
+  export type ContentTypeWhereInput = {
+    AND?: ContentTypeWhereInput | ContentTypeWhereInput[]
+    OR?: ContentTypeWhereInput[]
+    NOT?: ContentTypeWhereInput | ContentTypeWhereInput[]
+    id?: IntFilter<"ContentType"> | number
+    name?: StringFilter<"ContentType"> | string
+    createdAt?: DateTimeFilter<"ContentType"> | Date | string
+    updatedAt?: DateTimeFilter<"ContentType"> | Date | string
+    articles?: ArticleListRelationFilter
+  }
+
+  export type ContentTypeOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    articles?: ArticleOrderByRelationAggregateInput
+  }
+
+  export type ContentTypeWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    name?: string
+    AND?: ContentTypeWhereInput | ContentTypeWhereInput[]
+    OR?: ContentTypeWhereInput[]
+    NOT?: ContentTypeWhereInput | ContentTypeWhereInput[]
+    createdAt?: DateTimeFilter<"ContentType"> | Date | string
+    updatedAt?: DateTimeFilter<"ContentType"> | Date | string
+    articles?: ArticleListRelationFilter
+  }, "id" | "name">
+
+  export type ContentTypeOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: ContentTypeCountOrderByAggregateInput
+    _avg?: ContentTypeAvgOrderByAggregateInput
+    _max?: ContentTypeMaxOrderByAggregateInput
+    _min?: ContentTypeMinOrderByAggregateInput
+    _sum?: ContentTypeSumOrderByAggregateInput
+  }
+
+  export type ContentTypeScalarWhereWithAggregatesInput = {
+    AND?: ContentTypeScalarWhereWithAggregatesInput | ContentTypeScalarWhereWithAggregatesInput[]
+    OR?: ContentTypeScalarWhereWithAggregatesInput[]
+    NOT?: ContentTypeScalarWhereWithAggregatesInput | ContentTypeScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"ContentType"> | number
+    name?: StringWithAggregatesFilter<"ContentType"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"ContentType"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"ContentType"> | Date | string
   }
 
   export type UserCreateInput = {
@@ -7837,14 +11682,17 @@ export namespace Prisma {
     title: string
     excerpt: string
     image: string
-    category: string
     badge: string
     readTime?: string | null
     featured?: boolean
-    type: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    content: string
+    views?: number
+    videoUrl: string
     author: UserCreateNestedOneWithoutArticlesInput
+    typeRef: ContentTypeCreateNestedOneWithoutArticlesInput
+    CategoryRef: CategoryCreateNestedOneWithoutArticlesInput
   }
 
   export type ArticleUncheckedCreateInput = {
@@ -7852,28 +11700,34 @@ export namespace Prisma {
     title: string
     excerpt: string
     image: string
-    category: string
     badge: string
     readTime?: string | null
     featured?: boolean
-    type: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    content: string
+    views?: number
+    videoUrl: string
     authorId: string
+    typeId: number
+    categoryId: number
   }
 
   export type ArticleUpdateInput = {
     title?: StringFieldUpdateOperationsInput | string
     excerpt?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
     badge?: StringFieldUpdateOperationsInput | string
     readTime?: NullableStringFieldUpdateOperationsInput | string | null
     featured?: BoolFieldUpdateOperationsInput | boolean
-    type?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    content?: StringFieldUpdateOperationsInput | string
+    views?: IntFieldUpdateOperationsInput | number
+    videoUrl?: StringFieldUpdateOperationsInput | string
     author?: UserUpdateOneRequiredWithoutArticlesNestedInput
+    typeRef?: ContentTypeUpdateOneRequiredWithoutArticlesNestedInput
+    CategoryRef?: CategoryUpdateOneRequiredWithoutArticlesNestedInput
   }
 
   export type ArticleUncheckedUpdateInput = {
@@ -7881,14 +11735,17 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     excerpt?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
     badge?: StringFieldUpdateOperationsInput | string
     readTime?: NullableStringFieldUpdateOperationsInput | string | null
     featured?: BoolFieldUpdateOperationsInput | boolean
-    type?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    content?: StringFieldUpdateOperationsInput | string
+    views?: IntFieldUpdateOperationsInput | number
+    videoUrl?: StringFieldUpdateOperationsInput | string
     authorId?: StringFieldUpdateOperationsInput | string
+    typeId?: IntFieldUpdateOperationsInput | number
+    categoryId?: IntFieldUpdateOperationsInput | number
   }
 
   export type ArticleCreateManyInput = {
@@ -7896,27 +11753,31 @@ export namespace Prisma {
     title: string
     excerpt: string
     image: string
-    category: string
     badge: string
     readTime?: string | null
     featured?: boolean
-    type: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    content: string
+    views?: number
+    videoUrl: string
     authorId: string
+    typeId: number
+    categoryId: number
   }
 
   export type ArticleUpdateManyMutationInput = {
     title?: StringFieldUpdateOperationsInput | string
     excerpt?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
     badge?: StringFieldUpdateOperationsInput | string
     readTime?: NullableStringFieldUpdateOperationsInput | string | null
     featured?: BoolFieldUpdateOperationsInput | boolean
-    type?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    content?: StringFieldUpdateOperationsInput | string
+    views?: IntFieldUpdateOperationsInput | number
+    videoUrl?: StringFieldUpdateOperationsInput | string
   }
 
   export type ArticleUncheckedUpdateManyInput = {
@@ -7924,14 +11785,177 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     excerpt?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
     badge?: StringFieldUpdateOperationsInput | string
     readTime?: NullableStringFieldUpdateOperationsInput | string | null
     featured?: BoolFieldUpdateOperationsInput | boolean
-    type?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    content?: StringFieldUpdateOperationsInput | string
+    views?: IntFieldUpdateOperationsInput | number
+    videoUrl?: StringFieldUpdateOperationsInput | string
     authorId?: StringFieldUpdateOperationsInput | string
+    typeId?: IntFieldUpdateOperationsInput | number
+    categoryId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type CategoryCreateInput = {
+    title: string
+    description: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    articles?: ArticleCreateNestedManyWithoutCategoryRefInput
+  }
+
+  export type CategoryUncheckedCreateInput = {
+    id?: number
+    title: string
+    description: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    articles?: ArticleUncheckedCreateNestedManyWithoutCategoryRefInput
+  }
+
+  export type CategoryUpdateInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    articles?: ArticleUpdateManyWithoutCategoryRefNestedInput
+  }
+
+  export type CategoryUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    articles?: ArticleUncheckedUpdateManyWithoutCategoryRefNestedInput
+  }
+
+  export type CategoryCreateManyInput = {
+    id?: number
+    title: string
+    description: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CategoryUpdateManyMutationInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CategoryUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CommentaryCreateInput = {
+    title: string
+    description: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CommentaryUncheckedCreateInput = {
+    id?: number
+    title: string
+    description: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CommentaryUpdateInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CommentaryUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CommentaryCreateManyInput = {
+    id?: number
+    title: string
+    description: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CommentaryUpdateManyMutationInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CommentaryUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ContentTypeCreateInput = {
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    articles?: ArticleCreateNestedManyWithoutTypeRefInput
+  }
+
+  export type ContentTypeUncheckedCreateInput = {
+    id?: number
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    articles?: ArticleUncheckedCreateNestedManyWithoutTypeRefInput
+  }
+
+  export type ContentTypeUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    articles?: ArticleUpdateManyWithoutTypeRefNestedInput
+  }
+
+  export type ContentTypeUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    articles?: ArticleUncheckedUpdateManyWithoutTypeRefNestedInput
+  }
+
+  export type ContentTypeCreateManyInput = {
+    id?: number
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ContentTypeUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ContentTypeUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -8272,23 +12296,39 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number
   }
 
+  export type ContentTypeScalarRelationFilter = {
+    is?: ContentTypeWhereInput
+    isNot?: ContentTypeWhereInput
+  }
+
+  export type CategoryScalarRelationFilter = {
+    is?: CategoryWhereInput
+    isNot?: CategoryWhereInput
+  }
+
   export type ArticleCountOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
     excerpt?: SortOrder
     image?: SortOrder
-    category?: SortOrder
     badge?: SortOrder
     readTime?: SortOrder
     featured?: SortOrder
-    type?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    content?: SortOrder
+    views?: SortOrder
+    videoUrl?: SortOrder
     authorId?: SortOrder
+    typeId?: SortOrder
+    categoryId?: SortOrder
   }
 
   export type ArticleAvgOrderByAggregateInput = {
     id?: SortOrder
+    views?: SortOrder
+    typeId?: SortOrder
+    categoryId?: SortOrder
   }
 
   export type ArticleMaxOrderByAggregateInput = {
@@ -8296,14 +12336,17 @@ export namespace Prisma {
     title?: SortOrder
     excerpt?: SortOrder
     image?: SortOrder
-    category?: SortOrder
     badge?: SortOrder
     readTime?: SortOrder
     featured?: SortOrder
-    type?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    content?: SortOrder
+    views?: SortOrder
+    videoUrl?: SortOrder
     authorId?: SortOrder
+    typeId?: SortOrder
+    categoryId?: SortOrder
   }
 
   export type ArticleMinOrderByAggregateInput = {
@@ -8311,18 +12354,24 @@ export namespace Prisma {
     title?: SortOrder
     excerpt?: SortOrder
     image?: SortOrder
-    category?: SortOrder
     badge?: SortOrder
     readTime?: SortOrder
     featured?: SortOrder
-    type?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    content?: SortOrder
+    views?: SortOrder
+    videoUrl?: SortOrder
     authorId?: SortOrder
+    typeId?: SortOrder
+    categoryId?: SortOrder
   }
 
   export type ArticleSumOrderByAggregateInput = {
     id?: SortOrder
+    views?: SortOrder
+    typeId?: SortOrder
+    categoryId?: SortOrder
   }
 
   export type IntWithAggregatesFilter<$PrismaModel = never> = {
@@ -8339,6 +12388,99 @@ export namespace Prisma {
     _sum?: NestedIntFilter<$PrismaModel>
     _min?: NestedIntFilter<$PrismaModel>
     _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type CategoryCountOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type CategoryAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type CategoryMaxOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type CategoryMinOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type CategorySumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type CommentaryCountOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type CommentaryAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type CommentaryMaxOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type CommentaryMinOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type CommentarySumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type ContentTypeCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ContentTypeAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type ContentTypeMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ContentTypeMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ContentTypeSumOrderByAggregateInput = {
+    id?: SortOrder
   }
 
   export type SessionCreateNestedManyWithoutUserInput = {
@@ -8525,12 +12667,16 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput
   }
 
-  export type UserUpdateOneRequiredWithoutArticlesNestedInput = {
-    create?: XOR<UserCreateWithoutArticlesInput, UserUncheckedCreateWithoutArticlesInput>
-    connectOrCreate?: UserCreateOrConnectWithoutArticlesInput
-    upsert?: UserUpsertWithoutArticlesInput
-    connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutArticlesInput, UserUpdateWithoutArticlesInput>, UserUncheckedUpdateWithoutArticlesInput>
+  export type ContentTypeCreateNestedOneWithoutArticlesInput = {
+    create?: XOR<ContentTypeCreateWithoutArticlesInput, ContentTypeUncheckedCreateWithoutArticlesInput>
+    connectOrCreate?: ContentTypeCreateOrConnectWithoutArticlesInput
+    connect?: ContentTypeWhereUniqueInput
+  }
+
+  export type CategoryCreateNestedOneWithoutArticlesInput = {
+    create?: XOR<CategoryCreateWithoutArticlesInput, CategoryUncheckedCreateWithoutArticlesInput>
+    connectOrCreate?: CategoryCreateOrConnectWithoutArticlesInput
+    connect?: CategoryWhereUniqueInput
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -8539,6 +12685,114 @@ export namespace Prisma {
     decrement?: number
     multiply?: number
     divide?: number
+  }
+
+  export type UserUpdateOneRequiredWithoutArticlesNestedInput = {
+    create?: XOR<UserCreateWithoutArticlesInput, UserUncheckedCreateWithoutArticlesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutArticlesInput
+    upsert?: UserUpsertWithoutArticlesInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutArticlesInput, UserUpdateWithoutArticlesInput>, UserUncheckedUpdateWithoutArticlesInput>
+  }
+
+  export type ContentTypeUpdateOneRequiredWithoutArticlesNestedInput = {
+    create?: XOR<ContentTypeCreateWithoutArticlesInput, ContentTypeUncheckedCreateWithoutArticlesInput>
+    connectOrCreate?: ContentTypeCreateOrConnectWithoutArticlesInput
+    upsert?: ContentTypeUpsertWithoutArticlesInput
+    connect?: ContentTypeWhereUniqueInput
+    update?: XOR<XOR<ContentTypeUpdateToOneWithWhereWithoutArticlesInput, ContentTypeUpdateWithoutArticlesInput>, ContentTypeUncheckedUpdateWithoutArticlesInput>
+  }
+
+  export type CategoryUpdateOneRequiredWithoutArticlesNestedInput = {
+    create?: XOR<CategoryCreateWithoutArticlesInput, CategoryUncheckedCreateWithoutArticlesInput>
+    connectOrCreate?: CategoryCreateOrConnectWithoutArticlesInput
+    upsert?: CategoryUpsertWithoutArticlesInput
+    connect?: CategoryWhereUniqueInput
+    update?: XOR<XOR<CategoryUpdateToOneWithWhereWithoutArticlesInput, CategoryUpdateWithoutArticlesInput>, CategoryUncheckedUpdateWithoutArticlesInput>
+  }
+
+  export type ArticleCreateNestedManyWithoutCategoryRefInput = {
+    create?: XOR<ArticleCreateWithoutCategoryRefInput, ArticleUncheckedCreateWithoutCategoryRefInput> | ArticleCreateWithoutCategoryRefInput[] | ArticleUncheckedCreateWithoutCategoryRefInput[]
+    connectOrCreate?: ArticleCreateOrConnectWithoutCategoryRefInput | ArticleCreateOrConnectWithoutCategoryRefInput[]
+    createMany?: ArticleCreateManyCategoryRefInputEnvelope
+    connect?: ArticleWhereUniqueInput | ArticleWhereUniqueInput[]
+  }
+
+  export type ArticleUncheckedCreateNestedManyWithoutCategoryRefInput = {
+    create?: XOR<ArticleCreateWithoutCategoryRefInput, ArticleUncheckedCreateWithoutCategoryRefInput> | ArticleCreateWithoutCategoryRefInput[] | ArticleUncheckedCreateWithoutCategoryRefInput[]
+    connectOrCreate?: ArticleCreateOrConnectWithoutCategoryRefInput | ArticleCreateOrConnectWithoutCategoryRefInput[]
+    createMany?: ArticleCreateManyCategoryRefInputEnvelope
+    connect?: ArticleWhereUniqueInput | ArticleWhereUniqueInput[]
+  }
+
+  export type ArticleUpdateManyWithoutCategoryRefNestedInput = {
+    create?: XOR<ArticleCreateWithoutCategoryRefInput, ArticleUncheckedCreateWithoutCategoryRefInput> | ArticleCreateWithoutCategoryRefInput[] | ArticleUncheckedCreateWithoutCategoryRefInput[]
+    connectOrCreate?: ArticleCreateOrConnectWithoutCategoryRefInput | ArticleCreateOrConnectWithoutCategoryRefInput[]
+    upsert?: ArticleUpsertWithWhereUniqueWithoutCategoryRefInput | ArticleUpsertWithWhereUniqueWithoutCategoryRefInput[]
+    createMany?: ArticleCreateManyCategoryRefInputEnvelope
+    set?: ArticleWhereUniqueInput | ArticleWhereUniqueInput[]
+    disconnect?: ArticleWhereUniqueInput | ArticleWhereUniqueInput[]
+    delete?: ArticleWhereUniqueInput | ArticleWhereUniqueInput[]
+    connect?: ArticleWhereUniqueInput | ArticleWhereUniqueInput[]
+    update?: ArticleUpdateWithWhereUniqueWithoutCategoryRefInput | ArticleUpdateWithWhereUniqueWithoutCategoryRefInput[]
+    updateMany?: ArticleUpdateManyWithWhereWithoutCategoryRefInput | ArticleUpdateManyWithWhereWithoutCategoryRefInput[]
+    deleteMany?: ArticleScalarWhereInput | ArticleScalarWhereInput[]
+  }
+
+  export type ArticleUncheckedUpdateManyWithoutCategoryRefNestedInput = {
+    create?: XOR<ArticleCreateWithoutCategoryRefInput, ArticleUncheckedCreateWithoutCategoryRefInput> | ArticleCreateWithoutCategoryRefInput[] | ArticleUncheckedCreateWithoutCategoryRefInput[]
+    connectOrCreate?: ArticleCreateOrConnectWithoutCategoryRefInput | ArticleCreateOrConnectWithoutCategoryRefInput[]
+    upsert?: ArticleUpsertWithWhereUniqueWithoutCategoryRefInput | ArticleUpsertWithWhereUniqueWithoutCategoryRefInput[]
+    createMany?: ArticleCreateManyCategoryRefInputEnvelope
+    set?: ArticleWhereUniqueInput | ArticleWhereUniqueInput[]
+    disconnect?: ArticleWhereUniqueInput | ArticleWhereUniqueInput[]
+    delete?: ArticleWhereUniqueInput | ArticleWhereUniqueInput[]
+    connect?: ArticleWhereUniqueInput | ArticleWhereUniqueInput[]
+    update?: ArticleUpdateWithWhereUniqueWithoutCategoryRefInput | ArticleUpdateWithWhereUniqueWithoutCategoryRefInput[]
+    updateMany?: ArticleUpdateManyWithWhereWithoutCategoryRefInput | ArticleUpdateManyWithWhereWithoutCategoryRefInput[]
+    deleteMany?: ArticleScalarWhereInput | ArticleScalarWhereInput[]
+  }
+
+  export type ArticleCreateNestedManyWithoutTypeRefInput = {
+    create?: XOR<ArticleCreateWithoutTypeRefInput, ArticleUncheckedCreateWithoutTypeRefInput> | ArticleCreateWithoutTypeRefInput[] | ArticleUncheckedCreateWithoutTypeRefInput[]
+    connectOrCreate?: ArticleCreateOrConnectWithoutTypeRefInput | ArticleCreateOrConnectWithoutTypeRefInput[]
+    createMany?: ArticleCreateManyTypeRefInputEnvelope
+    connect?: ArticleWhereUniqueInput | ArticleWhereUniqueInput[]
+  }
+
+  export type ArticleUncheckedCreateNestedManyWithoutTypeRefInput = {
+    create?: XOR<ArticleCreateWithoutTypeRefInput, ArticleUncheckedCreateWithoutTypeRefInput> | ArticleCreateWithoutTypeRefInput[] | ArticleUncheckedCreateWithoutTypeRefInput[]
+    connectOrCreate?: ArticleCreateOrConnectWithoutTypeRefInput | ArticleCreateOrConnectWithoutTypeRefInput[]
+    createMany?: ArticleCreateManyTypeRefInputEnvelope
+    connect?: ArticleWhereUniqueInput | ArticleWhereUniqueInput[]
+  }
+
+  export type ArticleUpdateManyWithoutTypeRefNestedInput = {
+    create?: XOR<ArticleCreateWithoutTypeRefInput, ArticleUncheckedCreateWithoutTypeRefInput> | ArticleCreateWithoutTypeRefInput[] | ArticleUncheckedCreateWithoutTypeRefInput[]
+    connectOrCreate?: ArticleCreateOrConnectWithoutTypeRefInput | ArticleCreateOrConnectWithoutTypeRefInput[]
+    upsert?: ArticleUpsertWithWhereUniqueWithoutTypeRefInput | ArticleUpsertWithWhereUniqueWithoutTypeRefInput[]
+    createMany?: ArticleCreateManyTypeRefInputEnvelope
+    set?: ArticleWhereUniqueInput | ArticleWhereUniqueInput[]
+    disconnect?: ArticleWhereUniqueInput | ArticleWhereUniqueInput[]
+    delete?: ArticleWhereUniqueInput | ArticleWhereUniqueInput[]
+    connect?: ArticleWhereUniqueInput | ArticleWhereUniqueInput[]
+    update?: ArticleUpdateWithWhereUniqueWithoutTypeRefInput | ArticleUpdateWithWhereUniqueWithoutTypeRefInput[]
+    updateMany?: ArticleUpdateManyWithWhereWithoutTypeRefInput | ArticleUpdateManyWithWhereWithoutTypeRefInput[]
+    deleteMany?: ArticleScalarWhereInput | ArticleScalarWhereInput[]
+  }
+
+  export type ArticleUncheckedUpdateManyWithoutTypeRefNestedInput = {
+    create?: XOR<ArticleCreateWithoutTypeRefInput, ArticleUncheckedCreateWithoutTypeRefInput> | ArticleCreateWithoutTypeRefInput[] | ArticleUncheckedCreateWithoutTypeRefInput[]
+    connectOrCreate?: ArticleCreateOrConnectWithoutTypeRefInput | ArticleCreateOrConnectWithoutTypeRefInput[]
+    upsert?: ArticleUpsertWithWhereUniqueWithoutTypeRefInput | ArticleUpsertWithWhereUniqueWithoutTypeRefInput[]
+    createMany?: ArticleCreateManyTypeRefInputEnvelope
+    set?: ArticleWhereUniqueInput | ArticleWhereUniqueInput[]
+    disconnect?: ArticleWhereUniqueInput | ArticleWhereUniqueInput[]
+    delete?: ArticleWhereUniqueInput | ArticleWhereUniqueInput[]
+    connect?: ArticleWhereUniqueInput | ArticleWhereUniqueInput[]
+    update?: ArticleUpdateWithWhereUniqueWithoutTypeRefInput | ArticleUpdateWithWhereUniqueWithoutTypeRefInput[]
+    updateMany?: ArticleUpdateManyWithWhereWithoutTypeRefInput | ArticleUpdateManyWithWhereWithoutTypeRefInput[]
+    deleteMany?: ArticleScalarWhereInput | ArticleScalarWhereInput[]
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -8806,13 +13060,16 @@ export namespace Prisma {
     title: string
     excerpt: string
     image: string
-    category: string
     badge: string
     readTime?: string | null
     featured?: boolean
-    type: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    content: string
+    views?: number
+    videoUrl: string
+    typeRef: ContentTypeCreateNestedOneWithoutArticlesInput
+    CategoryRef: CategoryCreateNestedOneWithoutArticlesInput
   }
 
   export type ArticleUncheckedCreateWithoutAuthorInput = {
@@ -8820,13 +13077,16 @@ export namespace Prisma {
     title: string
     excerpt: string
     image: string
-    category: string
     badge: string
     readTime?: string | null
     featured?: boolean
-    type: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    content: string
+    views?: number
+    videoUrl: string
+    typeId: number
+    categoryId: number
   }
 
   export type ArticleCreateOrConnectWithoutAuthorInput = {
@@ -8928,14 +13188,17 @@ export namespace Prisma {
     title?: StringFilter<"Article"> | string
     excerpt?: StringFilter<"Article"> | string
     image?: StringFilter<"Article"> | string
-    category?: StringFilter<"Article"> | string
     badge?: StringFilter<"Article"> | string
     readTime?: StringNullableFilter<"Article"> | string | null
     featured?: BoolFilter<"Article"> | boolean
-    type?: StringFilter<"Article"> | string
     createdAt?: DateTimeFilter<"Article"> | Date | string
     updatedAt?: DateTimeFilter<"Article"> | Date | string
+    content?: StringFilter<"Article"> | string
+    views?: IntFilter<"Article"> | number
+    videoUrl?: StringFilter<"Article"> | string
     authorId?: StringFilter<"Article"> | string
+    typeId?: IntFilter<"Article"> | number
+    categoryId?: IntFilter<"Article"> | number
   }
 
   export type UserCreateWithoutSessionsInput = {
@@ -9105,6 +13368,44 @@ export namespace Prisma {
     create: XOR<UserCreateWithoutArticlesInput, UserUncheckedCreateWithoutArticlesInput>
   }
 
+  export type ContentTypeCreateWithoutArticlesInput = {
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ContentTypeUncheckedCreateWithoutArticlesInput = {
+    id?: number
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ContentTypeCreateOrConnectWithoutArticlesInput = {
+    where: ContentTypeWhereUniqueInput
+    create: XOR<ContentTypeCreateWithoutArticlesInput, ContentTypeUncheckedCreateWithoutArticlesInput>
+  }
+
+  export type CategoryCreateWithoutArticlesInput = {
+    title: string
+    description: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CategoryUncheckedCreateWithoutArticlesInput = {
+    id?: number
+    title: string
+    description: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CategoryCreateOrConnectWithoutArticlesInput = {
+    where: CategoryWhereUniqueInput
+    create: XOR<CategoryCreateWithoutArticlesInput, CategoryUncheckedCreateWithoutArticlesInput>
+  }
+
   export type UserUpsertWithoutArticlesInput = {
     update: XOR<UserUpdateWithoutArticlesInput, UserUncheckedUpdateWithoutArticlesInput>
     create: XOR<UserCreateWithoutArticlesInput, UserUncheckedCreateWithoutArticlesInput>
@@ -9142,6 +13443,174 @@ export namespace Prisma {
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
   }
 
+  export type ContentTypeUpsertWithoutArticlesInput = {
+    update: XOR<ContentTypeUpdateWithoutArticlesInput, ContentTypeUncheckedUpdateWithoutArticlesInput>
+    create: XOR<ContentTypeCreateWithoutArticlesInput, ContentTypeUncheckedCreateWithoutArticlesInput>
+    where?: ContentTypeWhereInput
+  }
+
+  export type ContentTypeUpdateToOneWithWhereWithoutArticlesInput = {
+    where?: ContentTypeWhereInput
+    data: XOR<ContentTypeUpdateWithoutArticlesInput, ContentTypeUncheckedUpdateWithoutArticlesInput>
+  }
+
+  export type ContentTypeUpdateWithoutArticlesInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ContentTypeUncheckedUpdateWithoutArticlesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CategoryUpsertWithoutArticlesInput = {
+    update: XOR<CategoryUpdateWithoutArticlesInput, CategoryUncheckedUpdateWithoutArticlesInput>
+    create: XOR<CategoryCreateWithoutArticlesInput, CategoryUncheckedCreateWithoutArticlesInput>
+    where?: CategoryWhereInput
+  }
+
+  export type CategoryUpdateToOneWithWhereWithoutArticlesInput = {
+    where?: CategoryWhereInput
+    data: XOR<CategoryUpdateWithoutArticlesInput, CategoryUncheckedUpdateWithoutArticlesInput>
+  }
+
+  export type CategoryUpdateWithoutArticlesInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CategoryUncheckedUpdateWithoutArticlesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ArticleCreateWithoutCategoryRefInput = {
+    title: string
+    excerpt: string
+    image: string
+    badge: string
+    readTime?: string | null
+    featured?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    content: string
+    views?: number
+    videoUrl: string
+    author: UserCreateNestedOneWithoutArticlesInput
+    typeRef: ContentTypeCreateNestedOneWithoutArticlesInput
+  }
+
+  export type ArticleUncheckedCreateWithoutCategoryRefInput = {
+    id?: number
+    title: string
+    excerpt: string
+    image: string
+    badge: string
+    readTime?: string | null
+    featured?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    content: string
+    views?: number
+    videoUrl: string
+    authorId: string
+    typeId: number
+  }
+
+  export type ArticleCreateOrConnectWithoutCategoryRefInput = {
+    where: ArticleWhereUniqueInput
+    create: XOR<ArticleCreateWithoutCategoryRefInput, ArticleUncheckedCreateWithoutCategoryRefInput>
+  }
+
+  export type ArticleCreateManyCategoryRefInputEnvelope = {
+    data: ArticleCreateManyCategoryRefInput | ArticleCreateManyCategoryRefInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ArticleUpsertWithWhereUniqueWithoutCategoryRefInput = {
+    where: ArticleWhereUniqueInput
+    update: XOR<ArticleUpdateWithoutCategoryRefInput, ArticleUncheckedUpdateWithoutCategoryRefInput>
+    create: XOR<ArticleCreateWithoutCategoryRefInput, ArticleUncheckedCreateWithoutCategoryRefInput>
+  }
+
+  export type ArticleUpdateWithWhereUniqueWithoutCategoryRefInput = {
+    where: ArticleWhereUniqueInput
+    data: XOR<ArticleUpdateWithoutCategoryRefInput, ArticleUncheckedUpdateWithoutCategoryRefInput>
+  }
+
+  export type ArticleUpdateManyWithWhereWithoutCategoryRefInput = {
+    where: ArticleScalarWhereInput
+    data: XOR<ArticleUpdateManyMutationInput, ArticleUncheckedUpdateManyWithoutCategoryRefInput>
+  }
+
+  export type ArticleCreateWithoutTypeRefInput = {
+    title: string
+    excerpt: string
+    image: string
+    badge: string
+    readTime?: string | null
+    featured?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    content: string
+    views?: number
+    videoUrl: string
+    author: UserCreateNestedOneWithoutArticlesInput
+    CategoryRef: CategoryCreateNestedOneWithoutArticlesInput
+  }
+
+  export type ArticleUncheckedCreateWithoutTypeRefInput = {
+    id?: number
+    title: string
+    excerpt: string
+    image: string
+    badge: string
+    readTime?: string | null
+    featured?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    content: string
+    views?: number
+    videoUrl: string
+    authorId: string
+    categoryId: number
+  }
+
+  export type ArticleCreateOrConnectWithoutTypeRefInput = {
+    where: ArticleWhereUniqueInput
+    create: XOR<ArticleCreateWithoutTypeRefInput, ArticleUncheckedCreateWithoutTypeRefInput>
+  }
+
+  export type ArticleCreateManyTypeRefInputEnvelope = {
+    data: ArticleCreateManyTypeRefInput | ArticleCreateManyTypeRefInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ArticleUpsertWithWhereUniqueWithoutTypeRefInput = {
+    where: ArticleWhereUniqueInput
+    update: XOR<ArticleUpdateWithoutTypeRefInput, ArticleUncheckedUpdateWithoutTypeRefInput>
+    create: XOR<ArticleCreateWithoutTypeRefInput, ArticleUncheckedCreateWithoutTypeRefInput>
+  }
+
+  export type ArticleUpdateWithWhereUniqueWithoutTypeRefInput = {
+    where: ArticleWhereUniqueInput
+    data: XOR<ArticleUpdateWithoutTypeRefInput, ArticleUncheckedUpdateWithoutTypeRefInput>
+  }
+
+  export type ArticleUpdateManyWithWhereWithoutTypeRefInput = {
+    where: ArticleScalarWhereInput
+    data: XOR<ArticleUpdateManyMutationInput, ArticleUncheckedUpdateManyWithoutTypeRefInput>
+  }
+
   export type SessionCreateManyUserInput = {
     id: string
     expiresAt: Date | string
@@ -9172,13 +13641,16 @@ export namespace Prisma {
     title: string
     excerpt: string
     image: string
-    category: string
     badge: string
     readTime?: string | null
     featured?: boolean
-    type: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    content: string
+    views?: number
+    videoUrl: string
+    typeId: number
+    categoryId: number
   }
 
   export type SessionUpdateWithoutUserInput = {
@@ -9260,13 +13732,16 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     excerpt?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
     badge?: StringFieldUpdateOperationsInput | string
     readTime?: NullableStringFieldUpdateOperationsInput | string | null
     featured?: BoolFieldUpdateOperationsInput | boolean
-    type?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    content?: StringFieldUpdateOperationsInput | string
+    views?: IntFieldUpdateOperationsInput | number
+    videoUrl?: StringFieldUpdateOperationsInput | string
+    typeRef?: ContentTypeUpdateOneRequiredWithoutArticlesNestedInput
+    CategoryRef?: CategoryUpdateOneRequiredWithoutArticlesNestedInput
   }
 
   export type ArticleUncheckedUpdateWithoutAuthorInput = {
@@ -9274,13 +13749,16 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     excerpt?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
     badge?: StringFieldUpdateOperationsInput | string
     readTime?: NullableStringFieldUpdateOperationsInput | string | null
     featured?: BoolFieldUpdateOperationsInput | boolean
-    type?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    content?: StringFieldUpdateOperationsInput | string
+    views?: IntFieldUpdateOperationsInput | number
+    videoUrl?: StringFieldUpdateOperationsInput | string
+    typeId?: IntFieldUpdateOperationsInput | number
+    categoryId?: IntFieldUpdateOperationsInput | number
   }
 
   export type ArticleUncheckedUpdateManyWithoutAuthorInput = {
@@ -9288,13 +13766,150 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     excerpt?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
     badge?: StringFieldUpdateOperationsInput | string
     readTime?: NullableStringFieldUpdateOperationsInput | string | null
     featured?: BoolFieldUpdateOperationsInput | boolean
-    type?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    content?: StringFieldUpdateOperationsInput | string
+    views?: IntFieldUpdateOperationsInput | number
+    videoUrl?: StringFieldUpdateOperationsInput | string
+    typeId?: IntFieldUpdateOperationsInput | number
+    categoryId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ArticleCreateManyCategoryRefInput = {
+    id?: number
+    title: string
+    excerpt: string
+    image: string
+    badge: string
+    readTime?: string | null
+    featured?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    content: string
+    views?: number
+    videoUrl: string
+    authorId: string
+    typeId: number
+  }
+
+  export type ArticleUpdateWithoutCategoryRefInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    excerpt?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+    badge?: StringFieldUpdateOperationsInput | string
+    readTime?: NullableStringFieldUpdateOperationsInput | string | null
+    featured?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    content?: StringFieldUpdateOperationsInput | string
+    views?: IntFieldUpdateOperationsInput | number
+    videoUrl?: StringFieldUpdateOperationsInput | string
+    author?: UserUpdateOneRequiredWithoutArticlesNestedInput
+    typeRef?: ContentTypeUpdateOneRequiredWithoutArticlesNestedInput
+  }
+
+  export type ArticleUncheckedUpdateWithoutCategoryRefInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    excerpt?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+    badge?: StringFieldUpdateOperationsInput | string
+    readTime?: NullableStringFieldUpdateOperationsInput | string | null
+    featured?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    content?: StringFieldUpdateOperationsInput | string
+    views?: IntFieldUpdateOperationsInput | number
+    videoUrl?: StringFieldUpdateOperationsInput | string
+    authorId?: StringFieldUpdateOperationsInput | string
+    typeId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ArticleUncheckedUpdateManyWithoutCategoryRefInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    excerpt?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+    badge?: StringFieldUpdateOperationsInput | string
+    readTime?: NullableStringFieldUpdateOperationsInput | string | null
+    featured?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    content?: StringFieldUpdateOperationsInput | string
+    views?: IntFieldUpdateOperationsInput | number
+    videoUrl?: StringFieldUpdateOperationsInput | string
+    authorId?: StringFieldUpdateOperationsInput | string
+    typeId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ArticleCreateManyTypeRefInput = {
+    id?: number
+    title: string
+    excerpt: string
+    image: string
+    badge: string
+    readTime?: string | null
+    featured?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    content: string
+    views?: number
+    videoUrl: string
+    authorId: string
+    categoryId: number
+  }
+
+  export type ArticleUpdateWithoutTypeRefInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    excerpt?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+    badge?: StringFieldUpdateOperationsInput | string
+    readTime?: NullableStringFieldUpdateOperationsInput | string | null
+    featured?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    content?: StringFieldUpdateOperationsInput | string
+    views?: IntFieldUpdateOperationsInput | number
+    videoUrl?: StringFieldUpdateOperationsInput | string
+    author?: UserUpdateOneRequiredWithoutArticlesNestedInput
+    CategoryRef?: CategoryUpdateOneRequiredWithoutArticlesNestedInput
+  }
+
+  export type ArticleUncheckedUpdateWithoutTypeRefInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    excerpt?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+    badge?: StringFieldUpdateOperationsInput | string
+    readTime?: NullableStringFieldUpdateOperationsInput | string | null
+    featured?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    content?: StringFieldUpdateOperationsInput | string
+    views?: IntFieldUpdateOperationsInput | number
+    videoUrl?: StringFieldUpdateOperationsInput | string
+    authorId?: StringFieldUpdateOperationsInput | string
+    categoryId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ArticleUncheckedUpdateManyWithoutTypeRefInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    excerpt?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+    badge?: StringFieldUpdateOperationsInput | string
+    readTime?: NullableStringFieldUpdateOperationsInput | string | null
+    featured?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    content?: StringFieldUpdateOperationsInput | string
+    views?: IntFieldUpdateOperationsInput | number
+    videoUrl?: StringFieldUpdateOperationsInput | string
+    authorId?: StringFieldUpdateOperationsInput | string
+    categoryId?: IntFieldUpdateOperationsInput | number
   }
 
 

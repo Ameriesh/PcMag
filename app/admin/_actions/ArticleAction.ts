@@ -19,11 +19,13 @@ interface ArticleData{
   title: string;
   excerpt: string;
   image: string;
-  category: string;
+  categoryId: number;
   badge: string;
-  type: 'news' | 'test' | 'video';
+  typeId: number
   readTime: string;
   featured: boolean;
+  content: string; 
+  videoUrl: string;
 }
 
 
@@ -44,17 +46,47 @@ export async function createArticleAction(
     try{
      
      const readTimeValue = formData.get('readTime') as string;
+     const categoryIdValue = formData.get('category') as string
+     const typeValue = formData.get('type') as string
 
+     if(!categoryIdValue){
+        return {
+            success: false,
+            message: "Catégorie non sélectionnée"
+        }
+     }
+     if(!typeValue){
+        return {
+            success: false,
+            message: "Type non sélectionné"
+        }
+     }
      
      const data: ArticleData = {
         title: formData.get('title') as string,
         excerpt: formData.get('excerpt') as string,
         image: formData.get('image') as string,
-        category: formData.get('category') as string,
+        categoryId: parseInt(categoryIdValue),
+        typeId: parseInt(typeValue),
         badge: formData.get('badge') as string || "News",
-        type: formData.get('type') as ArticleData['type'],
-        readTime: readTimeValue || "5 min", // Application de la valeur par défaut
-        featured: formData.get('featured') === 'on'
+        readTime: readTimeValue || "5 min", 
+        featured: formData.get('featured') === 'on',
+        content: formData.get('content') as string || "", 
+        videoUrl: formData.get('videoUrl') as string || ""
+     }
+
+     if (isNaN(data.categoryId) || data.categoryId <=0){
+        return{
+            success: false,
+            message: "Id non valide"
+        }
+     }
+
+      if (isNaN(data.typeId) || data.typeId <=0){
+        return{
+            success: false,
+            message: "Id non valide"
+        }
      }
      
     
@@ -70,7 +102,6 @@ export async function createArticleAction(
             ...data,
             authorId: authorId,
             
-            type: data.type as string
         }
      })
      

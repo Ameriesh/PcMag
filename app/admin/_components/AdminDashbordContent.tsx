@@ -29,7 +29,7 @@ export default function AdminDashboardContent({ userName, userRole }: DashboardP
 
   return (
    <div className='w-full py-12 px-4 sm:px-6 lg:px-12'>
-    <div className="flex flex-col items-center mr-110 md:p-12 w-full min-h-full">
+    <div className="flex flex-col items-center md:p-12 w-full min-h-full">
       
      
       <header className="pb-6 mb-10 w-full max-w-lg text-center">

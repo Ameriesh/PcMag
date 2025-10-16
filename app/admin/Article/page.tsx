@@ -1,10 +1,19 @@
 import React from 'react'
 import ArticleCreationForm from '../_components/ArticleForm'
 
-function page() {
+
+async function page() {
+  const res = await fetch('http://localhost:3000/api/category',{
+    cache: 'no-store'
+  })
+  const type = await fetch('http://localhost:3000/api/type',{
+    cache: 'no-store'
+  })
+
+  const categories = await res.json()
   return (
     <div>
-        <ArticleCreationForm></ArticleCreationForm>
+        <ArticleCreationForm categories={categories} type={type}></ArticleCreationForm>
     </div>
   )
 }

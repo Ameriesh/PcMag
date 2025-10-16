@@ -125,7 +125,7 @@ function SidebarProvider({
     }),
     [state, open, setOpen, isMobile, openMobile, setOpenMobile, toggleSidebar]
   )
-  const SIDEBAR_WIDTH = "14rem"
+  const SIDEBAR_WIDTH = "20rem"
   const SIDEBAR_WIDTH_MOBILE = "18rem"
 
   return (
