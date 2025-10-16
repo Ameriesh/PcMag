@@ -1,133 +1,118 @@
-
 "use client";
 
 import React from "react";
 import Link from "next/link";
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation'; // Ajout de usePathname
 
 import { Button } from "@/components/ui/button";
+import { MonitorSmartphone } from 'lucide-react'
 
+// Importations des fonctions d'authentification et des types
 import { authClient } from "@/lib/auth-client";
 import { User } from "@/lib/auth"; 
 
-
+// Importations des composants Radix et des icônes
 import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger, DropdownMenuItem } from "@radix-ui/react-dropdown-menu"
-import { User2, ChevronDown, Computer } from "lucide-react"
+import { UserCircle, ChevronDown, LayoutDashboard } from "lucide-react" // Icônes UserCircle et LayoutDashboard pour un look plus pro
 
+// Liste des catégories pour la navigation centrale
+const PRIMARY_CATEGORIES = [
+    { name: "Accueil", href: "/" },
+    { name: "Gaming", href: "/category/gaming" },
+    { name: "Tech", href: "/category/tech" },
+    { name: "Séries", href: "/category/series" },
+    { name: "Cinéma", href: "/category/cinema" },
+];
 
-const NavbarDash = () => {
-
-  const router = useRouter(); 
-  
-  const { data: session, isPending } = authClient.useSession();
-  
-  const user = session?.user as User | undefined;
-  
-  const dashboardPath = user?.role === 'ADMIN' ? '/admin' : '/';
-  const dashboardText = user?.role === 'ADMIN' ? 'Admin Dashboard' : 'Accueil';
-
-  const handleSignOut = async () => {
-    try {
-     
-      await authClient.signOut({
-        fetchOptions: {
-          onSuccess: () => {
-            router.push("/");
-          },
-        },
-      }); 
-    } catch (error) {
-      console.error("Sign out error:", error);
-    }
-  };
-
-  return (
-   
-    <header className="navbar border-b-2 border-primary-200">
+const NavDash = () => {
+    const router = useRouter(); 
+    const pathname = usePathname(); // Pour gérer l'état actif des liens
     
-      <div className="navbar-logo">
-        <Link href="/">
-          <span className="navbar-logo text-2xl font-bold text-primary-500 cursor-pointer hover:text-primary-700">
-            PCMag <Computer />
-          </span>
-        </Link>
-      </div>
-
-     
-      
-
+    const { data: session, isPending } = authClient.useSession();
     
-      <div className="navbar-auth">
-        <div className="flex items-center gap-3">
-        
-        
-          {isPending ? (
-            <div className="text-gray-500">Chargement...</div>
-          ) : user ? (
-           
-            <>
-              
-                 <Link href="/" className="text-primary-700 text-[20px]">Home</Link>
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  
-                  <Button 
-                    className="flex items-center gap-2 bg-white-100 px-4 py-2 border border-secondary-300 text-secondary-900 hover:bg-secondary-100"
-                  >
-                    <User2 className="w-5 h-5" /> 
-                    {user.name || user.email.split('@')[0]}
-                    <ChevronDown className="w-4 h-4 ml-1" />
-                  </Button>
-                </DropdownMenuTrigger>
-                
-              
-                <DropdownMenuContent
-                  sideOffset={10} 
-                  align="end" 
-                  className="bg-white border border-secondary-200 shadow-lg p-1 w-48 z-50"
-                >
+    const user = session?.user as User | undefined;
+    
+    // Définitions des chemins et textes pour le tableau de bord
+    const dashboardPath = user?.role === 'ADMIN' ? '/admin' : '/account';
+    const dashboardText = user?.role === 'ADMIN' ? 'Admin Dashboard' : 'Mon Compte';
 
-                   
-                  
-                 
-                  <DropdownMenuItem asChild className="p-1.5 text-sm text-secondary-900 hover:bg-primary-100 hover:text-primary-700 cursor-pointer outline-none">
-                    <Link href={dashboardPath} className="w-full block">
-                       {dashboardText}
-                    </Link>
-                  </DropdownMenuItem>
+    const handleSignOut = async () => {
+        try {
+            await authClient.signOut({
+                fetchOptions: {
+                    onSuccess: () => {
+                        router.push("/");
+                    },
+                },
+            }); 
+        } catch (error) {
+            console.error("Sign out error:", error);
+        }
+    };
 
-               
-                  <DropdownMenuItem 
-                    onClick={handleSignOut} 
-                    className="p-1.5 text-sm text-red-500 hover:bg-red-500/10 cursor-pointer outline-none"
-                  >
-                    Déconnexion
-                  </DropdownMenuItem>
-
-                </DropdownMenuContent>
-              </DropdownMenu>
-
-              
-              {user.role && ( 
-                 <span className={`text-sm font-medium ${user.role === 'ADMIN' ? 'text-red-500' : 'text-gray-500'}`}>
-                    ({user.role}) 
-                 </span>
-              )}
-              
-        
-
-            </>
-          ) : (
-           
+    return (
+        <header className="navbar-v2">
             
-            <Link href="/auth/signin">
-              <Button className="btn-secondary">Connexion</Button>
-            </Link>
-          )}
-        </div>
-      </div>
-    </header>
-  );
+            {/* 1. Logo (Image) */}
+            <div className="navbar-logo-v2">
+                <Link href="/">
+                     <div className="logo-v2"><MonitorSmartphone size={20} /> PCMag</div> 
+                </Link>
+            </div>
+
+
+            {/* 3. Section de droite : Recherche et Auth */}
+            <div className="navbar-auth-v2">
+                
+                 <Link href="/" className="text-primary-700 text-[20px]">Home</Link>
+
+                {/* Authentication / User Menu */}
+                {isPending ? (
+                    <div className="text-secondary-500">Chargement...</div>
+                ) : user ? (
+                    // Menu déroulant Utilisateur
+                    <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                            <Button className="btn-tertiary flex items-center gap-1">
+                                {/* Icône raffinée et couleur primary pour l'icône */}
+                                <UserCircle className="w-5 h-5 text-primary-500" /> 
+                                <span className="font-medium hidden sm:inline text-secondary-900">{user.name || user.email.split('@')[0]}</span>
+                                <ChevronDown size={14} className="ml-1 text-secondary-600" />
+                            </Button>
+                        </DropdownMenuTrigger>
+                        
+                        {/* Contenu du Dropdown Menu */}
+                        <DropdownMenuContent
+                            sideOffset={10} 
+                            align="end" 
+                            className="bg-white border border-secondary-200 shadow-xl p-1 w-48 z-50 rounded-lg"
+                        >
+                            {/* Lien vers le Dashboard/Compte */}
+                            <DropdownMenuItem asChild className="p-2 text-sm text-secondary-900 hover:bg-secondary-100/50 cursor-pointer outline-none rounded-md flex items-center gap-2">
+                                <Link href={dashboardPath} className="w-full block">
+                                    <LayoutDashboard size={16} className="text-primary-500" />
+                                    {dashboardText}
+                                </Link>
+                            </DropdownMenuItem>
+
+                            {/* Bouton de Déconnexion */}
+                            <DropdownMenuItem 
+                                onClick={handleSignOut} 
+                                className="p-2 text-sm text-red-500 hover:bg-red-50/50 cursor-pointer outline-none rounded-md"
+                            >
+                                Déconnexion
+                            </DropdownMenuItem>
+                        </DropdownMenuContent>
+                    </DropdownMenu>
+                ) : (
+                    // Bouton "Sign in" (Style Outline très arrondi et class)
+                    <Link href="/auth/signin">
+                        <Button className="btn-auth-outline">Sign in</Button> 
+                    </Link>
+                )}
+            </div>
+        </header>
+    );
 };
 
-export default NavbarDash;
+export default NavDash;

@@ -1,11 +1,17 @@
 import Navbar from "../../components/Navbar";
 import { Toaster } from "sonner";
+// import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+// const queryClient = new QueryClient()
+
 
 export default function Layout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <main className="font-work-sans">
-       <Navbar></Navbar>
-        {children}
-    </main>
+    // <QueryClientProvider client={queryClient}>
+      <main className="font-work-sans">
+        <Navbar></Navbar>
+          {children}
+      </main>
+    // </QueryClientProvider>
+
   );
 }

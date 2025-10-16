@@ -39,68 +39,79 @@ const items = [
 ]
 
 export function AppSidebar() {
+  // Simuler la route active pour le style (à remplacer par usePathname() si possible)
+  const currentPath = "/admin/Article"; 
+  
   return (
-    // 🚨 1. Style du conteneur principal de la Sidebar
-    // Utiliser un fond sombre cohérent avec votre thème (ex: secondary-900)
-    <Sidebar className="mr-100 bg-secondary-900 border-r border-secondary-700 text-secondary-300 mr-">
+   
+    // 1. Sidebar : Fond blanc, bordure secondaire claire, texte gris foncé
+    <Sidebar className="mr-100 bg-white border-r border-secondary-200 text-secondary-900 shadow-xl">
       <SidebarContent>
-        {/* L'espace pour le titre et le menu principal */}
-        <SidebarGroup className="mb-[297px] pt-4"> 
-          {/* 🚨 2. Style du titre "PC MAG" */}
-          <SidebarGroupLabel className="sign-title text-center !text-xl !text-primary-400 !mb-6">
-            PC MAG
+     
+        {/* 2. Groupe : Retrait de l'ancienne marge fixe */}
+        <SidebarGroup className="mb-auto pt-6 px-4"> 
+          
+          {/* 3. Label du Dashboard : Texte sombre et espacement moderne */}
+          <SidebarGroupLabel className="text-secondary-900 font-extrabold text-2xl mb-6 px-3">
+            Admin
           </SidebarGroupLabel>
 
           <SidebarGroupContent>
             <SidebarMenu>
-              {items.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
-                    {/* 🚨 3. Style des boutons de menu */}
-                    {/* Appliquer un style sombre de base, avec hover actif */}
-                    <a 
-                      href={item.url}
-                      className={cn(
-                        "flex items-center gap-3 p-3 text-sm font-medium rounded-sm transition-colors",
-                        "text-secondary-300 hover:bg-secondary-800 hover:text-primary-400",
-                        // Si le composant sait détecter l'état actif, vous pouvez ajouter :
-                        // isActive && "bg-secondary-700 text-primary-500"
-                      )}
-                    >
-                      <item.icon className="w-5 h-5" />
-                      <span>{item.title}</span>
-                    </a>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
+              {items.map((item) => {
+                  const isActive = item.url === currentPath; // Logique d'activation
+                  return (
+                    <SidebarMenuItem key={item.title}>
+                      <SidebarMenuButton asChild>
+                        
+                        <a 
+                          href={item.url}
+                          className={cn(
+                            "flex items-center gap-3 p-3 text-sm font-medium rounded-lg transition-colors",
+                            // 4. Styles : Texte gris, hover en Cyan, fond gris clair.
+                            "text-secondary-700 hover:bg-primary-50 hover:text-primary-600",
+                            // Style actif
+                            isActive && "bg-primary-50 text-primary-600 font-semibold",
+                          )}
+                        >
+                          <item.icon className="w-5 h-5" />
+                          <span>{item.title}</span>
+                        </a>
+                      </SidebarMenuButton>
+                    </SidebarMenuItem>
+                  )
+              })}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
 
-        <SidebarFooter>
+        <SidebarFooter className="border-t border-secondary-200 p-4">
           <SidebarMenu>
             <SidebarMenuItem>
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  {/* 🚨 4. Style du bouton utilisateur en bas */}
+                 
+                  {/* 5. Bouton Utilisateur : Fond clair, design épuré */}
                   <SidebarMenuButton 
-                    className="bg-white-100"
+                    className="flex items-center w-full py-2 px-3 bg-secondary-50 text-secondary-800 rounded-lg hover:bg-secondary-100 transition-colors"
                   >
-                    <User2 className="w-5 h-5 mr-3" /> Nom d'Utilisateur
-                    <ChevronUp className="ml-auto w-4 h-4" />
+                    <User2 className="w-5 h-5 mr-3 text-secondary-600" /> 
+                    <span className="font-semibold">Nom d'Utilisateur</span>
+                    <ChevronUp className="ml-auto w-4 h-4 text-secondary-600" />
                   </SidebarMenuButton>
                 </DropdownMenuTrigger>
                 
-                {/* 🚨 5. Style du contenu du Dropdown Menu */}
+                {/* 6. Contenu du Dropdown Menu : Fond blanc/bordure claire */}
                 <DropdownMenuContent
                   side="top"
-                  className="bg-gray-300"
-
+                  align="start"
+                  sideOffset={8}
+                  className="bg-white border border-secondary-200 shadow-lg p-1 w-52 rounded-md"
                 >
-                  <DropdownMenuItem className="p-2 text-sm text-secondary-300 hover:bg-secondary-700 cursor-pointer">
+                  <DropdownMenuItem className="p-2 text-sm text-secondary-700 hover:bg-secondary-100 cursor-pointer rounded-sm outline-none">
                     <span>Compte</span>
                   </DropdownMenuItem>
-                  <DropdownMenuItem className="p-2 text-sm text-red-500 hover:bg-red-500/10 cursor-pointer">
+                  <DropdownMenuItem className="p-2 text-sm text-red-500 hover:bg-red-50 cursor-pointer rounded-sm outline-none">
                     <span>Déconnexion</span>
                   </DropdownMenuItem>
                 </DropdownMenuContent>

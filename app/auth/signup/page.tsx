@@ -1,6 +1,8 @@
+// Remplacer le contenu de SignUpPage par ceci :
+
 'use client'
 import React, { useState } from 'react'
-import { User, Mail, Eye, EyeOff } from 'lucide-react'
+import { User, Mail, Eye, EyeOff, Lock, MonitorSmartphone } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { toast } from 'sonner'
 import { useRouter } from 'next/navigation'
@@ -8,15 +10,14 @@ import { signUpAction } from './_actions/signUpAction'
 import { formSchema } from '@/lib/validate'
 import { ZodError } from 'zod'
 
-
 const SignUpPage = () => {
   const router = useRouter()
-
 
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirm, setShowConfirm] = useState(false)
 
+  // Utilise l'état pour les 4 champs
   const [filledFields, setFilledFields] = useState({
     name: false,
     email: false,
@@ -29,6 +30,7 @@ const SignUpPage = () => {
   const handleFieldChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
    
+    // Logique pour faire disparaître l'icône quand la valeur est présente
     setFilledFields(prev => ({ ...prev, [name]: !!value }))
 
     setErrors(prev => ({ ...prev, [name]: '' }))
@@ -83,94 +85,125 @@ const SignUpPage = () => {
   }
 
   return (
-    <div className="sign-container">
-      <div className="sign-box">
-        <h1 className="sign-title">Create an Account</h1>
+    <div className="sign-container-v2">
+        
+        {/* Colonne de gauche (PCMag & Cyan) */}
+        <div className="sign-left-v2">
+            <div className="sign-logo-v2"><MonitorSmartphone size={80} /> PCMag</div> 
+            <h2 className="sign-welcome-v2">Welcome to PCMag</h2>
+            <p className="sign-slogan-v2">Get the full experience. Join the community!</p>
+        </div>
 
-        <form className="sign-form" onSubmit={handleSubmit} noValidate>
-          <div className={`field ${filledFields.name ? 'filled' : ''}`}>
-            <span className="field-icon"><User size={18} /></span>
-            <input
-              id="name"
-              name="name"
-              type="text"
-              className="input-field"
-              placeholder=" "
-              autoComplete="name"
-              onChange={handleFieldChange}
-            />
-            <label htmlFor="name" className="field-label">Full Name</label>
-          </div>
-          {errors.name && <p className="error">{errors.name}</p>}
+        {/* Colonne de droite (Formulaire) */}
+        <div className="sign-box-v2">
+            <h1 className="sign-title-v2">Create your PCMag account</h1>
 
-          {/* Email */}
-          <div className={`field ${filledFields.email ? 'filled' : ''}`}>
-            <span className="field-icon"><Mail size={18} /></span>
-            <input
-              id="email"
-              name="email"
-              type="email"
-              className="input-field"
-              placeholder=" "
-              autoComplete="email"
-              onChange={handleFieldChange}
-            />
-            <label htmlFor="email" className="field-label">Email</label>
-          </div>
-          {errors.email && <p className="error">{errors.email}</p>}
+            <form className="sign-form-v2" onSubmit={handleSubmit} noValidate>
+                
+                {/* Full Name */}
+                <div className="field-v2">
+                    <span className={`field-icon-v2 ${filledFields.name ? 'field-icon-hidden' : ''}`}>
+                        <User size={18} />
+                    </span>
+                    <input
+                        id="name"
+                        name="name"
+                        type="text"
+                        className="input-field-v2"
+                        placeholder="Full Name"
+                        autoComplete="name"
+                        onChange={handleFieldChange}
+                    />
+                </div>
+                {errors.name && <p className="error">{errors.name}</p>}
 
-          {/* Password */}
-          <div className={`field ${filledFields.password ? 'filled' : ''}`}>
-            <input
-              id="password"
-              name="password"
-              type={showPassword ? 'text' : 'password'}
-              className="input-field"
-              placeholder=" "
-              autoComplete="new-password"
-              onChange={handleFieldChange}
-            />
-            <span
-              className="field-password-icon cursor-pointer"
-              onClick={() => setShowPassword(s => !s)}
-            >
-              {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
-            </span>
-            <label htmlFor="password" className="field-label">Password</label>
-          </div>
-          {errors.password && <p className="error">{errors.password}</p>}
+                {/* Email */}
+                <div className="field-v2">
+                    <span className={`field-icon-v2 ${filledFields.email ? 'field-icon-hidden' : ''}`}>
+                        <Mail size={18} />
+                    </span>
+                    <input
+                        id="email"
+                        name="email"
+                        type="email"
+                        className="input-field-v2"
+                        placeholder="Email address"
+                        autoComplete="email"
+                        onChange={handleFieldChange}
+                    />
+                </div>
+                {errors.email && <p className="error">{errors.email}</p>}
 
-          <div className={`field ${filledFields.confirmPassword ? 'filled' : ''}`}>
-            <input
-              id="confirmPassword"
-              name="confirmPassword"
-              type={showConfirm ? 'text' : 'password'}
-              className="input-field"
-              placeholder=" "
-              autoComplete="new-password"
-              onChange={handleFieldChange}
-            />
-            <span
-              className="field-password-icon cursor-pointer"
-              onClick={() => setShowConfirm(s => !s)}
-            >
-              {showConfirm ? <EyeOff size={18} /> : <Eye size={18} />}
-            </span>
-            <label htmlFor="confirmPassword" className="field-label">Confirm Password</label>
-          </div>
-          {errors.confirmPassword && <p className="error">{errors.confirmPassword}</p>}
+                {/* Password */}
+                <div className="field-v2">
+                    <span className={`field-icon-v2 ${filledFields.password ? 'field-icon-hidden' : ''}`}>
+                        <Lock size={18} />
+                    </span>
+                    <input
+                        id="password"
+                        name="password"
+                        type={showPassword ? 'text' : 'password'}
+                        className="input-field-v2"
+                        placeholder="Password"
+                        autoComplete="new-password"
+                        onChange={handleFieldChange}
+                    />
+                    <span
+                        className="field-password-icon-v2 right-3"
+                        onClick={() => setShowPassword(s => !s)}
+                    >
+                        {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                    </span>
+                </div>
+                {errors.password && <p className="error">{errors.password}</p>}
 
-          {errors.general && <p className="error">{errors.general}</p>}
+                {/* Confirm Password */}
+                <div className="field-v2">
+                    <span className={`field-icon-v2 ${filledFields.confirmPassword ? 'field-icon-hidden' : ''}`}>
+                        <Lock size={18} />
+                    </span>
+                    <input
+                        id="confirmPassword"
+                        name="confirmPassword"
+                        type={showConfirm ? 'text' : 'password'}
+                        className="input-field-v2"
+                        placeholder="Confirm Password"
+                        autoComplete="new-password"
+                        onChange={handleFieldChange}
+                    />
+                    <span
+                        className="field-password-icon-v2 right-3"
+                        onClick={() => setShowConfirm(s => !s)}
+                    >
+                        {showConfirm ? <EyeOff size={18} /> : <Eye size={18} />}
+                    </span>
+                </div>
+                {errors.confirmPassword && <p className="error">{errors.confirmPassword}</p>}
 
-          <Button type="submit" className="sign-btn sign-btn-left" disabled={loading}>
-            {loading ? 'Creating account...' : 'Sign Up'}
-          </Button>
-        </form>
+                {errors.general && <p className="error">{errors.general}</p>}
 
-        <p className="sign-foot">
-          Already have an account? <a className="signin-link" href="/auth/signin">Sign in</a>
-        </p>
-      </div>
+                <Button type="submit" className="sign-btn-v2 mt-3" disabled={loading}>
+                    {loading ? 'Creating account...' : 'Sign Up'}
+                </Button>
+            </form>
+
+            <p className="sign-foot-v2">
+                Already have an account? <a className="signin-link-v2" href="/auth/signin">Sign in</a>
+            </p>
+            
+             {/* Séparateur pour Google (ou autre) */}
+            <div className="flex items-center my-6">
+                <div className="flex-1 border-t border-secondary-200"></div>
+                <p className="mx-4 text-sm text-secondary-500">or</p>
+                <div className="flex-1 border-t border-secondary-200"></div>
+            </div>
+
+            {/* Bouton Google (couleur ajustée) */}
+            <Button className="w-full bg-white border border-secondary-300 text-secondary-700 hover:bg-secondary-50">
+                <img src="/path/to/google-icon.svg" alt="Google" className="w-5 h-5 mr-3" />
+                Sign up with Google
+            </Button>
+        </div>
     </div>
   )
 }

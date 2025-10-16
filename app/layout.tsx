@@ -3,6 +3,34 @@ import "./globals.css";
 import { Toaster } from "sonner";
 import Navbar from "../components/Navbar";
 import { Providers } from "@/providers";
+import localFont from "next/font/local";
+
+const garamond = localFont({
+  src: [
+    {
+      path: "./fonts/EBGaramond-ExtraBold.ttf",
+      weight: "800",
+      style: "normal"
+    },
+    {
+      path: "./fonts/EBGaramond-Bold.ttf",
+      weight: "700",
+      style: "normal"
+    },
+     {
+      path: "./fonts/EBGaramond-Medium.ttf",
+      weight: "500",
+      style: "normal"
+    },
+     {
+      path: "./fonts/EBGaramond-Regular.ttf",
+      weight: "400",
+      style: "normal"
+    },
+   
+  ],
+   variable: '--font-garamond'
+})
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -18,11 +46,13 @@ export default function RootLayout({
     
     <html lang="en">
       <body 
-        className= "antialiased"
+      
+        className={`${garamond.className} ${garamond.variable} antialiased`}
       >
         <Providers>
         
         <Toaster richColors closeButton position="top-right"></Toaster>
+        
         {children}
 
         </Providers>

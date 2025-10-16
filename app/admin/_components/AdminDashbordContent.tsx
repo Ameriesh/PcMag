@@ -28,11 +28,10 @@ export default function AdminDashboardContent({ userName, userRole }: DashboardP
   );
 
   return (
-    // 🚨 Conteneur de la page : Centré sur l'écran (flex + items-center + justify-center)
-    // Nous utilisons 'min-h-full' pour remplir la zone restante de la 'main'
-    <div className="flex flex-col items-center p-8 md:p-12 w-full min-h-full">
+   <div className='w-full py-12 px-4 sm:px-6 lg:px-12'>
+    <div className="flex flex-col items-center mr-110 md:p-12 w-full min-h-full">
       
-      {/* 1. En-tête de Bienvenue Centré */}
+     
       <header className="pb-6 mb-10 w-full max-w-lg text-center">
         <h1 className="text-4xl font-black text-primary-700 mb-1">
           Bienvenue, {userName} 
@@ -42,7 +41,7 @@ export default function AdminDashboardContent({ userName, userRole }: DashboardP
         </p>
       </header>
 
-      {/* 2. Actions Rapides Clés (Centrées) */}
+    
       <section className="w-full space-y-6 max-w-lg">
         
         {/* Créer un Article */}
@@ -51,29 +50,30 @@ export default function AdminDashboardContent({ userName, userRole }: DashboardP
           title="Créer un Nouvel Article"
           description="Rédiger et publier un nouveau contenu."
           icon={Plus}
-          color="border-primary-500" // Accent jaune
+          color="border-primary-500" 
         />
         
-        {/* Gérer les Publications */}
+       
         <ActionCard 
           href="/admin/Article"
           title="Gérer les Publications"
           description="Modifier, supprimer ou dépublier les articles."
           icon={LayoutDashboard}
-          color="border-secondary-500" // Accent gris
+          color="border-secondary-500" 
         />
         
-        {/* Paramètres */}
+        
         <ActionCard 
           href="/admin/settings"
           title="Paramètres du Site"
           description="Accéder aux réglages généraux."
           icon={Settings}
-          color="border-secondary-300" // Accent gris clair
+          color="border-secondary-300" 
         />
 
       </section>
       
+    </div>
     </div>
   );
 }

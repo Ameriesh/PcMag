@@ -1,10 +1,11 @@
-// Fichier : Cards.tsx
+// Fichier : components/Cards.tsx
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React from 'react'; // Retrait de useState, useEffect
 import Card from "./Card";
+import { Search } from 'lucide-react'; 
 
-// Interface adaptée pour la structure venant de l'API (inclut l'objet 'author')
+// 🚨 Interface adaptée au retour sérialisé du Server Component
 interface ArticleItem {
   id: number;
   title: string;
@@ -12,105 +13,91 @@ interface ArticleItem {
   image: string;
   category: string;
   badge: string;
-  readTime: string;
+  readTime: string | null; 
   featured?: boolean;
-  type: "news" | "test" | "video";
-  createdAt: string; // Date de création de Prisma
+  type: "news" | "test" | "video" | string; 
+  createdAt: string; // Vient comme une chaîne ISO (après sérialisation)
+  updatedAt: string;
   author: {
     name: string | null;
     email: string;
   };
 }
 
-export default function Cards() {
-  const [liveCards, setLiveCards] = useState<ArticleItem[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+// 🚨 Interface des Props: Maintenant, elle contient initialArticles (Corrigé)
+interface CardsProps {
+    initialArticles?: ArticleItem[];
+    searchTerm?: string;
+}
 
-  const filters: string[] = ["Tous", "Gaming", "Tech", "Séries", "Cinéma", "Tests", "Science", "IA"];
 
-  // Logique de Récupération des données avec fetch
-  useEffect(() => {
-    const fetchArticles = async () => {
-      try {
-        const response = await fetch('/api/articles');
-        if (!response.ok) {
-          throw new Error(`Échec de la récupération des données : ${response.status}`);
-        }
-        const data: ArticleItem[] = await response.json();
-        setLiveCards(data);
-      } catch (err) {
-        console.error("Erreur de Fetch:", err);
-        setError("Impossible de charger les articles. Assurez-vous que l'API est fonctionnelle.");
-      } finally {
-        setIsLoading(false);
-      }
-    };
+// Fichier : components/Cards.tsx (Mise à jour du JSX)
 
-    fetchArticles();
-  }, []);
+// ... (imports et interfaces restent les mêmes)
 
-  if (isLoading) {
-    return (
-        <section className="geek-cards-section min-h-[50vh] flex justify-center items-center">
-            <h2 className="text-xl text-primary-500 animate-pulse">Chargement des dernières publications...</h2>
-        </section>
-    );
-  }
-
-  if (error) {
-    return (
-        <section className="geek-cards-section min-h-[50vh] flex justify-center items-center">
-            <h2 className="text-xl text-red-500 border border-red-500 p-4">ERREUR: {error}</h2>
-        </section>
-    );
-  }
+export default function Cards({ initialArticles, searchTerm }: CardsProps) {
   
-  const cardsToRender = liveCards; 
+  const filters: string[] = ["Tous", "Gaming", "Tech", "Séries", "Cinéma", "Tests", "Science", "IA"];
+  const cardsToRender = initialArticles; 
+
+  if (cardsToRender?.length === 0 && searchTerm) {
+      return (
+          // Style de message d'erreur clair
+          <section className="cards-v2-section min-h-[50vh] flex justify-center items-center">
+              <div className="p-10 text-secondary-600 text-center text-xl border border-secondary-300 bg-white shadow-md">
+                  <h2 className="text-secondary-900 font-bold mb-2">Aucun article trouvé.</h2>
+                  <p>Veuillez essayer un autre terme que "{searchTerm}".</p>
+              </div>
+          </section>
+      );
+  }
+
 
   return (
-    <section className="geek-cards-section">
-      <div className="geek-cards-container">
+    // Remplacement de geek-cards-section par cards-v2-section
+    <section className="cards-v2-section">
+      <div className="cards-v2-container">
         
-        <div className="geek-cards-header">
-          <h2 className="geek-cards-title">Dernières Publications</h2>
-          <div className="geek-cards-filters">
-            {filters.map((filter: string, index: number) => (
-              <div 
-                key={filter}
-                className={`geek-filter ${index === 0 ? 'active' : ''}`}
-              >
-                {filter}
-              </div>
-            ))}
-          </div>
+        {/* Style d'en-tête minimaliste (Titre + Show All) */}
+        <div className="cards-v2-header">
+          <h2 className="cards-v2-title flex items-center gap-3">
+             {searchTerm ? (
+                <>
+                  <Search className='w-6 h-6 text-primary-600' />
+                  Résultats pour: "{searchTerm}"
+                </>
+             ) : (
+                "ARTIFICIAL INTELLIGENCE" // Exemple de titre de section
+             )}
+          </h2>
+          {/* Remplacement des filtres par un bouton "Show All" */}
+         <a href="#" className="cards-v2-show-all">SHOW ALL &gt;</a>
         </div>
+        
 
-        <div className="geek-cards-grid">
-          {cardsToRender.map((card) => (
-            <Card 
+        {/* Remplacement de geek-cards-grid par cards-v2-grid */}
+        <div className="cards-v2-grid">
+          {cardsToRender?.map((card) => (
+            
+              <Card 
                 key={card.id} 
                 title={card.title}
                 excerpt={card.excerpt}
                 image={card.image}
                 category={card.category}
                 badge={card.badge}
-                readTime={card.readTime}
+                readTime={card.readTime || 'N/A'}
                 featured={card.featured}
-                // 🚨 Formatage dynamique des données pour le composant Card
-                type={card.type}
+                type={card.type as "news" | "test" | "video"}
+                
+                // Formatage des données (création d'un objet Date à partir de la chaîne ISO)
                 author={card.author.name || card.author.email.split('@')[0]}
                 date={new Date(card.createdAt).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short', year: 'numeric' })}
             />
           ))}
         </div>
 
-        <div className="geek-cards-footer">
-          <button className="geek-load-more">
-            Plus d'articles
-          </button>
-        </div>
-
+        {/* Suppression de la section 'Load More' qui n'est pas dans le modèle */}
       </div>
     </section>
   );

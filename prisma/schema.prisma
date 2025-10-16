@@ -97,3 +97,8 @@ model Article {
   authorId  String
   author    User     @relation("AuthorArticles", fields: [authorId], references: [id])
 }
+
+model Category {
+  id Int @id @default(autoincrement())
+  title String
+}

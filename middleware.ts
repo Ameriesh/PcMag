@@ -8,7 +8,9 @@ export async function middleware(req: NextRequest) {
 
   if (pathname.startsWith("/auth")) return NextResponse.next();
     
-  const session = await auth.api.getSession({ headers: req.headers });
+  const session = await auth.api.getSession({ 
+    headers: req.headers 
+  });
 
   if (!session) {
     

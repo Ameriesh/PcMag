@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { object, string, z } from "zod";
 
 export const formSchema = z
   .object({
@@ -21,3 +21,19 @@ export const formSchema = z
     message: "Les mots de passe ne correspondent pas",
     path: ["confirmPassword"], 
   });
+
+
+  export const articleSchema = z
+    .object({
+      title: z
+        .string()
+        .min(5, "le titre doit au moins contenir 5 caracteres")
+        .max(20, "Le titre ne doit pas contenir plus de 20 caracteres"),
+      excerpt: z
+        .string()
+        .min(10, "la description doit au moins contenir 10 caracteres")
+        .max(50, "La description ne doit pas contenir plus de 50 caracteres"),
+      image: z
+        .string()
+        .url('entrer une url d\image valide')
+    })

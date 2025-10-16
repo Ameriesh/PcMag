@@ -1,28 +1,27 @@
-import React from 'react';
-import { SidebarProvider } from "@/components/ui/sidebar"
-import { AppSidebar } from "./_components/app-sidebar"
-import NavbarDash from './_components/NavBarDash';
+// Fichier: Layout.tsx (Modifié)
 
-export default function AdminLayout({ children }: { children: React.ReactNode }) {
-    
+import NavbarDash from "./_components/NavBarDash"
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
+import { AppSidebar } from "./_components/app-sidebar"
+
+export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <>
-    <NavbarDash></NavbarDash>
-    <SidebarProvider className='bg-secondary-50'>
-      
+    <SidebarProvider>
      
-      <div className="flex min-h-screen bg-secondary-50 text-secondary-900">
-        
-       
+      <div className="admin-layout-container">
         <AppSidebar />
         
        
-        <main className="flex-1 overflow-y-auto">
-          {children}
+        <main className="admin-content-area">
+          
+           <NavbarDash />
+           
+          
+           <SidebarTrigger /> 
+           
+           {children}
         </main>
-        
       </div>
     </SidebarProvider>
-    </>
-  );
+  )
 }
