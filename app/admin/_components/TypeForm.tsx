@@ -96,8 +96,9 @@ export default function TypeForm() {
         if (state.success) {
             toast.success("Succès !", {
                 description: state.message,
+                className: 'custom-cyan-toast',
             });
-            router.push('/admin'); 
+            router.push('/Article'); 
         } else if (state.message !== "Veuillez corriger les erreurs de validation ci-dessous.") {
             toast.error("Erreur", {
                 description: state.message,

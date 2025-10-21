@@ -27,6 +27,7 @@ import {
 } from 'lucide-react';
 import { cn } from '@/lib/utils'; 
 import { Button } from '@/components/ui/button';
+import { Spinner } from '@/components/ui/spinner';
 
 
 interface ActionState {
@@ -44,14 +45,11 @@ interface TypeData{
   name: string;
 }
 
-interface ArticleCreationProps{
+interface ArticleCreationProps {
   categories : CategoryData[];
-  
+  types : TypeData[]; // Changé 'type' à 'types' pour le pluriel et la clarté
 }
 
-interface TypeProps{
-  type : TypeData[];
-}
 
 const initialState: ActionState = {
     success: false,
@@ -71,11 +69,12 @@ function SubmitButton() {
         >
             {pending ? (
                 <>
-                  <Loader2 className="w-5 h-5 py-3 animate-spin" />
+                  <Spinner/>
                   PUBLICATION EN COURS
                 </>
             ) : (
                 <>
+
                   <CheckCircle2 className="w-5 top-2 h-5"/>
                   PUBLIER L'ARTICLE
                 </>
@@ -107,7 +106,7 @@ const FormField: React.FC<FormFieldProps> = ({ label, icon: Icon, children, clas
 // ------------------------------------
 
 
-export default function ArticleCreationForm({ categories = []} : ArticleCreationProps,  {type = []} : TypeProps) {
+export default function ArticleCreationForm({ categories = [], types = [] } : ArticleCreationProps) {
   const router = useRouter();
   
   const [state, formAction] = useActionState(createArticleAction, initialState);
@@ -118,8 +117,9 @@ export default function ArticleCreationForm({ categories = []} : ArticleCreation
         if (state.success) {
             toast.success("Succès !", {
                 description: state.message,
+                className: 'custom-cyan-toast',
             });
-            router.push('/admin'); 
+            router.push('/admin/listArticle'); 
         } else if (state.message !== "Veuillez corriger les erreurs de validation ci-dessous.") {
              // Afficher l'erreur si c'est une erreur serveur non Zod
             toast.error("Erreur", {
@@ -169,7 +169,7 @@ export default function ArticleCreationForm({ categories = []} : ArticleCreation
               <div className="relative">
                 
                 <div className=''>
-                <Select required name="category ">
+                <Select required name="category">
                     
                     <SelectTrigger className="w-full input-form-v2 !h-12 !py-4">
               
@@ -240,16 +240,16 @@ export default function ArticleCreationForm({ categories = []} : ArticleCreation
               <div className="relative">
                 
                 <div className=''>
-                <Select>
+                <Select required name="type">
                     
                     <SelectTrigger className="w-full input-form-v2 !h-12 !py-4">
               
-                        <SelectValue placeholder={type.length === 0 ? "Créer un type" : "Sélectionner un type"} />
+                        <SelectValue placeholder={types.length === 0 ? "Créer un type" : "Sélectionner un type"} />
                     </SelectTrigger>
                     
                     <SelectContent className="bg-white border border-secondary-200 shadow-lg rounded-md p-1">
                        
-                        {type.map(t => (
+                        {types.map(t => (
                             <SelectItem 
                                 key={t.id} 
                                 value={t.id.toString()} 

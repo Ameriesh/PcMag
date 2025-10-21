@@ -10,17 +10,17 @@
 /* 2️⃣ Thème : couleurs & variables            */
 /*---------------------------------------------*/
 @theme {
-  /* Primary (Bleu/Cyan) */
-  --color-primary-50: #E0F7FA;
-  --color-primary-100: #B2EBF2;
-  --color-primary-200: #80DEEA;
-  --color-primary-300: #4DD0E1;
-  --color-primary-400: #26C6DA;
-  --color-primary-500: #00BCD4; /* Nouveau Primary */
-  --color-primary-600: #00ACC1;
-  --color-primary-700: #0097A7;
-  --color-primary-800: #00838F;
-  --color-primary-900: #006064;
+ /* Primary (Violet) */
+--color-primary-50: #F3E5F5;
+--color-primary-100: #E1BEE7;
+--color-primary-200: #CE93D8;
+--color-primary-300: #BA68C8;
+--color-primary-400: #AB47BC;
+--color-primary-500: #9C27B0; /* Nouveau Primary */
+--color-primary-600: #8E24AA;
+--color-primary-700: #7B1FA2;
+--color-primary-800: #6A1B9A;
+--color-primary-900: #4A148C;
 
   /* Secondary (Gris Neutre/Chaud) */
   --color-secondary-50: #F8FAFC; 
@@ -43,6 +43,17 @@
   /* Whites */
   --color-white: #FFFFFF;
   --color-white-100: #F7F7F7;
+  --color-rose-50:   #FCE4EC;
+  --color-rose-100:  #F8BBD0;
+  --color-rose-200:  #F48FB1;
+  --color-rose-300:  #F06292;
+  --color-rose-400:  #EC407A;
+  --color-rose-500:  #E91E63;
+  --color-rose-600:  #D81B60;
+  --color-rose-700:  #C2185B;
+  --color-rose-800:  #AD1457;
+  --color-rose-900:  #880E4F;
+
 }
 
 /* Variables root */
@@ -94,10 +105,12 @@
   .admin-content-area {
     @apply flex-1 flex flex-col;
   }
+
+  .custom-cyan-toast {
+  @apply bg-primary-600 text-white border border-primary-800;
+}
   
-/*---------------------------------------------*/
-/* BUTTONS & AUTH OUTLINE                     */
-/*---------------------------------------------*/
+
 .btn-primary {
   @apply px-4 py-2 bg-primary-500 rounded-md text-white font-semibold text-sm border-none cursor-pointer transition shadow-sm;
 }
@@ -190,7 +203,7 @@
   @apply w-full text-sm bg-transparent outline-none py-1.5 placeholder:text-secondary-400 pl-3 pr-2; 
 }
 .searchbar-clear-btn {
-  @apply text-secondary-500 p-1 rounded-full hover:bg-secondary-200 transition-colors mr-1;
+  @apply text-secondary-500 p-1 rounded-full hover:bg-secondary-400 transition-colors mr-1;
 }
 .searchbar-submit-btn {
   @apply bg-primary-500 text-white p-2 rounded-md hover:bg-primary-600 transition-colors flex-shrink-0;
@@ -311,7 +324,7 @@
   }
   
   .hero-v2-image {
-    @apply w-full h-80 object-cover mb-0; 
+    @apply w-full h-85 object-cover mb-0; 
   }
   
   .hero-v2-content {
@@ -323,7 +336,7 @@
   }
   
   .hero-v2-badge {
-    @apply inline-block text-primary-500 font-semibold uppercase;
+    @apply inline-block text-rose-500 font-semibold uppercase;
   }
   
   .hero-v2-meta-author {
@@ -428,7 +441,7 @@
     }
 
     .cards-v2-title {
-      @apply text-xl font-bold text-secondary-900 uppercase tracking-widest;
+      @apply text-xl font-bold text-rose-500 uppercase tracking-widest;
     }
 
     .cards-v2-show-all {
@@ -464,7 +477,7 @@
     }
     
     .card-v2-badge {
-        @apply text-primary-400 font-semibold uppercase;
+        @apply text-rose-400 font-semibold uppercase;
     }
     
     .card-v2-author {
@@ -494,7 +507,150 @@
     }
 }
 
-  /* Animation */
+/*---------------------------------------------*/
+/* CARD V4 - Style Rectangulaire Horizontal    */
+/*---------------------------------------------*/
+
+/* Le conteneur principal des articles */
+.cards-v2-grid {
+    /* La grille peut être ajustée pour le nombre de colonnes de ces cartes horizontales */
+    @apply grid grid-cols-1 md:grid-cols-2 gap-6; /* Ex: 2 colonnes de cartes horizontales */
+}
+
+/* 1. Style de la Carte Rectangulaire Horizontale */
+.card-v4-horizontal {
+    /* Fond blanc, mais on force une bordure épaisse et colorée */
+    @apply flex bg-white 
+          h-auto
+
+
+          p-4
+           
+           /* AJOUT CRITIQUE: Bordure épaisse de couleur primaire */
+           border-2 border-primary-500 
+           
+           overflow-hidden transition-all duration-300
+
+           cursor-pointer
+           
+          
+
+}
+/* 2. Zone Image (à gauche) */
+.card-v4-image-container {
+    /* Largeur fixe ou flexible, souvent un ratio pour l'image */
+    @apply w-1/3 min-w-[120px] max-w-[200px] flex-shrink-0; /* ex: 1/3 de la largeur */
+    @apply relative overflow-hidden;
+}
+
+.card-v4-img {
+    @apply w-full h-full object-cover transition-transform duration-500 hover:scale-105;
+}
+
+/* 3. Zone Contenu Textuel (à droite) */
+.card-v4-content {
+    @apply flex flex-col p-4 flex-grow; /* flex-grow permet au contenu de prendre la place restante */
+}
+
+/* Méta Top (Badge/Catégorie) */
+.card-v4-meta-top {
+    @apply flex items-center gap-2 text-xs font-semibold uppercase mb-2;
+}
+.card-v4-badge-text {
+    @apply bg-rose-100 text-rose-700 px-2 py-0.5 rounded-full; /* Style de pastille */
+}
+.card-v4-category-text {
+    @apply text-secondary-600;
+}
+
+/* Titre */
+.card-v4-title {
+    @apply text-xl font-bold text-secondary-900 leading-snug mb-2 hover:text-primary-600 transition-colors line-clamp-2;
+}
+
+/* Excerpt (Description) */
+.card-v4-excerpt {
+    @apply text-sm text-secondary-600 mb-3 line-clamp-2 flex-grow; /* flex-grow pour que le méta soit en bas */
+}
+
+/* Méta Bottom (Auteur, Date, Temps de lecture) */
+.card-v4-meta-bottom {
+    @apply flex items-center gap-4 text-xs text-secondary-500 pt-3 border-t border-secondary-100 mt-auto; /* Poussé vers le bas */
+}
+.card-v4-author {
+    @apply font-medium text-secondary-700;
+}
+.card-v4-date {
+    @apply text-secondary-500;
+}
+.card-v4-read-time {
+    @apply text-secondary-500;
+}
+/*---------------------------------------------*/
+/* CARD V5 - Image Top, Badge Overlay, Cadre  */
+/*---------------------------------------------*/
+
+/* Le conteneur principal des articles */
+.cards-v2-grid {
+    /* La grille revient à 3 ou 4 colonnes pour ces cartes verticales */
+   @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
+}
+
+/* 1. Style de la Carte Verticale avec Cadre */
+.card-v5-vertical-framed {
+    @apply flex flex-col bg-white w-auto
+           border-2 border-primary-500 rounded-bl-lg rounded-tr-lg border-b-4
+           overflow-hidden 
+           cursor-pointer;
+           
+}
+
+.card-v5-image-wrapper {
+    @apply w-100 h-60 p-4 relative overflow-hidden; 
+}
+
+.card-v5-img {
+    @apply w-full h-full object-cover transition-transform duration-500 hover:scale-105;
+}
+
+.card-v5-badge {
+    @apply absolute top-0 
+           bg-primary-300 text-white text-xs font-bold uppercase 
+           px-3 py-1 
+}
+
+.card-v5-content {
+    @apply p-4 flex flex-col flex-grow; 
+}
+
+
+.card-v5-category-title {
+    @apply text-xs font-semibold uppercase text-secondary-600 mb-1 ;
+}
+
+
+.card-v5-title {
+    @apply text-lg font-bold text-secondary-900 leading-snug mb-2 hover:text-primary-600 transition-colors line-clamp-2;
+}
+
+
+.card-v5-excerpt {
+    @apply text-sm text-secondary-600 mb-3 line-clamp-3 flex-grow; /* flex-grow pour remplir l'espace */
+}
+
+.card-v5-meta-bottom {
+    @apply flex items-center justify-between text-xs text-secondary-500 pt-3 border-t border-secondary-100 mt-auto; /* Poussé vers le bas */
+}
+.card-v5-author {
+    @apply font-medium text-primary-700;
+}
+.card-v5-date {
+    @apply text-secondary-500;
+}
+.card-v5-read-time {
+    @apply text-secondary-500;
+}
+
   .geek-card-entrance {
     animation: cardSlideUp 0.6s ease-out;
   }

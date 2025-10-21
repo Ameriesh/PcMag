@@ -55,8 +55,8 @@ export default function AdminDashboardContent({ userName, userRole }: DashboardP
         
        
         <ActionCard 
-          href="/admin/Article"
-          title="Gérer les Publications"
+          href="/admin/listArticle"
+          title="Gérer mes Articles"
           description="Modifier, supprimer ou dépublier les articles."
           icon={LayoutDashboard}
           color="border-secondary-500" 

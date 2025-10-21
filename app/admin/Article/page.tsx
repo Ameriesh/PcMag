@@ -3,17 +3,17 @@ import ArticleCreationForm from '../_components/ArticleForm'
 
 
 async function page() {
-  const res = await fetch('http://localhost:3000/api/category',{
-    cache: 'no-store'
-  })
-  const type = await fetch('http://localhost:3000/api/type',{
-    cache: 'no-store'
-  })
+  const [resCategories, resTypes] = await Promise.all([
+      fetch('http://localhost:3000/api/categories/category', { cache: 'no-store' }),
+      fetch('http://localhost:3000/api/type', { cache: 'no-store' })
+  ]);
 
-  const categories = await res.json()
+  const categories = resCategories.ok ? await resCategories.json().catch(() => []) : [];
+  const types = resTypes.ok ? await resTypes.json().catch(() => []) : [];
+
   return (
     <div>
-        <ArticleCreationForm categories={categories} type={type}></ArticleCreationForm>
+        <ArticleCreationForm categories={categories} types={types}></ArticleCreationForm>
     </div>
   )
 }

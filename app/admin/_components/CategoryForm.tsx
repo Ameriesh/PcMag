@@ -2,6 +2,7 @@
 "use client";
 
 import React, { useEffect } from 'react';
+import { Spinner } from '@/components/ui/spinner';
 import { useFormStatus } from 'react-dom'; 
 import { useActionState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -32,12 +33,6 @@ interface ActionState {
     errors?: Record<string, string[] | undefined>;
 }
 
-const CATEGORIES = ["Gaming", "Tech", "Séries", "Cinéma", "Tests", "Science", "IA", "Programmation"];
-const TYPES: { value: string, label: string }[] = [
-  { value: 'news', label: 'Actualité (News)' },
-  { value: 'test', label: 'Test/Review' },
-  { value: 'video', label: 'Contenu Vidéo' },
-];
 
 const initialState: ActionState = {
     success: false,
@@ -58,7 +53,7 @@ function SubmitButton() {
         >
             {pending ? (
                 <>
-                  <Loader2 className="w-5 h-5 py-3 animate-spin" />
+                 <Spinner/>
                   Adding
                 </>
             ) : (
@@ -105,8 +100,9 @@ export default function CategoryForm() {
         if (state.success) {
             toast.success("Succès !", {
                 description: state.message,
+                className: 'custom-cyan-toast',
             });
-            router.push('/admin'); 
+            router.push('/Article'); 
         } else if (state.message !== "Veuillez corriger les erreurs de validation ci-dessous.") {
             toast.error("Erreur", {
                 description: state.message,

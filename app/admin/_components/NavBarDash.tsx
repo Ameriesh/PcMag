@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter, usePathname } from 'next/navigation'; // Ajout de usePathname
 
 import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 import { MonitorSmartphone } from 'lucide-react'
 
 // Importations des fonctions d'authentification et des types
@@ -45,6 +46,10 @@ const NavDash = () => {
                     },
                 },
             }); 
+
+            toast.info('Deconnection', {
+                            description: 'deconnection reussie'
+                        })
         } catch (error) {
             console.error("Sign out error:", error);
         }
@@ -68,7 +73,7 @@ const NavDash = () => {
 
                 {/* Authentication / User Menu */}
                 {isPending ? (
-                    <div className="text-secondary-500">Chargement...</div>
+                    <div className="text-secondary-500">...</div>
                 ) : user ? (
                     // Menu déroulant Utilisateur
                     <DropdownMenu>
@@ -98,7 +103,7 @@ const NavDash = () => {
                             {/* Bouton de Déconnexion */}
                             <DropdownMenuItem 
                                 onClick={handleSignOut} 
-                                className="p-2 text-sm text-red-500 hover:bg-red-50/50 cursor-pointer outline-none rounded-md"
+                                className="p-2 text-sm text-secondary-900 hover:bg-red-50/50 cursor-pointer outline-none rounded-md"
                             >
                                 Déconnexion
                             </DropdownMenuItem>

@@ -1,5 +1,3 @@
-// Fichier: Layout.tsx (Modifié)
-
 import NavbarDash from "./_components/NavBarDash"
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
 import { AppSidebar } from "./_components/app-sidebar"
