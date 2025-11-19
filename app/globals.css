@@ -1,6 +1,7 @@
 /*---------------------------------------------*/
 /* 1️⃣ Imports & variants                       */
 /*---------------------------------------------*/
+
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -118,10 +119,10 @@
   @apply bg-primary-600 shadow-md;
 }
 .btn-secondary {
-  @apply px-4 py-2 bg-white border border-secondary-300 text-secondary-600 rounded-md font-semibold text-sm cursor-pointer transition;
+  @apply px-4 py-2 bg-secondary-200 border border-secondary-400 text-secondary-600 rounded-md font-semibold text-sm cursor-pointer transition;
 }
 .btn-secondary:hover {
-  @apply bg-secondary-50 border-secondary-400;
+  @apply bg-secondary-300 border-secondary-500;
 }
 .btn-tertiary {
   @apply px-4 py-2 bg-transparent text-secondary-600 font-semibold text-sm cursor-pointer transition;

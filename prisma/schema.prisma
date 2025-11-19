@@ -93,8 +93,9 @@ model Article {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   content   String
+  pitch     String?
   views     Int      @default(0)
-  videoUrl  String
+  videoUrl  String?
   authorId  String
   author    User     @relation("AuthorArticles", fields: [authorId], references: [id])
 

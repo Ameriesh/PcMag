@@ -178,6 +178,7 @@ exports.Prisma.ArticleScalarFieldEnum = {
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   content: 'content',
+  pitch: 'pitch',
   views: 'views',
   videoUrl: 'videoUrl',
   authorId: 'authorId',

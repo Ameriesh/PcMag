@@ -1,9 +1,11 @@
 "use client"; 
+import { useScopedI18n } from "@/locales/client";
 import { Search, X } from "lucide-react";
 import { useRouter } from 'next/navigation'; 
 import React, { FormEvent, useState } from 'react';
 
 export function SearchBar() {
+  const t = useScopedI18n('navbar')
   const router = useRouter();
   const [searchInput, setSearchInput] = useState('');
   const reset = () =>{
@@ -30,7 +32,7 @@ export function SearchBar() {
         
         <input
             type="text"
-            placeholder="Rechercher des articles..."
+            placeholder={t('find')}
             className="searchbar-input flex-1" 
             value={searchInput}
             onChange={(e) => setSearchInput(e.target.value)}

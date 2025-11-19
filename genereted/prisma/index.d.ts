@@ -6093,6 +6093,7 @@ export namespace Prisma {
     createdAt: Date | null
     updatedAt: Date | null
     content: string | null
+    pitch: string | null
     views: number | null
     videoUrl: string | null
     authorId: string | null
@@ -6111,6 +6112,7 @@ export namespace Prisma {
     createdAt: Date | null
     updatedAt: Date | null
     content: string | null
+    pitch: string | null
     views: number | null
     videoUrl: string | null
     authorId: string | null
@@ -6129,6 +6131,7 @@ export namespace Prisma {
     createdAt: number
     updatedAt: number
     content: number
+    pitch: number
     views: number
     videoUrl: number
     authorId: number
@@ -6163,6 +6166,7 @@ export namespace Prisma {
     createdAt?: true
     updatedAt?: true
     content?: true
+    pitch?: true
     views?: true
     videoUrl?: true
     authorId?: true
@@ -6181,6 +6185,7 @@ export namespace Prisma {
     createdAt?: true
     updatedAt?: true
     content?: true
+    pitch?: true
     views?: true
     videoUrl?: true
     authorId?: true
@@ -6199,6 +6204,7 @@ export namespace Prisma {
     createdAt?: true
     updatedAt?: true
     content?: true
+    pitch?: true
     views?: true
     videoUrl?: true
     authorId?: true
@@ -6304,8 +6310,9 @@ export namespace Prisma {
     createdAt: Date
     updatedAt: Date
     content: string
+    pitch: string | null
     views: number
-    videoUrl: string
+    videoUrl: string | null
     authorId: string
     typeId: number
     categoryId: number
@@ -6341,6 +6348,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     content?: boolean
+    pitch?: boolean
     views?: boolean
     videoUrl?: boolean
     authorId?: boolean
@@ -6362,6 +6370,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     content?: boolean
+    pitch?: boolean
     views?: boolean
     videoUrl?: boolean
     authorId?: boolean
@@ -6383,6 +6392,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     content?: boolean
+    pitch?: boolean
     views?: boolean
     videoUrl?: boolean
     authorId?: boolean
@@ -6404,6 +6414,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     content?: boolean
+    pitch?: boolean
     views?: boolean
     videoUrl?: boolean
     authorId?: boolean
@@ -6411,7 +6422,7 @@ export namespace Prisma {
     categoryId?: boolean
   }
 
-  export type ArticleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "excerpt" | "image" | "badge" | "readTime" | "featured" | "createdAt" | "updatedAt" | "content" | "views" | "videoUrl" | "authorId" | "typeId" | "categoryId", ExtArgs["result"]["article"]>
+  export type ArticleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "excerpt" | "image" | "badge" | "readTime" | "featured" | "createdAt" | "updatedAt" | "content" | "pitch" | "views" | "videoUrl" | "authorId" | "typeId" | "categoryId", ExtArgs["result"]["article"]>
   export type ArticleInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     author?: boolean | UserDefaultArgs<ExtArgs>
     typeRef?: boolean | ContentTypeDefaultArgs<ExtArgs>
@@ -6446,8 +6457,9 @@ export namespace Prisma {
       createdAt: Date
       updatedAt: Date
       content: string
+      pitch: string | null
       views: number
-      videoUrl: string
+      videoUrl: string | null
       authorId: string
       typeId: number
       categoryId: number
@@ -6887,6 +6899,7 @@ export namespace Prisma {
     readonly createdAt: FieldRef<"Article", 'DateTime'>
     readonly updatedAt: FieldRef<"Article", 'DateTime'>
     readonly content: FieldRef<"Article", 'String'>
+    readonly pitch: FieldRef<"Article", 'String'>
     readonly views: FieldRef<"Article", 'Int'>
     readonly videoUrl: FieldRef<"Article", 'String'>
     readonly authorId: FieldRef<"Article", 'String'>
@@ -10614,6 +10627,7 @@ export namespace Prisma {
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
     content: 'content',
+    pitch: 'pitch',
     views: 'views',
     videoUrl: 'videoUrl',
     authorId: 'authorId',
@@ -11077,8 +11091,9 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Article"> | Date | string
     updatedAt?: DateTimeFilter<"Article"> | Date | string
     content?: StringFilter<"Article"> | string
+    pitch?: StringNullableFilter<"Article"> | string | null
     views?: IntFilter<"Article"> | number
-    videoUrl?: StringFilter<"Article"> | string
+    videoUrl?: StringNullableFilter<"Article"> | string | null
     authorId?: StringFilter<"Article"> | string
     typeId?: IntFilter<"Article"> | number
     categoryId?: IntFilter<"Article"> | number
@@ -11098,8 +11113,9 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     content?: SortOrder
+    pitch?: SortOrderInput | SortOrder
     views?: SortOrder
-    videoUrl?: SortOrder
+    videoUrl?: SortOrderInput | SortOrder
     authorId?: SortOrder
     typeId?: SortOrder
     categoryId?: SortOrder
@@ -11122,8 +11138,9 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Article"> | Date | string
     updatedAt?: DateTimeFilter<"Article"> | Date | string
     content?: StringFilter<"Article"> | string
+    pitch?: StringNullableFilter<"Article"> | string | null
     views?: IntFilter<"Article"> | number
-    videoUrl?: StringFilter<"Article"> | string
+    videoUrl?: StringNullableFilter<"Article"> | string | null
     authorId?: StringFilter<"Article"> | string
     typeId?: IntFilter<"Article"> | number
     categoryId?: IntFilter<"Article"> | number
@@ -11143,8 +11160,9 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     content?: SortOrder
+    pitch?: SortOrderInput | SortOrder
     views?: SortOrder
-    videoUrl?: SortOrder
+    videoUrl?: SortOrderInput | SortOrder
     authorId?: SortOrder
     typeId?: SortOrder
     categoryId?: SortOrder
@@ -11169,8 +11187,9 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"Article"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Article"> | Date | string
     content?: StringWithAggregatesFilter<"Article"> | string
+    pitch?: StringNullableWithAggregatesFilter<"Article"> | string | null
     views?: IntWithAggregatesFilter<"Article"> | number
-    videoUrl?: StringWithAggregatesFilter<"Article"> | string
+    videoUrl?: StringNullableWithAggregatesFilter<"Article"> | string | null
     authorId?: StringWithAggregatesFilter<"Article"> | string
     typeId?: IntWithAggregatesFilter<"Article"> | number
     categoryId?: IntWithAggregatesFilter<"Article"> | number
@@ -11688,8 +11707,9 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     content: string
+    pitch?: string | null
     views?: number
-    videoUrl: string
+    videoUrl?: string | null
     author: UserCreateNestedOneWithoutArticlesInput
     typeRef: ContentTypeCreateNestedOneWithoutArticlesInput
     CategoryRef: CategoryCreateNestedOneWithoutArticlesInput
@@ -11706,8 +11726,9 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     content: string
+    pitch?: string | null
     views?: number
-    videoUrl: string
+    videoUrl?: string | null
     authorId: string
     typeId: number
     categoryId: number
@@ -11723,8 +11744,9 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     content?: StringFieldUpdateOperationsInput | string
+    pitch?: NullableStringFieldUpdateOperationsInput | string | null
     views?: IntFieldUpdateOperationsInput | number
-    videoUrl?: StringFieldUpdateOperationsInput | string
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     author?: UserUpdateOneRequiredWithoutArticlesNestedInput
     typeRef?: ContentTypeUpdateOneRequiredWithoutArticlesNestedInput
     CategoryRef?: CategoryUpdateOneRequiredWithoutArticlesNestedInput
@@ -11741,8 +11763,9 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     content?: StringFieldUpdateOperationsInput | string
+    pitch?: NullableStringFieldUpdateOperationsInput | string | null
     views?: IntFieldUpdateOperationsInput | number
-    videoUrl?: StringFieldUpdateOperationsInput | string
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     authorId?: StringFieldUpdateOperationsInput | string
     typeId?: IntFieldUpdateOperationsInput | number
     categoryId?: IntFieldUpdateOperationsInput | number
@@ -11759,8 +11782,9 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     content: string
+    pitch?: string | null
     views?: number
-    videoUrl: string
+    videoUrl?: string | null
     authorId: string
     typeId: number
     categoryId: number
@@ -11776,8 +11800,9 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     content?: StringFieldUpdateOperationsInput | string
+    pitch?: NullableStringFieldUpdateOperationsInput | string | null
     views?: IntFieldUpdateOperationsInput | number
-    videoUrl?: StringFieldUpdateOperationsInput | string
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ArticleUncheckedUpdateManyInput = {
@@ -11791,8 +11816,9 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     content?: StringFieldUpdateOperationsInput | string
+    pitch?: NullableStringFieldUpdateOperationsInput | string | null
     views?: IntFieldUpdateOperationsInput | number
-    videoUrl?: StringFieldUpdateOperationsInput | string
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     authorId?: StringFieldUpdateOperationsInput | string
     typeId?: IntFieldUpdateOperationsInput | number
     categoryId?: IntFieldUpdateOperationsInput | number
@@ -12317,6 +12343,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     content?: SortOrder
+    pitch?: SortOrder
     views?: SortOrder
     videoUrl?: SortOrder
     authorId?: SortOrder
@@ -12342,6 +12369,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     content?: SortOrder
+    pitch?: SortOrder
     views?: SortOrder
     videoUrl?: SortOrder
     authorId?: SortOrder
@@ -12360,6 +12388,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     content?: SortOrder
+    pitch?: SortOrder
     views?: SortOrder
     videoUrl?: SortOrder
     authorId?: SortOrder
@@ -13066,8 +13095,9 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     content: string
+    pitch?: string | null
     views?: number
-    videoUrl: string
+    videoUrl?: string | null
     typeRef: ContentTypeCreateNestedOneWithoutArticlesInput
     CategoryRef: CategoryCreateNestedOneWithoutArticlesInput
   }
@@ -13083,8 +13113,9 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     content: string
+    pitch?: string | null
     views?: number
-    videoUrl: string
+    videoUrl?: string | null
     typeId: number
     categoryId: number
   }
@@ -13194,8 +13225,9 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Article"> | Date | string
     updatedAt?: DateTimeFilter<"Article"> | Date | string
     content?: StringFilter<"Article"> | string
+    pitch?: StringNullableFilter<"Article"> | string | null
     views?: IntFilter<"Article"> | number
-    videoUrl?: StringFilter<"Article"> | string
+    videoUrl?: StringNullableFilter<"Article"> | string | null
     authorId?: StringFilter<"Article"> | string
     typeId?: IntFilter<"Article"> | number
     categoryId?: IntFilter<"Article"> | number
@@ -13503,8 +13535,9 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     content: string
+    pitch?: string | null
     views?: number
-    videoUrl: string
+    videoUrl?: string | null
     author: UserCreateNestedOneWithoutArticlesInput
     typeRef: ContentTypeCreateNestedOneWithoutArticlesInput
   }
@@ -13520,8 +13553,9 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     content: string
+    pitch?: string | null
     views?: number
-    videoUrl: string
+    videoUrl?: string | null
     authorId: string
     typeId: number
   }
@@ -13562,8 +13596,9 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     content: string
+    pitch?: string | null
     views?: number
-    videoUrl: string
+    videoUrl?: string | null
     author: UserCreateNestedOneWithoutArticlesInput
     CategoryRef: CategoryCreateNestedOneWithoutArticlesInput
   }
@@ -13579,8 +13614,9 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     content: string
+    pitch?: string | null
     views?: number
-    videoUrl: string
+    videoUrl?: string | null
     authorId: string
     categoryId: number
   }
@@ -13647,8 +13683,9 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     content: string
+    pitch?: string | null
     views?: number
-    videoUrl: string
+    videoUrl?: string | null
     typeId: number
     categoryId: number
   }
@@ -13738,8 +13775,9 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     content?: StringFieldUpdateOperationsInput | string
+    pitch?: NullableStringFieldUpdateOperationsInput | string | null
     views?: IntFieldUpdateOperationsInput | number
-    videoUrl?: StringFieldUpdateOperationsInput | string
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     typeRef?: ContentTypeUpdateOneRequiredWithoutArticlesNestedInput
     CategoryRef?: CategoryUpdateOneRequiredWithoutArticlesNestedInput
   }
@@ -13755,8 +13793,9 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     content?: StringFieldUpdateOperationsInput | string
+    pitch?: NullableStringFieldUpdateOperationsInput | string | null
     views?: IntFieldUpdateOperationsInput | number
-    videoUrl?: StringFieldUpdateOperationsInput | string
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     typeId?: IntFieldUpdateOperationsInput | number
     categoryId?: IntFieldUpdateOperationsInput | number
   }
@@ -13772,8 +13811,9 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     content?: StringFieldUpdateOperationsInput | string
+    pitch?: NullableStringFieldUpdateOperationsInput | string | null
     views?: IntFieldUpdateOperationsInput | number
-    videoUrl?: StringFieldUpdateOperationsInput | string
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     typeId?: IntFieldUpdateOperationsInput | number
     categoryId?: IntFieldUpdateOperationsInput | number
   }
@@ -13789,8 +13829,9 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     content: string
+    pitch?: string | null
     views?: number
-    videoUrl: string
+    videoUrl?: string | null
     authorId: string
     typeId: number
   }
@@ -13805,8 +13846,9 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     content?: StringFieldUpdateOperationsInput | string
+    pitch?: NullableStringFieldUpdateOperationsInput | string | null
     views?: IntFieldUpdateOperationsInput | number
-    videoUrl?: StringFieldUpdateOperationsInput | string
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     author?: UserUpdateOneRequiredWithoutArticlesNestedInput
     typeRef?: ContentTypeUpdateOneRequiredWithoutArticlesNestedInput
   }
@@ -13822,8 +13864,9 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     content?: StringFieldUpdateOperationsInput | string
+    pitch?: NullableStringFieldUpdateOperationsInput | string | null
     views?: IntFieldUpdateOperationsInput | number
-    videoUrl?: StringFieldUpdateOperationsInput | string
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     authorId?: StringFieldUpdateOperationsInput | string
     typeId?: IntFieldUpdateOperationsInput | number
   }
@@ -13839,8 +13882,9 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     content?: StringFieldUpdateOperationsInput | string
+    pitch?: NullableStringFieldUpdateOperationsInput | string | null
     views?: IntFieldUpdateOperationsInput | number
-    videoUrl?: StringFieldUpdateOperationsInput | string
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     authorId?: StringFieldUpdateOperationsInput | string
     typeId?: IntFieldUpdateOperationsInput | number
   }
@@ -13856,8 +13900,9 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     content: string
+    pitch?: string | null
     views?: number
-    videoUrl: string
+    videoUrl?: string | null
     authorId: string
     categoryId: number
   }
@@ -13872,8 +13917,9 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     content?: StringFieldUpdateOperationsInput | string
+    pitch?: NullableStringFieldUpdateOperationsInput | string | null
     views?: IntFieldUpdateOperationsInput | number
-    videoUrl?: StringFieldUpdateOperationsInput | string
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     author?: UserUpdateOneRequiredWithoutArticlesNestedInput
     CategoryRef?: CategoryUpdateOneRequiredWithoutArticlesNestedInput
   }
@@ -13889,8 +13935,9 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     content?: StringFieldUpdateOperationsInput | string
+    pitch?: NullableStringFieldUpdateOperationsInput | string | null
     views?: IntFieldUpdateOperationsInput | number
-    videoUrl?: StringFieldUpdateOperationsInput | string
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     authorId?: StringFieldUpdateOperationsInput | string
     categoryId?: IntFieldUpdateOperationsInput | number
   }
@@ -13906,8 +13953,9 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     content?: StringFieldUpdateOperationsInput | string
+    pitch?: NullableStringFieldUpdateOperationsInput | string | null
     views?: IntFieldUpdateOperationsInput | number
-    videoUrl?: StringFieldUpdateOperationsInput | string
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     authorId?: StringFieldUpdateOperationsInput | string
     categoryId?: IntFieldUpdateOperationsInput | number
   }

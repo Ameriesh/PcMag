@@ -1,34 +1,72 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { auth } from "./lib/auth";
+
+
+import { auth } from "./lib/auth"; 
 import { User } from "./lib/auth";
 
-export async function middleware(req: NextRequest) {
-  const pathname = req.nextUrl.pathname;
 
-  if (pathname.startsWith("/auth")) return NextResponse.next();
+import { createI18nMiddleware } from 'next-international/middleware';
+
+
+const I18nMiddleware = createI18nMiddleware({
+  locales: ['en', 'fr'],
+  defaultLocale: 'fr' 
+});
+
+
+
+export async function middleware(request: NextRequest) {
     
-  const session = await auth.api.getSession({ 
-    headers: req.headers 
-  });
-
-  if (!session) {
     
-    return NextResponse.redirect(new URL("/auth/signin", req.url));
-  }
+    const response = I18nMiddleware(request);
 
-  const user = session.user as User;
-
- 
-  if (pathname.startsWith("/admin") && user.role !== "ADMIN") {
     
-    return NextResponse.redirect(new URL("/", req.url)); 
-  }
+    const url = response.headers.get('x-middleware-rewrite') || request.nextUrl.pathname;
+    
+   
+    const pathnameWithoutLocale = url.replace(/^\/(en|fr)/, ''); 
 
-  
+    if (pathnameWithoutLocale.startsWith("/auth")) {
+        return response; 
+    }
+
+
+    const session = await auth.api.getSession({
+        headers: request.headers
+    });
+
+    if (!session) {
+        
+        const localePrefix = request.nextUrl.pathname.startsWith('/fr') ? '/fr' : request.nextUrl.pathname.startsWith('/en') ? '/en' : '/fr'; // Fallback à 'fr'
+        return NextResponse.redirect(new URL(`${localePrefix}/auth/signin`, request.url));
+    }
+
+
+    const user = session.user as User;
+
+    
+    if (
+        pathnameWithoutLocale.startsWith("/dashboard/blog/write") ||
+        pathnameWithoutLocale.startsWith("/dashboard/blog/edit")
+    ) {
+        return response; 
+    }
+
+   
+    if (pathnameWithoutLocale.startsWith("/admin") && user.role !== "ADMIN") {
+        
+        return NextResponse.redirect(new URL("/", request.url));
+    }
+
+
+    return response; 
 }
 
+
+
 export const config = {
-  matcher: ["/dashboard/:path*", "/admin/:path*"],
-  runtime: 'nodejs', 
+   
+    matcher: ['/((?!api|_next|static|.*\\..*|favicon.ico|robots.txt).*)'],
+    runtime: 'nodejs',
 };

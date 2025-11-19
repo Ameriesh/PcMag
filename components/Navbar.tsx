@@ -6,12 +6,15 @@ import { useRouter, usePathname } from 'next/navigation';
 
 import { SearchBar } from "./SearchBar";
 import { Button } from "./ui/button";
-import { MonitorSmartphone, LogOut } from 'lucide-react'
+import { MonitorSmartphone, LogOut, PenLine } from 'lucide-react'
 import { authClient } from "@/lib/auth-client";
 import { User } from "@/lib/auth"; 
 import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger, DropdownMenuItem } from "@radix-ui/react-dropdown-menu"
 import { UserCircle, ChevronDown, LayoutDashboard } from "lucide-react" 
 import { toast } from "sonner";
+import { Pen } from "lucide-react";
+import { useI18n, useScopedI18n } from "@/locales/client";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 const PRIMARY_CATEGORIES = [
     { name: "Accueil", href: "/" },
@@ -22,7 +25,9 @@ const PRIMARY_CATEGORIES = [
     { name: "Cinéma", href: "/category/cinema" },
 ];
 
+
 const Navbar = () => {
+    const t = useScopedI18n('navbar')
     const router = useRouter(); 
     const pathname = usePathname(); 
     
@@ -57,44 +62,29 @@ const Navbar = () => {
         <header className="navbar-v2">
             
            
-            <div className="navbar-logo-v2">
+            <div className="navbar-logo-v2 mr-3">
                 <Link href="/">
                      <div className="logo-v2"><MonitorSmartphone size={20} /> PCMag</div> 
                 </Link>
             </div>
-
-         
-            <nav className="navbar-nav-links">
-                {PRIMARY_CATEGORIES.map((category) => {
-                   
-                    const isActive = pathname === category.href || 
-                                     (category.href !== '/' && pathname.startsWith(category.href));
-
-                    return (
-                        <Link 
-                            key={category.name} 
-                            href={category.href} 
-                            className={`nav-link-item ${isActive ? 'active' : ''}`}
-                        >
-                            {category.name}
-                        </Link>
-                    );
-                })}
-            </nav>
+             <SearchBar /> 
 
            
             <div className="navbar-auth-v2">
-                
-               
-                <div className="hidden md:block">
-                     <SearchBar /> 
-                </div>
 
                
                 {isPending ? (
                     <div className="text-secondary-500">...</div>
                 ) : user ? (
-                   
+                    <>
+                      <div className="hidden md:block">
+                    
+                        <Link href='/dashboard/blog/addArticle' className="hover:text-primary-600 inline-flex gap-">
+                            <Pen className="w-5 h-5"/>
+                            {t('ecrire')}
+                        </Link>
+                        </div>
+                        <LanguageSwitcher/>
                     <DropdownMenu>
                         <DropdownMenuTrigger asChild>
                             <Button className="btn-tertiary flex items-center gap-1">
@@ -126,17 +116,19 @@ const Navbar = () => {
                             >   
                                 <span className="w-full flex flex-1 gap-2">
                                     <LogOut size={16} className="text-rose-600"/>
-                                    Déconnexion
+                                    {t('disconnection')}
                                 </span>
                             </DropdownMenuItem>
                         </DropdownMenuContent>
                     </DropdownMenu>
+                    </>
                 ) : (
                     
                     <Link href="/auth/signin">
-                        <Button className="btn-auth-outline">Sign in</Button> 
+                        <Button className="btn-auth-outline">{t('sign_in')}</Button> 
                     </Link>
                 )}
+                
             </div>
         </header>
     );
